@@ -20,11 +20,15 @@ public:
 	void add(std::string name, IScene* scene);
 	//シーンの変更
 	void change(std::string name);
+private:
+	//全てのシーンの削除
+	void clear();
 	//シーンの終了
 	void end();
+public:
+	SceneManager(const SceneManager& other) = delete;
+	SceneManager& operator=(const SceneManager& other) = delete;
 
-private:
-	void clear();
 private:
 	std::unordered_map<std::string, IScene*> scenes_;
 	IScene* currentScene_;
