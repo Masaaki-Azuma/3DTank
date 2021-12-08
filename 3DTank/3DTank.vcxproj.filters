@@ -2,5 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IScene.h" />
+    <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="NullScene.h" />
   </ItemGroup>
 </Project>
