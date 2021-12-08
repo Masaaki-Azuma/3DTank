@@ -17,4 +17,5 @@ void PlayScene::draw() const
 
 void PlayScene::end()
 {
+	gsDeleteTexture(0);
 }
