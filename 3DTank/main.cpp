@@ -1,4 +1,5 @@
 #include <GSgame.h>
+#include "IScene.h"
 #include "PlayScene.h"
 
 class MyGame : public gslib::Game
@@ -6,7 +7,8 @@ class MyGame : public gslib::Game
 public:
 	void start() override
 	{
-		scene_.start();
+		scene_ = new PlayScene{};
+		scene_->start();
 	}
 	void update(float delta_time) override
 	{
@@ -14,15 +16,15 @@ public:
 	}
 	void draw() override
 	{
-		scene_.draw();
+		scene_->draw();
 	}
 	void end() override
 	{
-
+		delete scene_;
 	}
 
 private:
-	PlayScene scene_;
+	IScene* scene_;
 };
 
 
