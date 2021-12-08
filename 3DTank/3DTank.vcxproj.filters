@@ -3,10 +3,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="NullScene.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
 </Project>

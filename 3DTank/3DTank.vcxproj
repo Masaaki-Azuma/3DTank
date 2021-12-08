@@ -149,11 +149,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
