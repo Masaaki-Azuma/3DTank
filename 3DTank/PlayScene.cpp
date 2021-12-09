@@ -12,7 +12,7 @@ void PlayScene::start()
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//アクターの追加
-	world_.add_actor(new Player{ GSvector3{0.0f, 0.0f, 0.0f} });
+	world_.add_actor(new Player{&world_, GSvector3{0.0f, 0.0f, 0.0f} });
 }
 
 void PlayScene::update(float delta_time)

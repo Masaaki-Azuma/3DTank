@@ -1,8 +1,10 @@
 #include "Player.h"
 #include "CannonBall.h"
+#include "IWorld.h"
 
 const float MoveSpeed{ 0.2f };
-Player::Player(const GSvector3& position)
+Player::Player(IWorld* world, const GSvector3& position):
+	world_{world}
 {
 	transform_.position(position);
 }
