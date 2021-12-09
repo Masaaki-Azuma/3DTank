@@ -1,7 +1,7 @@
 #ifndef ACTOR_H_
 #define ACTOR_H_
 
-//#include <gslib.h>
+#include <gslib.h>
 #include <GStransform.h>
 class Actor
 {

@@ -4,11 +4,17 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

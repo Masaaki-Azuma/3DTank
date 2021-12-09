@@ -13,7 +13,7 @@ void Player::update(float delta_time)
 void Player::draw() const
 {
 	glPushMatrix();
-	glLoadMatrixf(transform_.localToWorldMatrix());
+	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(0);
 	glPopMatrix();
 }

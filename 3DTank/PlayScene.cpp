@@ -1,6 +1,11 @@
 #include "PlayScene.h"
 #include <gslib.h>
 
+//ForDebug
+#include "Player.h"
+//!ForDebug
+
+Player player{ GSvector3{0.0f, 0.0f, 0.0f} };
 void PlayScene::start()
 {
 	//gsLoadTexture(0, "Assets/test.png");
@@ -14,16 +19,17 @@ void PlayScene::update(float delta_time)
 
 void PlayScene::draw() const
 {
-	//ƒ^ƒ“ƒN‚Ì•`‰æ
-	glPushMatrix();
-	glMultMatrixf(GSmatrix4::translate(GSvector3{ 0.0f, 0.0f, 0.0f }));
-	gsDrawMesh(0);
-	glPopMatrix();
-	//–CŠÛ‚Ì•`‰æ
-	glPushMatrix();
-	glMultMatrixf(GSmatrix4::translate(GSvector3{ 0.0f, 0.0f, 20.0f }));
-	gsDrawMesh(1);
-	glPopMatrix();
+	////ƒ^ƒ“ƒN‚Ì•`‰æ
+	//glPushMatrix();
+	//glMultMatrixf(GSmatrix4::translate(GSvector3{ 0.0f, 0.0f, 0.0f }));
+	//gsDrawMesh(0);
+	//glPopMatrix();
+	////–CŠÛ‚Ì•`‰æ
+	//glPushMatrix();
+	//glMultMatrixf(GSmatrix4::translate(GSvector3{ 0.0f, 0.0f, 20.0f }));
+	//gsDrawMesh(1);
+	//glPopMatrix();
+	player.draw();
 }
 
 void PlayScene::end()
