@@ -8,12 +8,13 @@ class Actor
 public:
 	Actor() = default;
 	virtual ~Actor() = default;
-	void update(float delta_time);
-	void draw() const;
+
+	virtual void update(float delta_time);
+	virtual void draw() const;
 
 	bool is_dead() const;
 
-private:
+protected:
 	//ˆÊ’uA‰ñ“]AŠgkî•ñ
 	GStransform transform_;
 	//€–Sƒtƒ‰ƒO
