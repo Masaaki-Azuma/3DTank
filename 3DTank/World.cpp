@@ -2,15 +2,6 @@
 #include "CameraFixedPoint.h"
 #include "Player.h"
 
-World::World()
-{
-	
-}
-
-World::~World()
-{
-}
-
 void World::update(float delta_time)
 {
 	//全アクターの更新

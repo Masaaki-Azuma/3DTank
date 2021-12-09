@@ -22,5 +22,6 @@
     <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="IWorld.h" />
   </ItemGroup>
 </Project>
