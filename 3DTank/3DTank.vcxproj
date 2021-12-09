@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="CannonBall.cpp" />
     <ClCompile Include="main.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="IScene.h" />

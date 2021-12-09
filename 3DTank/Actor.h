@@ -17,6 +17,9 @@ public:
 protected:
 	//ˆÊ’uA‰ñ“]AŠgkî•ñ
 	GStransform transform_;
+	//‹«ŠE‹…
+
+
 	//€–Sƒtƒ‰ƒO
 	bool is_dead_{ false };
 };
