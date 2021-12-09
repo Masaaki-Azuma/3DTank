@@ -5,35 +5,30 @@
 
 void PlayScene::start()
 {
+	//リソースの読み込み
 	gsLoadMesh(0, "Assets/tank.mshb");
 	gsLoadMesh(1, "Assets/cannon_ball.mshb");
 	
-	camera_ = new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} };
-	actor_manager_.add(new Player{ GSvector3{0.0f, 0.0f, 0.0f} });
+	//カメラの作成
+	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
+	//アクターの追加
+	world_.add_actor(new Player{ GSvector3{0.0f, 0.0f, 0.0f} });
 }
 
 void PlayScene::update(float delta_time)
 {
-	//全アクターの更新
-	actor_manager_.update(delta_time);
-	//死亡しているアクターの削除
-	actor_manager_.remove();
+	world_.update(delta_time);
 }
 
 void PlayScene::draw() const
 {
-	//カメラの描画
-	camera_->draw();
-	//全アクターの描画
-	actor_manager_.draw();
+	world_.draw();
 }
 
 void PlayScene::end()
 {
-	//カメラの削除
-	delete camera_;
-	camera_ = nullptr;
-
+	//ワールドの管理物を消去
+	world_.clear();
 	//リソースの解放
 	gsDeleteMesh(0);
 	gsDeleteMesh(1);

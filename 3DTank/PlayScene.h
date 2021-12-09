@@ -2,9 +2,7 @@
 #define PLAY_SCENE_H_
 
 #include "IScene.h"
-#include "ActorManager.h"
-
-class CameraFixedPoint;
+#include "World.h"
 
 class PlayScene : public IScene
 {
@@ -15,8 +13,7 @@ public:
     virtual void end() override;
 
 private:
-    ActorManager actor_manager_;
-    CameraFixedPoint* camera_{ nullptr };
+    World world_;
 };
 #endif//!PLAY_SCENE_H_
 
