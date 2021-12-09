@@ -7,9 +7,12 @@
 void PlayScene::start()
 {
 	//リソースの読み込み
+	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
+	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
+
 	gsLoadMesh(Mesh_Player, "Assets/tank.mshb");
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
-	
+
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//アクターの追加
@@ -23,6 +26,9 @@ void PlayScene::update(float delta_time)
 
 void PlayScene::draw() const
 {
+	//ステージの描画
+	gsDrawOctree(Octree_Mesh);
+	gsDrawOctree(Octree_Collide);
 	world_.draw();
 }
 
@@ -33,4 +39,6 @@ void PlayScene::end()
 	//リソースの解放
 	gsDeleteMesh(0);
 	gsDeleteMesh(1);
+	gsDeleteOctree(Octree_Mesh);
+	gsDeleteOctree(Octree_Collide);
 }
