@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "CannonBall.h"
 
 const float MoveSpeed{ 0.2f };
 Player::Player(const GSvector3& position)
@@ -21,7 +22,9 @@ void Player::draw() const
 
 void Player::move(float delta_time)
 {
+	//ˆÚ“®•ûŒü
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
+	//WASD‘€ì‚ÅˆÚ“®
 	if (gsGetKeyState(GKEY_D)) {
 		direction.x += 1.0f;
 	}
@@ -34,6 +37,13 @@ void Player::move(float delta_time)
 	if (gsGetKeyState(GKEY_S)) {
 		direction.z += 1.0f;
 	}
+	//ˆÚ“®—Ê‚ÌZo
 	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
+	//ˆÚ“®—Ê‚ğ”½‰f
 	transform_.translate(velocity, GStransform::Space::World);
+}
+
+void Player::shoot()
+{
+
 }
