@@ -8,6 +8,19 @@ Player::Player(const GSvector3& position)
 
 void Player::update(float delta_time)
 {
+	move(delta_time);
+}
+
+void Player::draw() const
+{
+	glPushMatrix();
+	glMultMatrixf(transform_.localToWorldMatrix());
+	gsDrawMesh(0);
+	glPopMatrix();
+}
+
+void Player::move(float delta_time)
+{
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
 	if (gsGetKeyState(GKEY_D)) {
 		direction.x += 1.0f;
@@ -21,14 +34,6 @@ void Player::update(float delta_time)
 	if (gsGetKeyState(GKEY_S)) {
 		direction.z += 1.0f;
 	}
-	GSvector3 velocity = direction.normalized()* MoveSpeed* delta_time;
+	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
 	transform_.translate(velocity, GStransform::Space::World);
-}
-
-void Player::draw() const
-{
-	glPushMatrix();
-	glMultMatrixf(transform_.localToWorldMatrix());
-	gsDrawMesh(0);
-	glPopMatrix();
 }
