@@ -2,12 +2,13 @@
 #include <gslib.h>
 #include "Player.h"
 #include "CameraFixedPoint.h"
+#include "Assets.h"
 
 void PlayScene::start()
 {
 	//リソースの読み込み
-	gsLoadMesh(0, "Assets/tank.mshb");
-	gsLoadMesh(1, "Assets/cannon_ball.mshb");
+	gsLoadMesh(Mesh_Player, "Assets/tank.mshb");
+	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
 	
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });

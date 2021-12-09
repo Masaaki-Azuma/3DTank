@@ -23,5 +23,6 @@
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="IWorld.h" />
+    <ClInclude Include="Assets.h" />
   </ItemGroup>
 </Project>
