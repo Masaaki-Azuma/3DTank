@@ -3,11 +3,7 @@
 
 ActorManager::~ActorManager()
 {
-	//全アクターを削除
-	for (auto actor : actors_) {
-		delete actor;
-	}
-	actors_.clear();
+	clear();
 }
 
 void ActorManager::update(float delta_time)
@@ -52,4 +48,13 @@ void ActorManager::find(const std::string& name) const
 
 void ActorManager::find_with_tag(const std::string& tag) const
 {
+}
+
+void ActorManager::clear()
+{
+	//全アクターを削除
+	for (auto actor : actors_) {
+		delete actor;
+	}
+	actors_.clear();
 }

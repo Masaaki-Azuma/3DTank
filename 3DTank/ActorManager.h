@@ -19,6 +19,7 @@ public:
 	void remove();
 	void find(const std::string& name) const;
 	void find_with_tag(const std::string& tag) const;
+	void clear();
 
 private:
 	std::list<Actor*> actors_;
