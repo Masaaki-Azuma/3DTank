@@ -8,6 +8,7 @@
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
+    <ClCompile Include="CannonBall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -18,5 +19,6 @@
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="CameraFixedPoint.h" />
+    <ClInclude Include="CannonBall.h" />
   </ItemGroup>
 </Project>
