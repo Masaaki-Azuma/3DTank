@@ -12,6 +12,7 @@ Player::Player(IWorld* world, const GSvector3& position):
 void Player::update(float delta_time)
 {
 	move(delta_time);
+	shoot();
 }
 
 void Player::draw() const
@@ -47,5 +48,8 @@ void Player::move(float delta_time)
 
 void Player::shoot()
 {
-
+	//’e‚ð”­ŽË
+	if (gsGetKeyTrigger(GKEY_SPACE)) {
+		world_->add_actor(new CannonBall{ transform_.position(), GSvector3::zero() });
+	}
 }
