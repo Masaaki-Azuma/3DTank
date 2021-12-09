@@ -1,6 +1,6 @@
 #include "Player.h"
 
-const float MoveSpeed{ 0.6f };
+const float MoveSpeed{ 0.2f };
 Player::Player(const GSvector3& position)
 {
 	transform_.position(position);
