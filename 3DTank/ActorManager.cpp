@@ -1,6 +1,15 @@
 #include "ActorManager.h"
 #include "Actor.h"
 
+ActorManager::~ActorManager()
+{
+	//全アクターを削除
+	for (auto actor : actors_) {
+		delete actor;
+	}
+	actors_.clear();
+}
+
 void ActorManager::update(float delta_time)
 {
 	//全アクターの更新

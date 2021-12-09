@@ -10,7 +10,7 @@ class ActorManager
 {
 public:
 	ActorManager() = default;
-	~ActorManager() = default;
+	~ActorManager();
 
 	void update(float delta_time);
 	void draw() const;
