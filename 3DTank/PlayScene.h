@@ -2,6 +2,7 @@
 #define PLAY_SCENE_H_
 
 #include "IScene.h"
+#include "ActorManager.h"
 
 class PlayScene : public IScene
 {
@@ -10,6 +11,9 @@ public:
     virtual void update(float delta_time) override;
     virtual void draw() const override;
     virtual void end() override;
+
+private:
+    ActorManager actor_manager_;
 };
 #endif//!PLAY_SCENE_H_
 
