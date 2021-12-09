@@ -11,7 +11,9 @@ Player::Player(IWorld* world, const GSvector3& position):
 
 void Player::update(float delta_time)
 {
+	//ˆÚ“®
 	move(delta_time);
+	//–CŠÛ‚Ì”­ŽË
 	shoot();
 }
 
@@ -50,6 +52,25 @@ void Player::shoot()
 {
 	//’e‚ð”­ŽË
 	if (gsGetKeyTrigger(GKEY_SPACE)) {
-		world_->add_actor(new CannonBall{ transform_.position(), GSvector3::zero() });
+		//’e‚Ì•ûŒü
+		GSvector3 direction{ 0.0f, 0.0f, 0.0f };
+		if (gsGetKeyState(GKEY_RIGHT)) {
+			direction.x += 1.0f;
+		}
+		if (gsGetKeyState(GKEY_LEFT)) {
+			direction.x -= 1.0f;
+		}
+		if (gsGetKeyState(GKEY_UP)) {
+			direction.z -= 1.0f;
+		}
+		if (gsGetKeyState(GKEY_DOWN)) {
+			direction.z += 1.0f;
+		}
+		//’e‚Ì‘¬“x
+		GSvector3 velocity = direction.normalized() * 0.2;
+		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
+		velocity.y = 0.8f;
+		//–CŠÛ‚ð”­ŽË
+		world_->add_actor(new CannonBall{ transform_.position(), velocity});
 	}
 }
