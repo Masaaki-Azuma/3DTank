@@ -4,6 +4,8 @@
 #include "IScene.h"
 #include "ActorManager.h"
 
+class CameraFixedPoint;
+
 class PlayScene : public IScene
 {
 public:
@@ -14,6 +16,7 @@ public:
 
 private:
     ActorManager actor_manager_;
+    CameraFixedPoint* camera_{ nullptr };
 };
 #endif//!PLAY_SCENE_H_
 
