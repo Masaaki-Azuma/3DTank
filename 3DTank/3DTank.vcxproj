@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
+    <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="Player.h" />
