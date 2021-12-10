@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "CannonBall.h"
 #include "IWorld.h"
+#include "Line.h"
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
@@ -33,15 +34,14 @@ void Player::update(float delta_time)
 		transform_.position(center);
 	}
 	////ínñ Ç∆ÇÃè’ìÀîªíË
-	GSvector3 start = transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f};
-	GSvector3 end = transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f };
+	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
 	GSplane plane;
 	bool is_collider_floor = gsOctreeCollisionLine(
-		gsGetOctree(Octree_Collide), &start, &end, &intersect, &plane
+		gsGetOctree(Octree_Collide), &line.start(), &line.end(), &intersect, &plane
 	);
 	if (is_collider_floor) {
-		GSvector3 position = start;
+		GSvector3 position = line.start();
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
 		velocity_.y = 0.0f;

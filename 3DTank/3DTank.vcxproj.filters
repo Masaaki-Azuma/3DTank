@@ -11,6 +11,8 @@
     <ClCompile Include="CannonBall.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Ray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -26,5 +28,7 @@
     <ClInclude Include="IWorld.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BoundingSphere.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="Ray.h" />
   </ItemGroup>
 </Project>

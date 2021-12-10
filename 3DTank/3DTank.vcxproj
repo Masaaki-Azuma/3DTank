@@ -152,9 +152,11 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="CannonBall.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -167,9 +169,11 @@
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IWorld.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
