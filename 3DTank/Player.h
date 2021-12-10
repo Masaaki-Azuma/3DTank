@@ -15,10 +15,12 @@ public:
 
 private:
     void move(float delta_time);
+    void free_fall(float delta_time);
     void shoot();
 
 private:
     IWorld* world_;
+    GSvector3 velocity_;
 };
 #endif//!PLAYER_H_
 

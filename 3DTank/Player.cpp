@@ -1,12 +1,16 @@
 #include "Player.h"
 #include "CannonBall.h"
 #include "IWorld.h"
+#include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
+const float Gravity{ -0.05f };
+//const float PlayerHeight{ 1.9f };
+const float FootOffset{ 0.1f };
 Player::Player(IWorld* world, const GSvector3& position):
 	world_{world}
 {
-	collider_ = BoundingSphere{ 2.0f, GSvector3{0.0f, 1.0f, 0.0f} };
+	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 1.9f, 0.0f} };
 	transform_.position(position);
 }
 
@@ -14,8 +18,34 @@ void Player::update(float delta_time)
 {
 	//移動
 	move(delta_time);
+	//重力による自由落下
+	free_fall(delta_time);
 	//砲丸の発射
 	shoot();
+
+	//地形との位置補正
+	//壁との衝突判定
+	GSvector3 center;
+	bool is_collide_wall = gsOctreeCollisionSphere(
+		gsGetOctree(Octree_Collide), &collider().center(), collider().radius(), &center);
+	if (is_collide_wall) {
+		center.y = transform_.position().y;
+		transform_.position(center);
+	}
+	////地面との衝突判定
+	GSvector3 start = transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f};
+	GSvector3 end = transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f };
+	GSvector3 intersect;
+	GSplane plane;
+	bool is_collider_floor = gsOctreeCollisionLine(
+		gsGetOctree(Octree_Collide), &start, &end, &intersect, &plane
+	);
+	if (is_collider_floor) {
+		GSvector3 position = start;
+		position.y = intersect.y - FootOffset;
+		transform_.position(position);
+		velocity_.y = 0.0f;
+	}
 }
 
 void Player::draw() const
@@ -50,8 +80,19 @@ void Player::move(float delta_time)
 	}
 	//移動量の算出
 	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
-	//移動量を反映
+	//x,z軸方向の移動量を保存
+	velocity_.x = velocity.x;
+	velocity_.z = velocity.z;
+	//水平方向の移動量を反映
 	transform_.translate(velocity, GStransform::Space::World);
+}
+
+void Player::free_fall(float delta_time)
+{
+	//重力を作用
+	velocity_.y += Gravity * delta_time;
+	//上下方向の移動量を反映
+	transform_.translate(GSvector3{ 0.0f, velocity_.y, 0.0f }, GStransform::Space::World);
 }
 
 void Player::shoot()
