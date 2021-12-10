@@ -6,6 +6,7 @@ const float MoveSpeed{ 0.2f };
 Player::Player(IWorld* world, const GSvector3& position):
 	world_{world}
 {
+	collider_ = BoundingSphere{ 2.0f, GSvector3{0.0f, 1.0f, 0.0f} };
 	transform_.position(position);
 }
 
@@ -19,10 +20,15 @@ void Player::update(float delta_time)
 
 void Player::draw() const
 {
+	//ƒƒbƒVƒ…‚Ì•`‰æ
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(0);
 	glPopMatrix();
+
+	//ForDebug
+	//‹«ŠE‹…‚Ì•`‰æ
+	collider().draw();
 }
 
 void Player::move(float delta_time)
