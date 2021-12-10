@@ -3,6 +3,8 @@
 
 #include <gslib.h>
 #include <GStransform.h>
+#include "BoundingSphere.h"
+
 class Actor
 {
 public:
@@ -11,14 +13,20 @@ public:
 
 	virtual void update(float delta_time);
 	virtual void draw() const;
+	virtual void react(Actor& other);
 
+    //€–S‚µ‚Ä‚¢‚é‚©H
 	bool is_dead() const;
+	//Õ“Ë”»’è}Œ`‚ğæ“¾
+	BoundingSphere collider() const;
+	//Õ“Ë‚µ‚Ä‚¢‚é‚©H
+	bool is_collide(const Actor& other) const;
 
 protected:
 	//ˆÊ’uA‰ñ“]AŠgkî•ñ
 	GStransform transform_;
 	//‹«ŠE‹…
-
+	BoundingSphere collider_;
 
 	//€–Sƒtƒ‰ƒO
 	bool is_dead_{ false };
