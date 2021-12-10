@@ -24,5 +24,5 @@ BoundingSphere Actor::collider() const
 
 bool Actor::is_collide(const Actor& other) const
 {
-	if (collider().intersects(other.collider()));
+	return collider().intersects(other.collider());
 }
