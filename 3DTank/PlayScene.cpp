@@ -11,7 +11,8 @@ void PlayScene::start()
 	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
 	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
 
-	gsLoadMesh(Mesh_Player, "Assets/tank.mshb");
+	gsLoadMesh(Mesh_Player, "Assets/blue_tank.mshb");
+	gsLoadMesh(Mesh_Enemy, "Assets/red_tank.mshb");
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
 
 	//カメラの作成
@@ -32,6 +33,7 @@ void PlayScene::draw() const
 {
 	//ステージの描画
 	world_.draw();
+	gsDrawMesh(Mesh_Enemy);
 }
 
 void PlayScene::end()
@@ -39,8 +41,9 @@ void PlayScene::end()
 	//ワールドの管理物を消去
 	world_.clear();
 	//リソースの解放
-	gsDeleteMesh(0);
-	gsDeleteMesh(1);
+	gsDeleteMesh(Mesh_Player);
+	gsDeleteMesh(Mesh_Enemy);
+	gsDeleteMesh(Mesh_CannonBall);
 	gsDeleteOctree(Octree_Mesh);
 	gsDeleteOctree(Octree_Collide);
 }

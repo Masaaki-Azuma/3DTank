@@ -5,6 +5,7 @@
 enum
 {
 	Mesh_Player,
+	Mesh_Enemy,
 	Mesh_CannonBall,
 
 };
