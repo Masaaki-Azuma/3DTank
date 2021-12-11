@@ -13,6 +13,7 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Field.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -30,5 +31,6 @@
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Field.h" />
   </ItemGroup>
 </Project>
