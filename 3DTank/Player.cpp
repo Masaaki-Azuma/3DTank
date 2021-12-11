@@ -109,7 +109,7 @@ void Player::collide_field()
 	//地形との位置補正
 
 	//地面との衝突判定
-	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
+	Line line{ collider().center(),  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
 	//衝突したら垂直方向に押し戻し
 	if (world_->field().collide(line, &intersect)) {
