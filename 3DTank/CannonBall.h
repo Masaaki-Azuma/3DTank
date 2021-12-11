@@ -17,8 +17,6 @@ private:
     //’nŒ`‚Æ‚ÌÕ“Ëˆ—
     void collide_field();
 
-private:
-    GSvector3 velocity_;  //Œ»İ‘¬“x
 };
 #endif//!CANNON_BALL_H_
 

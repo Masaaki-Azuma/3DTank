@@ -5,11 +5,11 @@
 
 const float Gravity{ -0.02f };
 
-CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity):
-	velocity_{velocity}
+CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity)
 {
 	world_ = world;
 	transform_.position(position);
+	velocity_ = velocity;
 	collider_ = BoundingSphere{ 1.0f };
 }
 

@@ -18,9 +18,6 @@ private:
     void free_fall(float delta_time);
     void shoot();
     void collide_field();
-
-private:
-    GSvector3 velocity_;
 };
 #endif//!PLAYER_H_
 

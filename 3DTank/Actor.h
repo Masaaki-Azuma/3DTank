@@ -32,9 +32,10 @@ protected:
 	IWorld* world_{ nullptr };
 	//ˆÊ’uA‰ñ“]AŠgkî•ñ
 	GStransform transform_;
+	//ˆÚ“®—Ê
+	GSvector3 velocity_;
 	//‹«ŠE‹…
 	BoundingSphere collider_;
-
 	//€–Sƒtƒ‰ƒO
 	bool is_dead_{ false };
 };
