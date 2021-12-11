@@ -28,32 +28,17 @@ void Player::update(float delta_time)
 	//地形との位置補正
 	//壁との衝突判定
 	GSvector3 center;
-	/*bool is_collide_wall = gsOctreeCollisionSphere(
-		gsGetOctree(Octree_Collide), &collider().center(), collider().radius(), &center);
-	
-	if (is_collide_wall) {
-		center.y = transform_.position().y;
-		transform_.position(center);
-	}*/
-
+	//衝突したら水平方向に押し戻し
 	if (world_->field().collide(collider(), &center)) {
 		center.y = transform_.position().y;
 		transform_.position(center);
 	}
 
-	/*GSvector3 center;
-	if (collide(collider(), &center)) {
-
-	}*/
-
-	////地面との衝突判定
+	//地面との衝突判定
 	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
-	GSplane plane;
-	bool is_collider_floor = gsOctreeCollisionLine(
-		gsGetOctree(Octree_Collide), &line.start(), &line.end(), &intersect, &plane
-	);
-	if (is_collider_floor) {
+	//衝突したら垂直方向に押し戻し
+	if (world_->field().collide(line, &intersect)) {
 		GSvector3 position = line.start();
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
