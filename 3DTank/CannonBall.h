@@ -8,7 +8,7 @@ class CannonBall :
     public Actor
 {
 public:
-    CannonBall(const GSvector3& position, const GSvector3& velocity);
+    CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity);
     void update(float delta_time) override;
     void draw() const override;
 private:

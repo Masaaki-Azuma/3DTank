@@ -1,9 +1,11 @@
 #include "CannonBall.h"
 
 const float Gravity{ -0.02f };
-CannonBall::CannonBall(const GSvector3& position, const GSvector3& velocity):
+
+CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity):
 	velocity_{velocity}
 {
+	world_ = world;
 	transform_.position(position);
 }
 
