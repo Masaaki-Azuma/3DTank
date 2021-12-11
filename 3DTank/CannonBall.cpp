@@ -1,4 +1,6 @@
 #include "CannonBall.h"
+#include "IWorld.h"
+#include "Field.h"
 
 const float Gravity{ -0.02f };
 
@@ -7,18 +9,15 @@ CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3
 {
 	world_ = world;
 	transform_.position(position);
+	collider_ = BoundingSphere{ 1.0f };
 }
 
 void CannonBall::update(float delta_time)
 {
+	//移動
 	move(delta_time);
-
-	//ForDebug
-	//下に行ったら削除
-	if (transform_.position().y < -1) {
-		is_dead_ = true;
-	}
-	//!ForDebug
+	//地形との衝突処理
+	collide_field();
 }
 
 void CannonBall::draw() const
@@ -27,6 +26,9 @@ void CannonBall::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(1);
 	glPopMatrix();
+
+	//ForDebug
+	collider().draw();
 }
 
 void CannonBall::move(float delta_time)
@@ -35,4 +37,12 @@ void CannonBall::move(float delta_time)
 	velocity_.y += Gravity;
 	//移動量を反映
 	transform_.translate(velocity_ * delta_time);
+}
+
+void CannonBall::collide_field()
+{
+	//地形に当たったら削除
+	if (world_->field().collide(collider())) {
+		die();
+	}
 }

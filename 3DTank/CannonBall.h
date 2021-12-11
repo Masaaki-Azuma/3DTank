@@ -14,6 +14,8 @@ public:
 private:
     //ˆÚ“®
     void move(float delta_time);
+    //’nŒ`‚Æ‚ÌÕ“Ëˆ—
+    void collide_field();
 
 private:
     GSvector3 velocity_;  //Œ»İ‘¬“x
