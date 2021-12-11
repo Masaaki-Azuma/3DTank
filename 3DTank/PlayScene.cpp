@@ -23,7 +23,7 @@ void PlayScene::start()
 	world_.add_field(new Field{ Octree_Mesh, Octree_Collide });
 	//アクターの追加
 	world_.add_actor(new Player{&world_, GSvector3{0.0f, 5.8f, 0.0f} });
-	world_.add_actor(new Enemy{ &world_, GSvector3{0.0f, 5.8f, 0.0f} });
+	world_.add_actor(new Enemy{ &world_, GSvector3{0.0f, 5.8f, -10.0f} });
 }
 
 void PlayScene::update(float delta_time)
