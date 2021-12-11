@@ -98,7 +98,7 @@ void Player::shoot()
 		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
 		velocity.y = 0.8f;
 		//–CŠÛ‚ð”­ŽË
-		world_->add_actor(new CannonBall{ transform_.position(), velocity});
+		world_->add_actor(new CannonBall{ world_, transform_.position(), velocity});
 	}
 }
 
