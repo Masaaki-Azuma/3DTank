@@ -10,7 +10,7 @@ class Field
 {
 public:
 	Field(GSuint mesh, GSuint collider);
-
+	void draw() const;
 	bool collide(const BoundingSphere& sphere, GSvector3* center = nullptr);
 private:
 	//地形メッシュオクツリー
