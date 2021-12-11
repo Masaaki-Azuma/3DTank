@@ -9,10 +9,7 @@ CannonBall::CannonBall(const GSvector3& position, const GSvector3& velocity):
 
 void CannonBall::update(float delta_time)
 {
-	//重力を作用
-	velocity_.y += Gravity;
-	//移動量を反映
-	transform_.translate(velocity_ * delta_time);
+	move(delta_time);
 
 	//ForDebug
 	//下に行ったら削除
@@ -28,4 +25,12 @@ void CannonBall::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(1);
 	glPopMatrix();
+}
+
+void CannonBall::move(float delta_time)
+{
+	//重力を作用
+	velocity_.y += Gravity;
+	//移動量を反映
+	transform_.translate(velocity_ * delta_time);
 }

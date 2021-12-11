@@ -11,6 +11,9 @@ public:
     CannonBall(const GSvector3& position, const GSvector3& velocity);
     void update(float delta_time) override;
     void draw() const override;
+private:
+    //à⁄ìÆ
+    void move(float delta_time);
 
 private:
     GSvector3 velocity_;  //åªç›ë¨ìx
