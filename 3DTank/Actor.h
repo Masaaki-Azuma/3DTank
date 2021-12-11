@@ -17,12 +17,15 @@ public:
 	virtual void draw() const;
 	virtual void react(Actor& other);
 
+	//死亡する
+	void die();
     //死亡しているか？
 	bool is_dead() const;
-	//衝突判定図形を取得
-	BoundingSphere collider() const;
 	//衝突しているか？
 	bool is_collide(const Actor& other) const;
+
+	//衝突判定図形を取得
+	BoundingSphere collider() const;
 
 protected:
 	//ワールド
