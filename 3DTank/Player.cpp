@@ -9,6 +9,8 @@ const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.05f };
 //const float PlayerHeight{ 1.9f };
 const float FootOffset{ 0.1f };
+const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
+
 Player::Player(IWorld* world, const GSvector3& position)
 {
 	world_ = world;
@@ -98,7 +100,7 @@ void Player::shoot()
 		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
 		velocity.y = 0.8f;
 		//–CŠÛ‚ð”­ŽË
-		world_->add_actor(new CannonBall{ world_, transform_.position(), velocity});
+		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity});
 	}
 }
 
