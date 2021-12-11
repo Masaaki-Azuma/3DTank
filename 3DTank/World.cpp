@@ -14,6 +14,8 @@ void World::draw() const
 {
 	//カメラの描画
 	camera_->draw();
+	//ステージの描画
+	field_->draw();
 	//全アクターの描画
 	actor_manager_.draw();
 }
@@ -22,6 +24,9 @@ void World::clear()
 {
 	//全アクターの削除
 	actor_manager_.clear();
+	//フィールドの削除
+	delete field_;
+	field_ = nullptr;
 	//カメラの削除
 	delete camera_;
 	camera_ = nullptr;
