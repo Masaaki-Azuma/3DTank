@@ -9,9 +9,9 @@ const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.05f };
 //const float PlayerHeight{ 1.9f };
 const float FootOffset{ 0.1f };
-Player::Player(IWorld* world, const GSvector3& position):
-	world_{world}
+Player::Player(IWorld* world, const GSvector3& position)
 {
+	world_ = world;
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 1.9f, 0.0f} };
 	transform_.position(position);
 }

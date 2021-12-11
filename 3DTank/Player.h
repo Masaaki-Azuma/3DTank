@@ -20,7 +20,6 @@ private:
     void collide_field();
 
 private:
-    IWorld* world_;
     GSvector3 velocity_;
 };
 #endif//!PLAYER_H_
