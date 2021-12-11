@@ -5,6 +5,8 @@
 #include <GStransform.h>
 #include "BoundingSphere.h"
 
+class IWorld;
+
 class Actor
 {
 public:
@@ -23,6 +25,8 @@ public:
 	bool is_collide(const Actor& other) const;
 
 protected:
+	//ƒ[ƒ‹ƒh
+	IWorld* world_{ nullptr };
 	//ˆÊ’uA‰ñ“]AŠgkî•ñ
 	GStransform transform_;
 	//‹«ŠE‹…
