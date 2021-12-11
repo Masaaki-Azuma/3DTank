@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include <gslib.h>
 #include "Player.h"
+#include "Enemy.h"
 #include "CameraFixedPoint.h"
 #include "Field.h"
 #include "Assets.h"
@@ -22,6 +23,7 @@ void PlayScene::start()
 	world_.add_field(new Field{ Octree_Mesh, Octree_Collide });
 	//アクターの追加
 	world_.add_actor(new Player{&world_, GSvector3{0.0f, 5.8f, 0.0f} });
+	world_.add_actor(new Enemy{ &world_, GSvector3{0.0f, 5.8f, 0.0f} });
 }
 
 void PlayScene::update(float delta_time)
@@ -33,7 +35,6 @@ void PlayScene::draw() const
 {
 	//ステージの描画
 	world_.draw();
-	gsDrawMesh(Mesh_Enemy);
 }
 
 void PlayScene::end()
