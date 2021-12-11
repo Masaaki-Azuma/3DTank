@@ -24,26 +24,8 @@ void Player::update(float delta_time)
 	free_fall(delta_time);
 	//砲丸の発射
 	shoot();
-
-	//地形との位置補正
-	//壁との衝突判定
-	GSvector3 center;
-	//衝突したら水平方向に押し戻し
-	if (world_->field().collide(collider(), &center)) {
-		center.y = transform_.position().y;
-		transform_.position(center);
-	}
-
-	//地面との衝突判定
-	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
-	GSvector3 intersect;
-	//衝突したら垂直方向に押し戻し
-	if (world_->field().collide(line, &intersect)) {
-		GSvector3 position = line.start();
-		position.y = intersect.y - FootOffset;
-		transform_.position(position);
-		velocity_.y = 0.0f;
-	}
+	//地形と衝突判定
+	collide_field();
 }
 
 void Player::draw() const
@@ -117,5 +99,28 @@ void Player::shoot()
 		velocity.y = 0.8f;
 		//砲丸を発射
 		world_->add_actor(new CannonBall{ transform_.position(), velocity});
+	}
+}
+
+void Player::collide_field()
+{
+	//地形との位置補正
+	//壁との衝突判定
+	GSvector3 center;
+	//衝突したら水平方向に押し戻し
+	if (world_->field().collide(collider(), &center)) {
+		center.y = transform_.position().y;
+		transform_.position(center);
+	}
+
+	//地面との衝突判定
+	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
+	GSvector3 intersect;
+	//衝突したら垂直方向に押し戻し
+	if (world_->field().collide(line, &intersect)) {
+		GSvector3 position = line.start();
+		position.y = intersect.y - FootOffset;
+		transform_.position(position);
+		velocity_.y = 0.0f;
 	}
 }

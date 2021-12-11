@@ -17,6 +17,7 @@ private:
     void move(float delta_time);
     void free_fall(float delta_time);
     void shoot();
+    void collide_field();
 
 private:
     IWorld* world_;
