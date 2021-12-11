@@ -7,14 +7,14 @@
 
 const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.05f };
-//const float PlayerHeight{ 1.9f };
+const float PlayerHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
 
 Player::Player(IWorld* world, const GSvector3& position)
 {
 	world_ = world;
-	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 1.9f, 0.0f} };
+	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 2.0f, 0.0f} };
 	transform_.position(position);
 }
 
@@ -107,13 +107,6 @@ void Player::shoot()
 void Player::collide_field()
 {
 	//地形との位置補正
-	//壁との衝突判定
-	GSvector3 center;
-	//衝突したら水平方向に押し戻し
-	if (world_->field().collide(collider(), &center)) {
-		center.y = transform_.position().y;
-		transform_.position(center);
-	}
 
 	//地面との衝突判定
 	Line line{ transform_.position() + GSvector3{0.0f, collider().radius(), 0.0f},  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
@@ -124,5 +117,12 @@ void Player::collide_field()
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
 		velocity_.y = 0.0f;
+	}
+	//壁との衝突判定
+	GSvector3 center;
+	//衝突したら水平方向に押し戻し
+	if (world_->field().collide(collider(), &center)) {
+		center.y = transform_.position().y;
+		transform_.position(center);
 	}
 }
