@@ -1,6 +1,7 @@
 #include "CannonBall.h"
 #include "IWorld.h"
 #include "Field.h"
+#include "Assets.h"
 
 const float Gravity{ -0.02f };
 
@@ -24,7 +25,7 @@ void CannonBall::draw() const
 {
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
-	gsDrawMesh(1);
+	gsDrawMesh(Mesh_CannonBall);
 	glPopMatrix();
 
 	//ForDebug

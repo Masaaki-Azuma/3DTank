@@ -35,7 +35,7 @@ void Player::draw() const
 	//ƒƒbƒVƒ…‚Ì•`‰æ
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
-	gsDrawMesh(0);
+	gsDrawMesh(Mesh_Player);
 	glPopMatrix();
 
 	//ForDebug
