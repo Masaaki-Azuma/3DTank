@@ -3,6 +3,7 @@
 
 #include "IWorld.h"
 #include "ActorManager.h"
+#include "Field.h"
 
 class CameraFixedPoint;
 
@@ -14,13 +15,20 @@ public:
 	void clear();
 	//カメラの追加
 	void add_camera(CameraFixedPoint* camera);
+	//フィールドの追加
+	void add_field(Field* field);
 
 	//アクターの追加
 	virtual void add_actor(Actor* actor) override;
+	//フィールドの取得
+	virtual Field& field() override;
+
 private:
 	//アクター管理オブジェクト
 	ActorManager actor_manager_;
 	//定点カメラ
 	CameraFixedPoint* camera_{ nullptr };
+	//フィールド
+	Field* field_{ nullptr };
 };
 #endif//!WORLD_H_

@@ -43,3 +43,18 @@ void World::add_camera(CameraFixedPoint* camera)
 	//追加
 	camera_ = camera;
 }
+
+void World::add_field(Field* field)
+{
+	//既に作成されたフィールドがあれば削除
+	if (field_) {
+		delete field_;
+		field_ = nullptr;
+	}
+	field_ = field;
+}
+
+Field& World::field()
+{
+	return *field_;
+}
