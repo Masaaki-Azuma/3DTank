@@ -34,6 +34,14 @@ void CannonBall::draw() const
 	collider().draw();
 }
 
+void CannonBall::react(Actor& other)
+{
+	//©‹@’e‚ª“G‚É“–‚½‚Á‚½‚çÁ–Å
+	if (tag_ == "PlayerCannonBallTag" && other.tag() == "EnemyTag") {
+		die();
+	}
+}
+
 void CannonBall::move(float delta_time)
 {
 	//d—Í‚ğì—p

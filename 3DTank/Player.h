@@ -12,6 +12,7 @@ public:
     Player(IWorld* world, const GSvector3& position);
     virtual void update(float delta_time) override;
     virtual void draw() const override;
+    virtual void react(Actor& other) override;
 
 private:
     void move(float delta_time);

@@ -9,8 +9,10 @@ class CannonBall :
 {
 public:
     CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag = "CannonBallTag");
-    void update(float delta_time) override;
-    void draw() const override;
+    virtual void update(float delta_time) override;
+    virtual void draw() const override;
+    virtual void react(Actor& other) override;
+
 private:
     //ˆÚ“®
     void move(float delta_time);

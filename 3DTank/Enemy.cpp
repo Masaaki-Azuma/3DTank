@@ -12,6 +12,8 @@ const float FootOffset{ 0.1f };
 Enemy::Enemy(IWorld* world, const GSvector3& position)
 {
 	world_ = world;
+	name_ = "Enemy";
+	tag_ = "EnemyTag";
 	transform_.position(position);
 	velocity_ = GSvector3{ 0.0f, 0.0f, -MoveSpeed };
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
@@ -45,7 +47,7 @@ void Enemy::draw() const
 void Enemy::move(float delta_time)
 {
 	//ˆÚ“®—Ê‚ð”½‰f
-	transform_.translate(velocity_, GStransform::Space::World);
+	//transform_.translate(velocity_, GStransform::Space::World);
 }
 
 void Enemy::free_fall(float delta_time)

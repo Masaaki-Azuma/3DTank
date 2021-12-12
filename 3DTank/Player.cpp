@@ -14,6 +14,8 @@ const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
 Player::Player(IWorld* world, const GSvector3& position)
 {
 	world_ = world;
+	name_ = "Player";
+	tag_ = "PlayerTag";
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 2.0f, 0.0f} };
 	transform_.position(position);
 }
@@ -41,6 +43,11 @@ void Player::draw() const
 	//ForDebug
 	//‹«ŠE‹…‚Ì•`‰æ
 	collider().draw();
+}
+
+void Player::react(Actor& other)
+{
+
 }
 
 void Player::move(float delta_time)
@@ -100,7 +107,7 @@ void Player::shoot()
 		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
 		velocity.y = 0.8f;
 		//–CŠÛ‚ð”­ŽË
-		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity});
+		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
 	}
 }
 
