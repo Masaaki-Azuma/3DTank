@@ -10,12 +10,14 @@ public:
 
 	void update(float delta_time) override;
 	void draw() const override;
-
 private:
 	void move(float delta_time);
 	void free_fall(float delta_time);
 	void shoot(float delta_time);
 	void collide_field();
+
+private:
+	float shot_timer_{ 0.0f };
 };
 #endif//!ENEMY_H_
 

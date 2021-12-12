@@ -2,12 +2,14 @@
 #include "IWorld.h"
 #include "Field.h"
 #include "Line.h"
+#include "CannonBall.h"
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.05f };
 const float EnemyHeight{ 2.0f };
 const float FootOffset{ 0.1f };
+const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
 
 Enemy::Enemy(IWorld* world, const GSvector3& position)
 {
@@ -60,6 +62,13 @@ void Enemy::free_fall(float delta_time)
 
 void Enemy::shoot(float delta_time)
 {
+	//ForDebug
+	shot_timer_ += delta_time;
+	if (shot_timer_ >= 60.0f) {
+		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, GSvector3{0.0f, 0.8f, 0.0f}, "EnemyCannonBallTag"});
+		shot_timer_ -= 60.0f;
+	}
+	//!ForDebug
 }
 
 void Enemy::collide_field()
