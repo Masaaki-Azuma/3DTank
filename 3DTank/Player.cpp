@@ -47,7 +47,10 @@ void Player::draw() const
 
 void Player::react(Actor& other)
 {
-
+	//“G’e‚É“–‚½‚Á‚½‚çŽ€–S
+	if (other.tag() == "EnemyCannonBallTag") {
+		die();
+	}
 }
 
 void Player::move(float delta_time)
