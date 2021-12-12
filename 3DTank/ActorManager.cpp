@@ -28,6 +28,16 @@ void ActorManager::add(Actor* actor)
 	actors_.push_back(actor);
 }
 
+void ActorManager::collide()
+{
+	//アクター同士の全組み合わせで衝突判定を行う
+	for (auto i = actors_.begin(); i != actors_.end(); ++i) {
+		for (auto j = std::next(i); j != actors_.end(); ++j) {
+			(*i)->collide(**j);
+		}
+	}
+}
+
 void ActorManager::remove()
 {
 	//死亡しているアクターを削除する
