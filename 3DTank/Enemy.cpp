@@ -46,6 +46,14 @@ void Enemy::draw() const
 	collider().draw();
 }
 
+void Enemy::react(Actor& other)
+{
+	//Ž©‹@’e‚É“–‚½‚Á‚½‚çŽ€–S
+	if (other.tag() == "PlayerCannonBallTag") {
+		die();
+	}
+}
+
 void Enemy::move(float delta_time)
 {
 	//ˆÚ“®—Ê‚ð”½‰f
@@ -63,9 +71,10 @@ void Enemy::free_fall(float delta_time)
 void Enemy::shoot(float delta_time)
 {
 	//ForDebug
+	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
 	shot_timer_ += delta_time;
 	if (shot_timer_ >= 60.0f) {
-		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, GSvector3{0.0f, 0.8f, 0.0f}, "EnemyCannonBallTag"});
+		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, GSvector3{-0.1f, 0.8f, 0.0f}, "EnemyCannonBallTag"});
 		shot_timer_ -= 60.0f;
 	}
 	//!ForDebug

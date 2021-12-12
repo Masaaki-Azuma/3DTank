@@ -8,8 +8,9 @@ class Enemy : public Actor
 public:
 	Enemy(IWorld* world, const GSvector3& position);
 
-	void update(float delta_time) override;
-	void draw() const override;
+	virtual void update(float delta_time) override;
+	virtual void draw() const override;
+	virtual void react(Actor& other) override;
 private:
 	void move(float delta_time);
 	void free_fall(float delta_time);
