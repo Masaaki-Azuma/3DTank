@@ -32,6 +32,8 @@ public:
 	const std::string& name() const;
 	//タグ名を取得
 	const std::string& tag() const;
+	//位置情報を取得
+	const GStransform& transform() const;
 	//衝突判定図形を取得
 	BoundingSphere collider() const;
 

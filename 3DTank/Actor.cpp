@@ -47,6 +47,11 @@ const std::string& Actor::tag() const
 	return tag_;
 }
 
+const GStransform& Actor::transform() const
+{
+	return transform_;
+}
+
 BoundingSphere Actor::collider() const
 {
 	return collider_.transform(transform_.localToWorldMatrix());
