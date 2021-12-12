@@ -15,10 +15,16 @@ public:
     virtual void react(Actor& other) override;
 
 private:
+    //移動
     void move(float delta_time);
+    //自由落下
     void free_fall(float delta_time);
+    //弾の発射
     void shoot();
+    //地形との押し出し判定
     void collide_field();
+    //アクターとの押し出し判定
+    void collide_actor(Actor& other);
 };
 #endif//!PLAYER_H_
 

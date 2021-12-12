@@ -51,6 +51,10 @@ void Player::react(Actor& other)
 	if (other.tag() == "EnemyCannonBallTag") {
 		die();
 	}
+	if (other.tag() == "EnemyTag") {
+		//押し出し判定
+		collide_actor(other);
+	}
 }
 
 void Player::move(float delta_time)
@@ -135,4 +139,17 @@ void Player::collide_field()
 		center.y = transform_.position().y;
 		transform_.position(center);
 	}
+}
+
+void Player::collide_actor(Actor& other)
+{
+	//相手から自分へ向かうベクトル
+	GSvector3 direction = transform_.position() - other.transform().position();
+	direction.y = 0.0f;
+	//取るべき距離
+	float length = collider().radius() + other.collider().radius();
+	//押し出し後の位置
+	GSvector3 position = other.transform().position() + direction.normalized() * length;
+	//計算値分移動
+	transform_.position(position);
 }
