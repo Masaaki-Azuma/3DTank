@@ -52,12 +52,28 @@ void ActorManager::remove()
 	}
 }
 
-void ActorManager::find(const std::string& name) const
+Actor* ActorManager::find(const std::string& name) const
 {
+	//名前が一致したアクターを返す
+	for (auto actor : actors_) {
+		if (actor->name() == name) {
+			return actor;
+		}
+	}
+	//一致しなかった場合nullptrを返す
+	return nullptr;
 }
 
-void ActorManager::find_with_tag(const std::string& tag) const
+Actor* ActorManager::find_with_tag(const std::string& tag) const
 {
+	//タグが一致したアクターを返す
+	for (auto actor : actors_) {
+		if (actor->tag() == tag) {
+			return actor;
+		}
+	}
+	//一致しなかった場合nullptrを返す
+	return nullptr;
 }
 
 void ActorManager::clear()

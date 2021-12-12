@@ -22,9 +22,9 @@ public:
 	//死亡アクターの削除
 	void remove();
 	//名前で検索
-	void find(const std::string& name) const;
+	Actor* find(const std::string& name) const;
 	//タグで検索
-	void find_with_tag(const std::string& tag) const;
+	Actor* find_with_tag(const std::string& tag) const;
 	void clear();
 
 private:
