@@ -37,6 +37,16 @@ bool Actor::is_collide(const Actor& other) const
 	return collider().intersects(other.collider());
 }
 
+const std::string& Actor::name() const
+{
+	return name_;
+}
+
+const std::string& Actor::tag() const
+{
+	return tag_;
+}
+
 BoundingSphere Actor::collider() const
 {
 	return collider_.transform(transform_.localToWorldMatrix());

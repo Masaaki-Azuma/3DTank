@@ -3,6 +3,7 @@
 
 #include <gslib.h>
 #include <GStransform.h>
+#include <string>
 #include "BoundingSphere.h"
 
 class IWorld;
@@ -27,12 +28,20 @@ public:
 	//衝突しているか？
 	bool is_collide(const Actor& other) const;
 
+	//名前を取得
+	const std::string& name() const;
+	//タグ名を取得
+	const std::string& tag() const;
 	//衝突判定図形を取得
 	BoundingSphere collider() const;
 
 protected:
 	//ワールド
 	IWorld* world_{ nullptr };
+	//名前
+	std::string name_;
+	//タグ名
+	std::string tag_;
 	//位置、回転、拡縮情報
 	GStransform transform_;
 	//移動量
