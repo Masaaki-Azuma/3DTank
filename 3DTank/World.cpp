@@ -6,6 +6,8 @@ void World::update(float delta_time)
 {
 	//全アクターの更新
 	actor_manager_.update(delta_time);
+	//全アクターの衝突判定
+	actor_manager_.collide();
 	//死亡しているアクターの削除
 	actor_manager_.remove();
 }
