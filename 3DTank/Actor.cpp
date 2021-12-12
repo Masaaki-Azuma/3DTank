@@ -22,6 +22,16 @@ bool Actor::is_dead() const
 	return is_dead_;
 }
 
+void Actor::collide(Actor& other)
+{
+	//Õ“Ë‚µ‚Ä‚¢‚½‚çÕ“Ëˆ—‚ğ‚·‚é
+	if (is_collide(other)) {
+		//“ñÒ‚ÌÕ“Ëˆ—
+		react(other);
+		other.react(*this);
+	}
+}
+
 bool Actor::is_collide(const Actor& other) const
 {
 	return collider().intersects(other.collider());

@@ -21,6 +21,9 @@ public:
 	void die();
     //€–S‚µ‚Ä‚¢‚é‚©H
 	bool is_dead() const;
+	//Õ“Ë”»’è
+	void collide(Actor& other);
+
 	//Õ“Ë‚µ‚Ä‚¢‚é‚©H
 	bool is_collide(const Actor& other) const;
 
