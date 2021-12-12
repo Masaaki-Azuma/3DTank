@@ -8,7 +8,7 @@ class CannonBall :
     public Actor
 {
 public:
-    CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity);
+    CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag = "CannonBallTag");
     void update(float delta_time) override;
     void draw() const override;
 private:

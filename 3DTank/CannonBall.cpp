@@ -5,9 +5,11 @@
 
 const float Gravity{ -0.02f };
 
-CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity)
+CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag)
 {
 	world_ = world;
+	name_ = "CannonBall";
+	tag_ = tag;
 	transform_.position(position);
 	velocity_ = velocity;
 	collider_ = BoundingSphere{ 1.0f };
