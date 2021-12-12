@@ -40,6 +40,10 @@ void CannonBall::react(Actor& other)
 	if (tag_ == "PlayerCannonBallTag" && other.tag() == "EnemyTag") {
 		die();
 	}
+	//“G’e‚ª©‹@‚É“–‚½‚Á‚½‚çÁ–Å
+	if (tag_ == "EnemyCannonBallTag" && other.tag() == "PlayerTag") {
+		die();
+	}
 }
 
 void CannonBall::move(float delta_time)
