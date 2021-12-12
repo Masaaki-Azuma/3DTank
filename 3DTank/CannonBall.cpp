@@ -45,7 +45,7 @@ void CannonBall::react(Actor& other)
 void CannonBall::move(float delta_time)
 {
 	//d—Í‚ğì—p
-	velocity_.y += Gravity;
+	velocity_.y += Gravity * delta_time;
 	//ˆÚ“®—Ê‚ğ”½‰f
 	transform_.translate(velocity_ * delta_time);
 }
