@@ -40,6 +40,18 @@ void World::add_actor(Actor* actor)
 	actor_manager_.add(actor);
 }
 
+void World::find_actor(const std::string& name) const
+{
+	//アクターマネージャーに中継
+	actor_manager_.find(name);
+}
+
+void World::find_actor_with_tag(const std::string& tag) const
+{
+	//アクターマネージャーに中継
+	actor_manager_.find_with_tag(tag);
+}
+
 void World::add_camera(CameraFixedPoint* camera)
 {
 	//既に作成されたカメラがあったら削除
