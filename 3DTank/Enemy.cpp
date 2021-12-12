@@ -6,11 +6,16 @@
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
-const float Gravity{ -0.05f };
+//const float Gravity{ -0.05f };
+const float Gravity{ -0.02f };
 const float EnemyHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
 const float CannonSpeed{ 0.2f };
+const float CannonVerticalSpeed{ 0.8f };
+const float CannonRange{ 16.0f };
+const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };
+
 
 Enemy::Enemy(IWorld* world, const GSvector3& position)
 {
@@ -25,7 +30,7 @@ Enemy::Enemy(IWorld* world, const GSvector3& position)
 void Enemy::update(float delta_time)
 {
 	//ˆÚ“®
-	move(delta_time);
+	//move(delta_time);
 	//Ž©—R—Ž‰º
 	free_fall(delta_time);
 	//’e‚ð”­ŽË
@@ -82,10 +87,12 @@ void Enemy::shoot(float delta_time)
 		GSvector3 direction = player->transform().position() - transform_.position();
 		//y¬•ª‚Í–³Ž‹
 		direction.y = 0.0f;
+		//’…’e’n“_‚Ü‚Å‚Ì‹——£‚ðŽZo
+		float distance = std::min(direction.length(), CannonRange);
 		//’e‚ÌˆÚ“®—Ê‚ðŽZo
-		GSvector3 velocity = direction.normalized() * CannonSpeed;
+		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;  //80.0f = -2*0.8(‰”’¼‘¬“x)/CannonBall::Gravity
 		//y¬•ª‚Íˆê’è
-		velocity.y = 0.8f;
+		velocity.y = CannonVerticalSpeed;
 		//’e‚ð¶¬
 		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
 		shot_timer_ -= 60.0f;

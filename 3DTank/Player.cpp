@@ -112,7 +112,7 @@ void Player::shoot()
 		//’e‚Ì‘¬“x
 		GSvector3 velocity = direction.normalized() * 0.2;
 		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
-		velocity.y = 0.8f;
+		velocity.y = 0.8f;  //1/60•b‚Éi‚Þ—Ê
 		//–CŠÛ‚ð”­ŽË
 		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
 	}
