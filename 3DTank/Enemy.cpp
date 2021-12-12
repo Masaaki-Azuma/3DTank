@@ -10,6 +10,7 @@ const float Gravity{ -0.05f };
 const float EnemyHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
+const float CannonSpeed{ 0.2f };
 
 Enemy::Enemy(IWorld* world, const GSvector3& position)
 {
@@ -74,7 +75,20 @@ void Enemy::shoot(float delta_time)
 	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
 	shot_timer_ += delta_time;
 	if (shot_timer_ >= 60.0f) {
-		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, GSvector3{-0.1f, 0.8f, 0.0f}, "EnemyCannonBallTag"});
+		//ƒvƒŒƒCƒ„[‚ðŽæ“¾
+		Actor* player = world_->find_actor("Player");
+		//Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚çI—¹
+		if (!player) return;
+		//ƒvƒŒƒCƒ„[•ûŒü‚ðŒvŽZ
+		GSvector3 direction = player->transform().position() - transform_.position();
+		//y¬•ª‚Í–³Ž‹
+		direction.y = 0.0f;
+		//’e‚ÌˆÚ“®—Ê‚ðŽZo
+		GSvector3 velocity = direction.normalized() * CannonSpeed;
+		//y¬•ª‚Íˆê’è
+		velocity.y = 0.8f;
+		//’e‚ð¶¬
+		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
 		shot_timer_ -= 60.0f;
 	}
 	//!ForDebug
