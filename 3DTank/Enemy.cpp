@@ -58,7 +58,7 @@ void Enemy::react(Actor& other)
 void Enemy::move(float delta_time)
 {
 	//ˆÚ“®—Ê‚ð”½‰f
-	//transform_.translate(velocity_, GStransform::Space::World);
+	transform_.translate(velocity_, GStransform::Space::World);
 }
 
 void Enemy::free_fall(float delta_time)
@@ -66,12 +66,11 @@ void Enemy::free_fall(float delta_time)
 	//d—Í‚ðì—p
 	velocity_.y += Gravity * delta_time;
 	//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ð”½‰f
-	transform_.translate(GSvector3{ 0.0f, velocity_.y, 0.0f }, GStransform::Space::World);
+	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
 void Enemy::shoot(float delta_time)
 {
-	//ForDebug
 	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
 	shot_timer_ += delta_time;
 	if (shot_timer_ >= 60.0f) {
@@ -91,7 +90,6 @@ void Enemy::shoot(float delta_time)
 		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
 		shot_timer_ -= 60.0f;
 	}
-	//!ForDebug
 }
 
 void Enemy::collide_field()

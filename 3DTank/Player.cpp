@@ -88,7 +88,7 @@ void Player::free_fall(float delta_time)
 	//d—Í‚ğì—p
 	velocity_.y += Gravity * delta_time;
 	//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ğ”½‰f
-	transform_.translate(GSvector3{ 0.0f, velocity_.y, 0.0f }, GStransform::Space::World);
+	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
 void Player::shoot()
