@@ -21,9 +21,9 @@ public:
 	//アクターの追加
 	virtual void add_actor(Actor* actor) override;
 	//アクターの名前検索
-	virtual void find_actor(const std::string& name) const;
+	virtual Actor* find_actor(const std::string& name) const;
 	//アクターのタグ検索
-	virtual void find_actor_with_tag(const std::string& tag) const;
+	virtual Actor* find_actor_with_tag(const std::string& tag) const;
 	//フィールドの取得
 	virtual Field& field() override;
 
