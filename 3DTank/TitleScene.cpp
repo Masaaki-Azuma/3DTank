@@ -6,7 +6,7 @@ void TitleScene::start()
 {
 	//ÉäÉ\Å[ÉXÇÃì«Ç›çûÇ›
 	gsLoadTexture(Texture_TitleLogo, "Assets/title_logo.png");
-	gsLoadTexture(Texture_PressZ, "press_z.png");
+	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
 }
 
 void TitleScene::update(float delta_time)
@@ -15,8 +15,10 @@ void TitleScene::update(float delta_time)
 
 void TitleScene::draw() const
 {
-	gsDrawSprite2D(Texture_TitleLogo, &GSvector2{ 0, 0 }, NULL, NULL, NULL, NULL, NULL);
-	gsDrawSprite2D(Texture_PressZ, &GSvector2{ 0, 200 }, NULL, NULL, NULL, NULL, NULL);
+	GSvector2 position_title{ 0, 0 };
+	gsDrawSprite2D(Texture_TitleLogo, &position_title, NULL, NULL, NULL, NULL, NULL);
+	GSvector2 position_pressZ{ 0, 200 };
+	gsDrawSprite2D(Texture_PressZ, &position_pressZ, NULL, NULL, NULL, NULL, NULL);
 }
 
 void TitleScene::end()

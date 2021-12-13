@@ -1,15 +1,19 @@
 #include <GSgame.h>
-#include "IScene.h"
-#include "PlayScene.h"
 #include "SceneManager.h"
+#include "IScene.h"
+#include "TitleScene.h"
+#include "PlayScene.h"
+
 
 class MyGame : public gslib::Game
 {
 public:
 	void start() override
 	{
+		scene_manager_.add("TitleScene", new TitleScene{});
 		scene_manager_.add("PlayScene", new PlayScene{});
-		scene_manager_.change("PlayScene");
+		scene_manager_.change("TitleScene");
+		//scene_manager_.change("PlayScene");
 	}
 	void update(float delta_time) override
 	{
