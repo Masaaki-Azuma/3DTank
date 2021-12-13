@@ -41,6 +41,7 @@ void PlayScene::start()
 
 void PlayScene::update(float delta_time)
 {
+	//シーンの状態により遷移
 	switch (state_) {
 	case Introduction: update_introduction(delta_time); break;
 	case Battle:       update_battle(delta_time); break;
@@ -51,7 +52,6 @@ void PlayScene::update(float delta_time)
 
 void PlayScene::draw() const
 {
-	
 	//シーン内オブジェクトの描画
 	world_.draw();
 
