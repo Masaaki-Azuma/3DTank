@@ -6,6 +6,8 @@ enum
 {
 	Texture_TitleLogo,
 	Texture_PressZ,
+	Texture_Stage,
+	Texture_Clear,
 };
 
 //ƒƒbƒVƒ…

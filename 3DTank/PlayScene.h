@@ -6,6 +6,9 @@
 
 class PlayScene : public IScene
 {
+private:
+    
+
 public:
     virtual void start() override;
     virtual void update(float delta_time) override;
@@ -16,9 +19,14 @@ public:
     virtual bool is_end() const override;
     //Ÿ‚ÌƒV[ƒ“–¼‚ğæ“¾
     virtual const std::string next() const override;
+private:
+    void update_introduction(float delta_time);
+    void update_battle(float delta_time);
+    void update_stage_clear(float delta_time);
 
 private:
     World world_;
+    int state_;
 };
 #endif//!PLAY_SCENE_H_
 
