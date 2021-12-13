@@ -6,7 +6,7 @@
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
-const float Gravity{ -0.05f };
+const float Gravity{ -0.02f };
 const float PlayerHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };

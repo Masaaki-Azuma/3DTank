@@ -10,11 +10,11 @@ const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.02f };
 const float EnemyHeight{ 2.0f };
 const float FootOffset{ 0.1f };
-const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
-const float CannonSpeed{ 0.2f };
-const float CannonVerticalSpeed{ 0.8f };
-const float CannonRange{ 16.0f };
-const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };
+const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //’e‚ğŒ‚‚ÂˆÊ’u‚ÌƒIƒtƒZƒbƒg
+//const float CannonSpeed{ 0.2f };
+const float CannonVerticalSpeed{ 0.8f };  //’e‚Ì‰”’¼‰‘¬“x
+const float CannonRange{ 16.0f };  //’e‚ª“Í‚­‹——£
+const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //’e‚Ì…•½‘¬“x‚ğŒˆ’è‚·‚éŒW”A= -2*CannonVerticalSpeed/CannonBall::Gravity
 
 
 Enemy::Enemy(IWorld* world, const GSvector3& position)
@@ -30,7 +30,7 @@ Enemy::Enemy(IWorld* world, const GSvector3& position)
 void Enemy::update(float delta_time)
 {
 	//ˆÚ“®
-	//move(delta_time);
+	move(delta_time);
 	//©—R—‰º
 	free_fall(delta_time);
 	//’e‚ğ”­Ë
@@ -90,7 +90,7 @@ void Enemy::shoot(float delta_time)
 		//’…’e’n“_‚Ü‚Å‚Ì‹——£‚ğZo
 		float distance = std::min(direction.length(), CannonRange);
 		//’e‚ÌˆÚ“®—Ê‚ğZo
-		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;  //80.0f = -2*0.8(‰”’¼‘¬“x)/CannonBall::Gravity
+		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;
 		//y¬•ª‚Íˆê’è
 		velocity.y = CannonVerticalSpeed;
 		//’e‚ğ¶¬
