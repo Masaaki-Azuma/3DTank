@@ -53,3 +53,8 @@ bool PlayScene::is_end() const
 {
 	return false;
 }
+
+const std::string& PlayScene::next() const
+{
+	return "TitleScene";
+}
