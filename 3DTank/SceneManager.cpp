@@ -15,11 +15,17 @@ SceneManager::~SceneManager()
 
 void SceneManager::update(float delta_time)
 {
+	//現在のシーンを更新
 	currentScene_->update(delta_time);
+	//シーンが終了していたら、シーン遷移
+	if (currentScene_->is_end()) {
+		change(currentScene_->next());
+	}
 }
 
 void SceneManager::draw() const
 {
+	//現在のシーンを描画
 	currentScene_->draw();
 }
 
