@@ -1,6 +1,13 @@
 #ifndef ASSETS_H_
 #define ASSETS_H_
 
+//テクスチャ
+enum
+{
+	Texture_TitleLogo,
+	Texture_PressZ,
+};
+
 //メッシュ
 enum
 {
