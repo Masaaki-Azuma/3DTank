@@ -16,7 +16,10 @@ public:
 
     virtual bool is_end() const override;
     //Ÿ‚ÌƒV[ƒ“–¼‚ğæ“¾
-    virtual const std::string& next() const override;
+    virtual const std::string next() const override;
+
+private:
+    bool is_end_;
 };
 #endif//!TITLE_SCENE_H_
 

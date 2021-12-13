@@ -15,7 +15,7 @@ public:
 	//シーンが終了したか？
 	virtual bool is_end() const = 0;
 	//次のシーン名を取得
-	virtual const std::string& next() const = 0;
+	virtual const std::string next() const = 0;
 };
 
 #endif//!ISCENE_H_

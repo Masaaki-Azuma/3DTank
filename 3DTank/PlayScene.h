@@ -15,7 +15,7 @@ public:
     //シーンが終了したか？
     virtual bool is_end() const override;
     //次のシーン名を取得
-    virtual const std::string& next() const override;
+    virtual const std::string next() const override;
 
 private:
     World world_;

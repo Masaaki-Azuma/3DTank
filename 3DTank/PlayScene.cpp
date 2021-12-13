@@ -28,12 +28,13 @@ void PlayScene::start()
 
 void PlayScene::update(float delta_time)
 {
+	//シーン内オブジェクトの更新
 	world_.update(delta_time);
 }
 
 void PlayScene::draw() const
 {
-	//ステージの描画
+	//シーン内オブジェクトの描画
 	world_.draw();
 }
 
@@ -51,10 +52,12 @@ void PlayScene::end()
 
 bool PlayScene::is_end() const
 {
+	////プレイヤーが存在していなければ(nullptr)シーン終了
+	//return !world_.find_actor("Player");
 	return false;
 }
 
-const std::string& PlayScene::next() const
+const std::string PlayScene::next() const
 {
 	return "TitleScene";
 }

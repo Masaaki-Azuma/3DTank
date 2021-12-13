@@ -4,6 +4,10 @@
 
 void TitleScene::start()
 {
+	//ForDebug
+	//終了フラグの初期化
+	is_end_ = false;
+	//!ForDebug
 	//リソースの読み込み
 	gsLoadTexture(Texture_TitleLogo, "Assets/title_logo.png");
 	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
@@ -11,6 +15,12 @@ void TitleScene::start()
 
 void TitleScene::update(float delta_time)
 {
+	//ForDebug
+	//zキーでシーン遷移
+	if (gsGetKeyTrigger(GKEY_Z)) {
+		is_end_ = true;
+	}
+	//!ForDebug
 }
 
 void TitleScene::draw() const
@@ -32,10 +42,10 @@ void TitleScene::end()
 
 bool TitleScene::is_end() const
 {
-	return false;
+	return is_end_;
 }
 
-const std::string& TitleScene::next() const
+const std::string TitleScene::next() const
 {
 	return "PlayScene";
 }
