@@ -16,12 +16,7 @@ enum //プレイシーンの状態
 
 void PlayScene::start()
 {
-	//シーン状態の初期化
-	state_ = Introduction;
-	//リソースの読み込み
-	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
-	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
-
+	////リソースの読み込み
 	gsLoadMesh(Mesh_Player, "Assets/blue_tank.mshb");
 	gsLoadMesh(Mesh_Enemy, "Assets/red_tank.mshb");
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
@@ -34,9 +29,9 @@ void PlayScene::start()
 	//world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 0.0f, 15.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//フィールドの追加
 	world_.add_field(new Field{ Octree_Mesh, Octree_Collide });
-	//アクターの追加
-	world_.add_actor(new Player{&world_, GSvector3{0.0f, 5.8f, 0.0f} });
-	world_.add_actor(new Enemy{ &world_, GSvector3{0.0f, 5.8f, -10.0f} });
+	//最初のステージを読み込み
+	stage_ = 0;
+	load_stage(stage_);
 }
 
 void PlayScene::update(float delta_time)
@@ -123,8 +118,45 @@ void PlayScene::update_stage_clear(float delta_time)
 	timer_ += delta_time;
 	//1秒語にバトルシーンに遷移
 	if (timer_ >= 60.0f) {
-		state_ = StageEnd;
+		//state_ = StageEnd;
 		//タイマーの初期化
 		timer_ = 0.0f;
+		//次のステージに進む
+		load_stage(++stage_);
 	}
+}
+
+void PlayScene::load_stage(unsigned int stage)
+{
+	//全アクターを削除する
+	world_.clear_actor();
+	//既存のステージを削除する
+	gsDeleteOctree(Octree_Mesh);
+	gsDeleteOctree(Octree_Collide);
+
+	//Introducion状態にする
+	state_ = Introduction;
+	//stageに応じたステージを読み込む
+	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
+	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
+
+	
+	//TODO:長すぎる。以下を「アクターを生成する処理」として他に委譲するべき
+	//ステージに応じた生成表を読み込む
+	std::string file_name = "Assets/Actor_tables/actor_generate_table" + std::to_string(stage) + ".csv";
+	actor_generate_table_.load(file_name);
+	//ステージに応じた自機、敵等の配置を行う
+	for (int i = 0; i < actor_generate_table_.rows(); ++i) {
+		//生成クラス名取得
+		std::string name = actor_generate_table_.get(i, 0);
+		//生成位置取得
+		GSvector3 position{ actor_generate_table_.getf(i, 1), actor_generate_table_.getf(i, 2), actor_generate_table_.getf(i, 3) };
+		//生成アクター
+		Actor* actor{ nullptr };
+		if      (name == "Player") actor = new Player{ &world_, position };
+		else if (name == "Enemy")  actor = new Enemy{ &world_, position };
+		//アクターを生成
+		if (actor)world_.add_actor(actor);
+	}
+	//!TODO
 }
