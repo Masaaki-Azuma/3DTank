@@ -52,9 +52,8 @@ void PlayScene::end()
 
 bool PlayScene::is_end() const
 {
-	////プレイヤーが存在していなければ(nullptr)シーン終了
-	//return !world_.find_actor("Player");
-	return false;
+	//プレイヤーが存在していなければ(nullptr)シーン終了
+	return !world_.find_actor("Player");
 }
 
 const std::string PlayScene::next() const
