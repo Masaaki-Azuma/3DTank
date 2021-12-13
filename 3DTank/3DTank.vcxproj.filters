@@ -16,6 +16,7 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="CsvReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -36,5 +37,6 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="CsvReader.h" />
   </ItemGroup>
 </Project>

@@ -152,6 +152,7 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="CannonBall.cpp" />
+    <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Line.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="CannonBall.h" />
+    <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="IScene.h" />
