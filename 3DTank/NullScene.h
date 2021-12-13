@@ -11,5 +11,6 @@ public:
 	virtual void draw() const override {}
 	virtual void end() override {}
 	virtual bool is_end() const override { return false; }
+	virtual const std::string& next() const override { return "NullScene"; }
 };
 #endif//!NULL_SCENE_H_
