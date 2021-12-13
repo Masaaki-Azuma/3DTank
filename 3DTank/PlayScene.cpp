@@ -1,7 +1,5 @@
 #include "PlayScene.h"
 #include <gslib.h>
-#include "Player.h"
-#include "Enemy.h"
 #include "CameraFixedPoint.h"
 #include "Field.h"
 #include "Assets.h"
@@ -128,35 +126,20 @@ void PlayScene::update_stage_clear(float delta_time)
 
 void PlayScene::load_stage(unsigned int stage)
 {
-	//全アクターを削除する
-	world_.clear_actor();
+	//Introducion状態にする
+	state_ = Introduction;
+
 	//既存のステージを削除する
 	gsDeleteOctree(Octree_Mesh);
 	gsDeleteOctree(Octree_Collide);
-
-	//Introducion状態にする
-	state_ = Introduction;
 	//stageに応じたステージを読み込む
 	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
 	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
 
-	
-	//TODO:長すぎる。以下を「アクターを生成する処理」として他に委譲するべき
-	//ステージに応じた生成表を読み込む
-	std::string file_name = "Assets/Actor_tables/actor_generate_table" + std::to_string(stage) + ".csv";
-	actor_generate_table_.load(file_name);
-	//ステージに応じた自機、敵等の配置を行う
-	for (int i = 0; i < actor_generate_table_.rows(); ++i) {
-		//生成クラス名取得
-		std::string name = actor_generate_table_.get(i, 0);
-		//生成位置取得
-		GSvector3 position{ actor_generate_table_.getf(i, 1), actor_generate_table_.getf(i, 2), actor_generate_table_.getf(i, 3) };
-		//生成アクター
-		Actor* actor{ nullptr };
-		if      (name == "Player") actor = new Player{ &world_, position };
-		else if (name == "Enemy")  actor = new Enemy{ &world_, position };
-		//アクターを生成
-		if (actor)world_.add_actor(actor);
-	}
-	//!TODO
+	//全アクターを削除する
+	world_.clear_actor();
+	//ステージに応じた生成表をもとにアクターを配置する
+	ActorGenerator actor_generator{ &world_ };
+	actor_generator.generate(stage);
 }
+

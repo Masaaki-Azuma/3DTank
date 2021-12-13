@@ -3,7 +3,7 @@
 
 #include "IScene.h"
 #include "World.h"
-#include "CsvReader.h"
+#include "ActorGenerator.h"
 
 class PlayScene : public IScene
 {
@@ -26,10 +26,9 @@ private:
 private:
     World world_;
     int state_;
-    CsvReader actor_generate_table_;
 
     //ForDebug
-    unsigned int stage_;
+    unsigned int stage_;  //TODO:Ç±Ç±Ç∂Ç·Ç»Ç≠Ç»Ç¢ÅH
     //!Fordebug
 };
 #endif//!PLAY_SCENE_H_
