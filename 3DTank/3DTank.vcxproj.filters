@@ -17,6 +17,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="CsvReader.cpp" />
+    <ClCompile Include="ActorGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -38,5 +39,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="CsvReader.h" />
+    <ClInclude Include="ActorGenerator.h" />
   </ItemGroup>
 </Project>

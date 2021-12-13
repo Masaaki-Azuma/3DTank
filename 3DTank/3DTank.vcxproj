@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorGenerator.cpp" />
     <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
@@ -166,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorGenerator.h" />
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BoundingSphere.h" />
