@@ -25,7 +25,7 @@ void World::draw() const
 void World::clear()
 {
 	//全アクターの削除
-	actor_manager_.clear();
+	clear_actor();
 	//フィールドの削除
 	delete field_;
 	field_ = nullptr;
@@ -71,6 +71,12 @@ void World::add_field(Field* field)
 		field_ = nullptr;
 	}
 	field_ = field;
+}
+
+void World::clear_actor()
+{
+	//全アクターの削除
+	actor_manager_.clear();
 }
 
 Field& World::field()

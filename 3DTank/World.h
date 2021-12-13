@@ -17,6 +17,8 @@ public:
 	void add_camera(CameraFixedPoint* camera);
 	//フィールドの追加
 	void add_field(Field* field);
+	//全アクターを消去
+	void clear_actor();
 
 	//アクターの追加
 	virtual void add_actor(Actor* actor) override;
