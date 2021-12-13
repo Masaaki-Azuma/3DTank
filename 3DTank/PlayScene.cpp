@@ -48,3 +48,8 @@ void PlayScene::end()
 	gsDeleteOctree(Octree_Mesh);
 	gsDeleteOctree(Octree_Collide);
 }
+
+bool PlayScene::is_end() const
+{
+	return false;
+}

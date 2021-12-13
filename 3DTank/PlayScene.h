@@ -12,6 +12,9 @@ public:
     virtual void draw() const override;
     virtual void end() override;
 
+    //シーンが終了したか？
+    virtual bool is_end() const override;
+
 private:
     World world_;
 };

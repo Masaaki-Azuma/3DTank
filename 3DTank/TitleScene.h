@@ -4,6 +4,7 @@
 #include "IScene.h"
 class TitleScene : public IScene
 {
+public:
     //シーン開始処理
     virtual void start() override;
     //シーンの更新
@@ -12,6 +13,8 @@ class TitleScene : public IScene
     virtual void draw() const override;
     //シーンの終了処理
     virtual void end() override;
+
+    virtual bool is_end() const override;
 };
 #endif//!TITLE_SCENE_H_
 

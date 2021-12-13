@@ -15,8 +15,10 @@ void TitleScene::update(float delta_time)
 
 void TitleScene::draw() const
 {
+	//タイトルロゴを表示
 	GSvector2 position_title{ 0, 0 };
 	gsDrawSprite2D(Texture_TitleLogo, &position_title, NULL, NULL, NULL, NULL, NULL);
+	//「キーを押してスタート」を表示
 	GSvector2 position_pressZ{ 0, 200 };
 	gsDrawSprite2D(Texture_PressZ, &position_pressZ, NULL, NULL, NULL, NULL, NULL);
 }
@@ -26,4 +28,9 @@ void TitleScene::end()
 	//リソースの解放
 	gsDeleteTexture(Texture_TitleLogo);
 	gsDeleteTexture(Texture_PressZ);
+}
+
+bool TitleScene::is_end() const
+{
+	return false;
 }

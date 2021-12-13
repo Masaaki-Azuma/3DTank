@@ -10,5 +10,6 @@ public:
 	virtual void update(float delta_time) override {}
 	virtual void draw() const override {}
 	virtual void end() override {}
+	virtual bool is_end() const override { return false; }
 };
 #endif//!NULL_SCENE_H_
