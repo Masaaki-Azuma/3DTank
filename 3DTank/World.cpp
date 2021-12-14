@@ -1,6 +1,7 @@
 #include "World.h"
 #include "CameraFixedPoint.h"
 #include "Player.h"
+#include "Stage.h"
 
 void World::update(float delta_time)
 {
@@ -17,7 +18,7 @@ void World::draw() const
 	//カメラの描画
 	camera_->draw();
 	//ステージの描画
-	field_->draw();
+	stage_->draw();
 	//全アクターの描画
 	actor_manager_.draw();
 }
@@ -26,9 +27,9 @@ void World::clear()
 {
 	//全アクターの削除
 	clear_actor();
-	//フィールドの削除
-	delete field_;
-	field_ = nullptr;
+	//ステージの削除
+	delete stage_;
+	stage_ = nullptr;
 	//カメラの削除
 	delete camera_;
 	camera_ = nullptr;
@@ -63,14 +64,14 @@ void World::add_camera(CameraFixedPoint* camera)
 	camera_ = camera;
 }
 
-void World::add_field(Field* field)
+void World::add_stage(Stage* stage)
 {
-	//既に作成されたフィールドがあれば削除
-	if (field_) {
-		delete field_;
-		field_ = nullptr;
+	//既に作成されたステージがあれば削除
+	if (stage_) {
+		delete stage_;
+		stage_ = nullptr;
 	}
-	field_ = field;
+	stage_ = stage;
 }
 
 void World::clear_actor()
@@ -79,7 +80,12 @@ void World::clear_actor()
 	actor_manager_.clear();
 }
 
-Field& World::field()
+void World::load_stage(int stage)
 {
-	return *field_;
+	stage_->load(stage);
+}
+
+Stage& World::stage()
+{
+	return *stage_;
 }

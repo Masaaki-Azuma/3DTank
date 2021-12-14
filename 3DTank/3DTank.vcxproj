@@ -155,13 +155,19 @@
     <ClCompile Include="CannonBall.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Field.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -175,7 +181,12 @@
     <ClInclude Include="CannonBall.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Field.h" />
+    <ClInclude Include="Field.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IWorld.h" />
     <ClInclude Include="Line.h" />
@@ -184,6 +195,7 @@
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

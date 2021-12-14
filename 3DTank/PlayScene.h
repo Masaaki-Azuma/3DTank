@@ -5,6 +5,8 @@
 #include "World.h"
 #include "ActorGenerator.h"
 
+//メインゲームプレイシーンクラス
+//シーンの更新、描画、およびメモリの確保・解放を管理する
 class PlayScene : public IScene
 {
 public:

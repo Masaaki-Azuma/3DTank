@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include "IWorld.h"
-#include "Field.h"
+#include "Stage.h"
 #include "Line.h"
 #include "CannonBall.h"
 #include "Assets.h"
@@ -106,7 +106,7 @@ void Enemy::collide_field()
 	Line line{ collider().center(),  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
 	//Õ“Ë‚µ‚½‚ç‚’¼•ûŒü‚É‰Ÿ‚µ–ß‚µ
-	if (world_->field().collide(line, &intersect)) {
+	if (world_->stage().collide(line, &intersect)) {
 		GSvector3 position = line.start();
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
@@ -115,7 +115,7 @@ void Enemy::collide_field()
 	//•Ç‚Æ‚ÌÕ“Ë”»’è
 	GSvector3 center;
 	//Õ“Ë‚µ‚½‚ç…•½•ûŒü‚É‰Ÿ‚µ–ß‚µ
-	if (world_->field().collide(collider(), &center)) {
+	if (world_->stage().collide(collider(), &center)) {
 		//y‚Í‚»‚Ì‚Ü‚Ü
 		center.y = transform_.position().y;
 		transform_.position(center);

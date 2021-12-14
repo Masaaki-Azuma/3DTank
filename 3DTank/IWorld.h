@@ -4,7 +4,7 @@
 #include <string>
 
 class Actor;
-class Field;
+class Stage;
 
 //ワールド抽象インターフェース
 class IWorld
@@ -17,8 +17,8 @@ public:
 	//アクターのタグ検索
 	virtual Actor* find_actor_with_tag(const std::string& name) const = 0;
 
-	//フィールドの取得
-	virtual Field& field() = 0;
+	//ステージの取得
+	virtual Stage& stage() = 0;
 };
 
 #endif//!IWORLD_H_

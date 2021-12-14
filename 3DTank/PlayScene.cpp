@@ -1,7 +1,7 @@
 #include "PlayScene.h"
 #include <gslib.h>
 #include "CameraFixedPoint.h"
-#include "Field.h"
+#include "Stage.h"
 #include "Assets.h"
 
 enum //プレイシーンの状態
@@ -25,8 +25,9 @@ void PlayScene::start()
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 0.0f, 15.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
-	//フィールドの追加
-	world_.add_field(new Field{ Octree_Mesh, Octree_Collide });
+	//ステージの追加
+	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
+
 	//最初のステージを読み込み
 	stage_ = 0;
 	load_stage(stage_);
@@ -66,8 +67,6 @@ void PlayScene::end()
 	gsDeleteMesh(Mesh_Player);
 	gsDeleteMesh(Mesh_Enemy);
 	gsDeleteMesh(Mesh_CannonBall);
-	gsDeleteOctree(Octree_Mesh);
-	gsDeleteOctree(Octree_Collide);
 }
 
 bool PlayScene::is_end() const
@@ -129,12 +128,8 @@ void PlayScene::load_stage(unsigned int stage)
 	//Introducion状態にする
 	state_ = Introduction;
 
-	//既存のステージを削除する
-	gsDeleteOctree(Octree_Mesh);
-	gsDeleteOctree(Octree_Collide);
-	//stageに応じたステージを読み込む
-	gsLoadOctree(Octree_Mesh, "Assets/stage_mesh.oct");
-	gsLoadOctree(Octree_Collide, "Assets/stage_collide.oct");
+	//ステージの読み込み（消去も行う）
+	world_.load_stage(stage);
 
 	//全アクターを削除する
 	world_.clear_actor();

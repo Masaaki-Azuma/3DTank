@@ -2,7 +2,7 @@
 #include "CannonBall.h"
 #include "IWorld.h"
 #include "Line.h"
-#include "Field.h"
+#include "Stage.h"
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };
@@ -126,7 +126,7 @@ void Player::collide_field()
 	Line line{ collider().center(),  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
 	//Õ“Ë‚µ‚½‚ç‚’¼•ûŒü‚É‰Ÿ‚µ–ß‚µ
-	if (world_->field().collide(line, &intersect)) {
+	if (world_->stage().collide(line, &intersect)) {
 		GSvector3 position = line.start();
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
@@ -135,7 +135,7 @@ void Player::collide_field()
 	//•Ç‚Æ‚ÌÕ“Ë”»’è
 	GSvector3 center;
 	//Õ“Ë‚µ‚½‚ç…•½•ûŒü‚É‰Ÿ‚µ–ß‚µ
-	if (world_->field().collide(collider(), &center)) {
+	if (world_->stage().collide(collider(), &center)) {
 		center.y = transform_.position().y;
 		transform_.position(center);
 	}

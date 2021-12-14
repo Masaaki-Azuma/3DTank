@@ -1,6 +1,6 @@
 #include "CannonBall.h"
 #include "IWorld.h"
-#include "Field.h"
+#include "Stage.h"
 #include "Assets.h"
 
 const float Gravity{ -0.02f };
@@ -57,7 +57,7 @@ void CannonBall::move(float delta_time)
 void CannonBall::collide_field()
 {
 	//’nŒ`‚É“–‚½‚Á‚½‚çíœ
-	if (world_->field().collide(collider())) {
+	if (world_->stage().collide(collider())) {
 		die();
 	}
 }
