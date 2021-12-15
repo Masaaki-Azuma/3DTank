@@ -19,6 +19,8 @@
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="ActorGenerator.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="ClearImage.cpp" />
+    <ClCompile Include="LevelImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -42,5 +44,7 @@
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="ActorGenerator.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="ClearImage.h" />
+    <ClInclude Include="LevelImage.h" />
   </ItemGroup>
 </Project>
