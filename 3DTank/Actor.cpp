@@ -8,6 +8,10 @@ void Actor::draw() const
 {
 }
 
+void Actor::draw_gui() const
+{
+}
+
 void Actor::react(Actor& other)
 {
 }

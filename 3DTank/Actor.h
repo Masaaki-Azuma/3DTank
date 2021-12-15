@@ -13,9 +13,13 @@ class Actor
 public:
 	Actor() = default;
 	virtual ~Actor() = default;
-
+	//更新
 	virtual void update(float delta_time);
+	//描画
 	virtual void draw() const;
+	//GUI描画
+	virtual void draw_gui() const;
+	//衝突リアクション
 	virtual void react(Actor& other);
 
 	//死亡する

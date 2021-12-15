@@ -11,9 +11,12 @@ class ActorManager
 public:
 	ActorManager() = default;
 	~ActorManager();
-
+	//全アクターの更新
 	void update(float delta_time);
+	//全アクターの描画
 	void draw() const;
+	//全GUIの描画
+	void draw_gui() const;
 
 	//アクターの追加
 	void add(Actor* actor);

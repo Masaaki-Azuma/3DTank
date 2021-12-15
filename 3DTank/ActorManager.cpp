@@ -22,6 +22,14 @@ void ActorManager::draw() const
 	}
 }
 
+void ActorManager::draw_gui() const
+{
+	//全GUIの描画
+	for (auto actor : actors_) {
+		actor->draw_gui();
+	}
+}
+
 void ActorManager::add(Actor* actor)
 {
 	//アクターの追加

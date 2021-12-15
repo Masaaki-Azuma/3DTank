@@ -19,6 +19,10 @@ public:
 
 	//ステージの取得
 	virtual Stage& stage() = 0;
+	//レベルの開始
+	virtual void change_to_battle() = 0;
+	//レベルの終了
+	virtual void change_to_level_end() = 0;
 };
 
 #endif//!IWORLD_H_

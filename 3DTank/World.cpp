@@ -1,30 +1,19 @@
 #include "World.h"
 #include "CameraFixedPoint.h"
 #include "Player.h"
+#include "LevelImage.h"
+#include "ClearImage.h"
 #include "Stage.h"
 #include "ActorGenerator.h"
-
-//ForDebug
-#include "Assets.h"
 
 enum //プレイシーンの状態
 {
 	Introduction,
 	Battle,
-	StageClear,
+	LevelClear,
+	LevelEnd,
 };
-//TODO:update()移植中、移植前
-//void World::update(float delta_time)
-//{
-//	//全アクターの更新
-//	actor_manager_.update(delta_time);
-//	//全アクターの衝突判定
-//	actor_manager_.collide();
-//	//死亡しているアクターの削除
-//	actor_manager_.remove();
-//}
 
-//TODO:update()移植中、移植後
 void World::update(float delta_time)
 {
 	//状態に応じて分岐
@@ -33,8 +22,10 @@ void World::update(float delta_time)
 		introduction(delta_time); break;
 	case Battle:
 		battle(delta_time); break;
-	case StageClear:
-		stage_clear(delta_time); break;
+	case LevelClear:
+		level_clear(delta_time); break;
+	case LevelEnd:
+		level_end(delta_time); break;
 	}
 	
 }
@@ -47,16 +38,8 @@ void World::draw() const
 	stage_->draw();
 	//全アクターの描画
 	actor_manager_.draw();
-
-	//TODO:アクター化、実作業をさせない
-	if (state_ == Introduction) {
-		GSvector2 position_stage{ 0, 100 };
-		gsDrawSprite2D(Texture_Stage, &position_stage, NULL, NULL, NULL, NULL, NULL);
-	}
-	else if (state_ == StageClear) {
-		GSvector2 position_stage{ 0, 100 };
-		gsDrawSprite2D(Texture_Clear, &position_stage, NULL, NULL, NULL, NULL, NULL);
-	}
+	//全GUIの描画
+	actor_manager_.draw_gui();
 }
 
 void World::clear()
@@ -131,6 +114,9 @@ void World::load_stage(int stage)
 	//ステージに応じた生成表をもとにアクターを配置する
 	ActorGenerator actor_generator{ this };
 	actor_generator.generate(stage);
+
+	//ステージ情報演出を追加
+	actor_manager_.add(new LevelImage{ this });
 }
 
 Stage& World::stage()
@@ -138,19 +124,25 @@ Stage& World::stage()
 	return *stage_;
 }
 
+void World::change_to_battle()
+{
+	//レベル戦闘状態に遷移
+	state_ = Battle;
+}
+
+void World::change_to_level_end()
+{
+	//レベル終了状態に遷移
+	state_ = LevelEnd;
+}
+
 //ステージ開始状態更新処理
 void World::introduction(float delta_time)
 {
-	//開始シーンの管理タイマー
-	static float timer_{ 0.0f };
-	//タイマーを更新
-	timer_ += delta_time;
-	//1秒語にバトルシーンに遷移
-	if (timer_ >= 60.0f) {
-		state_ = Battle;
-		//タイマーの初期化
-		timer_ = 0.0f;
-	}
+	//HACK:下位クラスの実装に依存している
+	//レベル情報演出のみ更新
+	Actor* level_image = find_actor("LevelImage");
+	if (level_image) level_image->update(delta_time);
 }
 
 //
@@ -165,24 +157,24 @@ void World::battle(float delta_time)
 
 	//敵が全滅していればクリアシーンに遷移
 	if (!find_actor_with_tag("EnemyTag")) {
-		state_ = StageClear;
+		state_ = LevelClear;
+		actor_manager_.add(new ClearImage{ this });
 	}
 }
 
-void World::stage_clear(float delta_time)
+void World::level_clear(float delta_time)
 {
-	static float timer_{ 0.0f };
-	//シーン内オブジェクトの更新
-	battle(delta_time);
+	//HACK:battle()とコードの重複
+	//全アクターの更新
+	actor_manager_.update(delta_time);
+	//全アクターの衝突判定
+	actor_manager_.collide();
+	//死亡しているアクターの削除
+	actor_manager_.remove();
+}
 
-	//タイマーを更新
-	timer_ += delta_time;
-	//1秒語にバトルシーンに遷移
-	if (timer_ >= 60.0f) {
-		//state_ = StageEnd;
-		//タイマーの初期化
-		timer_ = 0.0f;
-		//次のステージに進む
-		load_stage(++level_);
-	}
+void World::level_end(float delta_time)
+{
+	//次のステージに進む
+	load_stage(++level_);
 }
