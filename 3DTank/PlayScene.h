@@ -19,19 +19,9 @@ public:
     virtual bool is_end() const override;
     //Ÿ‚ÌƒV[ƒ“–¼‚ğæ“¾
     virtual const std::string next() const override;
-private:
-    void update_introduction(float delta_time);
-    void update_battle(float delta_time);
-    void update_stage_clear(float delta_time);
-    void load_stage(unsigned int stage);
 
 private:
     World world_;
-    int state_;
-
-    //ForDebug
-    unsigned int stage_;  //TODO:‚±‚±‚¶‚á‚È‚­‚È‚¢H
-    //!Fordebug
 };
 #endif//!PLAY_SCENE_H_
 

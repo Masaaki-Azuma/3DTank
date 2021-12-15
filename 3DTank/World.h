@@ -32,11 +32,23 @@ public:
 	virtual Stage& stage() override;
 
 private:
+	//ステージ開始状態更新処理
+	void introduction(float delta_time);
+	//ステージ戦闘状態
+	void battle(float delta_time);
+	void stage_clear(float delta_time);
+
+private:
 	//アクター管理オブジェクト
 	ActorManager actor_manager_;
 	//定点カメラ
 	CameraFixedPoint* camera_{ nullptr };
 	//ステージ
 	Stage* stage_{ nullptr };
+
+	//ForDebug
+
+	int state_;
+	int level_;
 };
 #endif//!WORLD_H_
