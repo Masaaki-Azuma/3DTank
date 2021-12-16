@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "CannonBall.h"
+#include "TargetSign.h"
 #include "IWorld.h"
 #include "Line.h"
 #include "Stage.h"
@@ -18,6 +19,7 @@ Player::Player(IWorld* world, const GSvector3& position)
 	tag_ = "PlayerTag";
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 2.0f, 0.0f} };
 	transform_.position(position);
+	world_->add_actor(new TargetSign{ world_, position });
 }
 
 void Player::update(float delta_time)

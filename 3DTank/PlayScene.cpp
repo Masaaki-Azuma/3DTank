@@ -10,6 +10,7 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_Player, "Assets/blue_tank.mshb");
 	gsLoadMesh(Mesh_Enemy, "Assets/red_tank.mshb");
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
+	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
 
 	gsLoadTexture(Texture_Stage, "Assets/stage.png");
 	gsLoadTexture(Texture_Clear, "Assets/clear.png");
@@ -44,6 +45,7 @@ void PlayScene::end()
 	gsDeleteMesh(Mesh_Player);
 	gsDeleteMesh(Mesh_Enemy);
 	gsDeleteMesh(Mesh_CannonBall);
+	gsDeleteMesh(Mesh_TargetSign);
 	gsDeleteTexture(Texture_Stage);
 	gsDeleteTexture(Texture_Clear);
 }

@@ -175,6 +175,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="LevelImage.cpp" />
+    <ClCompile Include="TargetSign.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -210,6 +211,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="LevelImage.h" />
+    <ClInclude Include="TargetSign.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

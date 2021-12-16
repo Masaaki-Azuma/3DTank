@@ -21,6 +21,7 @@
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="ClearImage.cpp" />
     <ClCompile Include="LevelImage.cpp" />
+    <ClCompile Include="TargetSign.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -46,5 +47,6 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="ClearImage.h" />
     <ClInclude Include="LevelImage.h" />
+    <ClInclude Include="TargetSign.h" />
   </ItemGroup>
 </Project>
