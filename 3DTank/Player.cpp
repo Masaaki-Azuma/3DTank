@@ -11,6 +11,9 @@ const float Gravity{ -0.02f };
 const float PlayerHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
+const float CannonVerticalSpeed{ 0.8f };  //’e‚Ì‰”’¼‰‘¬“x
+const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //’e‚Ì…•½‘¬“x‚ðŒˆ’è‚·‚éŒW”A= -2*CannonVerticalSpeed/CannonBall::Gravity
+
 
 Player::Player(IWorld* world, const GSvector3& position)
 {
@@ -95,30 +98,24 @@ void Player::free_fall(float delta_time)
 
 void Player::shoot()
 {
-	//’e‚ð”­ŽË
+	//HACK:“G‚Ìshoot()‚Æˆ—‚ª”í‚è‚Ü‚­‚Á‚Ä‚¢‚éB”­ŽËˆÊ’u‚Æ’…’eˆÊ’u‚ð“n‚µ‚ÄA–CŠÛŽ©g‚ÉŒvŽZ‚³‚¹‚½‚¢
 	if (gsGetKeyTrigger(GKEY_SPACE)) {
-		//’e‚Ì•ûŒü
-		GSvector3 direction{ 0.0f, 0.0f, 0.0f };
-		if (gsGetKeyState(GKEY_RIGHT)) {
-			direction.x += 1.0f;
-		}
-		if (gsGetKeyState(GKEY_LEFT)) {
-			direction.x -= 1.0f;
-		}
-		if (gsGetKeyState(GKEY_UP)) {
-			direction.z -= 1.0f;
-		}
-		if (gsGetKeyState(GKEY_DOWN)) {
-			direction.z += 1.0f;
-		}
-		//’e‚Ì‘¬“x
-		GSvector3 velocity = direction.normalized() * 0.2;
-		//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ÍŒÅ’è
-		velocity.y = 0.8f;  //1/60•b‚Éi‚Þ—Ê
-		//–CŠÛ‚ð”­ŽË
-		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
+		Actor* target = world_->find_actor("TargetSign");
+		if (!target) return;
+		//Æ€•ûŒü‚ÌƒxƒNƒgƒ‹‚ðŽæ“¾
+		GSvector3 direction = target->transform().position() - transform_.position();
+		//y‚Í–³Ž‹
+		direction.y = 0.0f;
+		//’e‚ÌˆÚ“®—Ê‚ðŽZo
+		GSvector3 velocity = direction / CannonVelocityFactor;
+		//y¬•ª‚Íˆê’è
+		velocity.y = CannonVerticalSpeed;
+		//’e‚ð¶¬
+		world_->add_actor(new CannonBall{
+			world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
 	}
 }
+
 
 void Player::collide_field()
 {
