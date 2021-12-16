@@ -111,6 +111,7 @@ void World::load_stage(int stage)
 
 	//全アクターを削除する
 	clear_actor();
+	//TODO:いちいち生成するの無駄じゃない？ポインタ型のメンバにする
 	//ステージに応じた生成表をもとにアクターを配置する
 	ActorGenerator actor_generator{ this };
 	actor_generator.generate(stage);
