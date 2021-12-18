@@ -11,6 +11,7 @@ const float Gravity{ -0.02f };
 const float EnemyHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
+const float ShotInterval{ 90.0f };
 //const float CannonSpeed{ 0.2f };
 const float CannonVerticalSpeed{ 0.8f };  //弾の鉛直初速度
 const float CannonRange{ 16.0f };  //弾が届く距離
@@ -78,7 +79,7 @@ void Enemy::shoot(float delta_time)
 {
 	//一定時間ごとに弾を発射
 	shot_timer_ += delta_time;
-	if (shot_timer_ >= 60.0f) {
+	if (shot_timer_ >= ShotInterval) {
 		//プレイヤーを取得
 		Actor* player = world_->find_actor("Player");
 		//見つからなかったら終了
@@ -95,7 +96,7 @@ void Enemy::shoot(float delta_time)
 		velocity.y = CannonVerticalSpeed;
 		//弾を生成
 		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
-		shot_timer_ -= 60.0f;
+		shot_timer_ -= ShotInterval;
 	}
 }
 
