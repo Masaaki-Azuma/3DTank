@@ -2,6 +2,8 @@
 #include "IWorld.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "ImmovableEnemy.h"
+#include "ReflectionEnemy.h"
 
 ActorGenerator::ActorGenerator(IWorld* world):
 	world_{world}
@@ -27,7 +29,9 @@ void ActorGenerator::generate(unsigned int stage)
 		//生成アクター
 		Actor* actor{ nullptr };
 		if      (name == "Player") actor = new Player{ world_, position };
-		else if (name == "Enemy")  actor = new Enemy{ world_, position };
+		else if (name == "ImmovableEnemy")  actor = new ImmovableEnemy{ world_, position };
+		else if (name == "ReflectionEnemy")  actor = new ReflectionEnemy{ world_, position };
+		//else if (name == "Enemy")  actor = new Enemy{ world_, position };
 		//アクターを生成
 		if (actor)world_->add_actor(actor);
 	}
