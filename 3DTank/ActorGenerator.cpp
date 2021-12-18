@@ -32,8 +32,4 @@ void ActorGenerator::generate(unsigned int stage)
 		//アクターを生成
 		if (actor)world_->add_actor(actor);
 	}
-
-	//ステージ情報演出を追加
-	world_->add_actor(new LevelImage{ world_ });
-
 }
