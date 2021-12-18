@@ -4,8 +4,6 @@
 #include "Stage.h"
 #include "Assets.h"
 
-
-
 void PlayScene::start()
 {
 	////リソースの読み込み(ステージ間で共通して使う物のみ)
@@ -20,10 +18,10 @@ void PlayScene::start()
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 0.0f, 15.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
-	//ステージの追加
+	//ステージの作成
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 
-	state_ = Introduction;
+	state_ = State::Introduction;
 	level_image_.initialize();
 	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
@@ -46,10 +44,10 @@ void PlayScene::draw() const
 	//シーン内オブジェクトの描画
 	world_.draw();
 	if (state_ == State::Introduction) {
-		level_image_.draw_gui();
+		level_image_.draw();
 	}
 	else if (state_ == State::LevelClear) {
-		clear_image_.draw_gui();
+		clear_image_.draw();
 	}
 }
 

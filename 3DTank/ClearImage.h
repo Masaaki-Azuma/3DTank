@@ -1,19 +1,13 @@
 #ifndef CLEAR_IAMGE_H_
 #define CLEAR_IAMGE_H_
 
-#include "Actor.h"
-
-class IWorld;
-
 //クリア演出を管理するクラス。ミニシーン
-class ClearImage : public Actor
+class ClearImage
 {
 public:
-	ClearImage();
 	void initialize();
-	virtual void update(float delta_time) override;
-	//TODO:draw_guiからdrawに変更
-	virtual void draw_gui() const override;
+	void update(float delta_time);
+	void draw() const;
 	bool is_end() const;
 
 private:

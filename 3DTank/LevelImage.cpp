@@ -1,14 +1,8 @@
 #include "LevelImage.h"
-#include "IWorld.h"
+#include <GSgame.h>
 #include "Assets.h"
 
 const float HoldTime{ 90.0f }; //ç≈í·ï`âÊéûä‘
-
-LevelImage::LevelImage()
-{
-	name_ = "LevelImage";
-	tag_ = "TextImage";
-}
 
 void LevelImage::initialize()
 {
@@ -25,7 +19,7 @@ void LevelImage::update(float delta_time)
 	}
 }
 
-void LevelImage::draw_gui() const
+void LevelImage::draw() const
 {
 	//ï`âÊ
 	static GSvector2 position_stage{ 0, 100 };

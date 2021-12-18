@@ -1,13 +1,8 @@
 #include "ClearImage.h"
-#include "IWorld.h"
+#include <GSgame.h>
 #include "Assets.h"
 
 const float HoldTime{ 60.0f };
-ClearImage::ClearImage()
-{
-	name_ = "ClearImage";
-	tag_ = "TextImage";
-}
 
 void ClearImage::initialize()
 {
@@ -24,7 +19,7 @@ void ClearImage::update(float delta_time)
 	}
 }
 
-void ClearImage::draw_gui() const
+void ClearImage::draw() const
 {
 	//•`‰æ
 	static GSvector2 position_stage{ 0, 100 };
