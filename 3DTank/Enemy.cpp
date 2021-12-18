@@ -5,20 +5,19 @@
 #include "CannonBall.h"
 #include "Assets.h"
 
-const float MoveSpeed{ 0.2f };
-//const float Gravity{ -0.05f };
-const float Gravity{ -0.02f };
-const float EnemyHeight{ 2.0f };
-const float FootOffset{ 0.1f };
+const float MoveSpeed{ 0.2f };                     //移動速さ
+const float Gravity{ -0.02f };                     //重力加速度
+const float EnemyHeight{ 2.0f };                   //境界球中心の高さ
+const float FootOffset{ 0.1f };                    //地面との当たり判定用の足元オフセット
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
-const float ShotInterval{ 90.0f };
-//const float CannonSpeed{ 0.2f };
-const float CannonVerticalSpeed{ 0.8f };  //弾の鉛直初速度
-const float CannonRange{ 16.0f };  //弾が届く距離
+const float ShotInterval{ 90.0f };                 //弾の発射間隔
+const float CannonVerticalSpeed{ 0.8f };           //弾の鉛直初速度
+const float CannonRange{ 16.0f };                  //弾が届く距離
 const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //弾の水平速度を決定する係数、= -2*CannonVerticalSpeed/CannonBall::Gravity
 
 
-Enemy::Enemy(IWorld* world, const GSvector3& position)
+Enemy::Enemy(IWorld* world, const GSvector3& position):
+	mesh_{Mesh_Enemy}
 {
 	world_ = world;
 	name_ = "Enemy";
@@ -31,7 +30,7 @@ Enemy::Enemy(IWorld* world, const GSvector3& position)
 void Enemy::update(float delta_time)
 {
 	//移動
-	//move(delta_time);
+	move(delta_time);
 	//自由落下
 	free_fall(delta_time);
 	//地形と衝突判定
@@ -45,7 +44,7 @@ void Enemy::draw() const
 	//メッシュの描画
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
-	gsDrawMesh(Mesh_Enemy);
+	gsDrawMesh(mesh_);
 	glPopMatrix();
 
 	//ForDebug
@@ -118,7 +117,12 @@ void Enemy::collide_field()
 		//yはそのまま
 		center.y = transform_.position().y;
 		transform_.position(center);
-		//移動量反転
-		velocity_.z = -velocity_.z;
+		react_wall();
 	}
+}
+
+void Enemy::react_wall()
+{
+	//移動量反転
+	velocity_.z = -velocity_.z;
 }
