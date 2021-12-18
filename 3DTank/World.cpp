@@ -30,40 +30,14 @@ void World::draw() const
 
 void World::clear()
 {
-	//ステージ番号を0に
-	level_ = 0;
 	//全アクターの削除
-	clear_actor();
+	actor_manager_.clear();
 	//ステージの削除
 	delete stage_;
 	stage_ = nullptr;
 	//カメラの削除
 	delete camera_;
 	camera_ = nullptr;
-}
-
-void World::add_actor(Actor* actor)
-{
-	//アクターマネージャーへ中継
-	actor_manager_.add(actor);
-}
-
-Actor* World::find_actor(const std::string& name) const
-{
-	//アクターマネージャーに中継
-	return actor_manager_.find(name);
-}
-
-Actor* World::find_actor_with_tag(const std::string& tag) const
-{
-	//アクターマネージャーに中継
-	return actor_manager_.find_with_tag(tag);
-}
-
-void World::clear_actor()
-{
-	//全アクターの削除
-	actor_manager_.clear();
 }
 
 void World::add_camera(CameraFixedPoint* camera)
@@ -95,6 +69,30 @@ void World::load_stage(int stage)
 	//アクターを配置する
 	static ActorGenerator actor_generator{ this };
 	actor_generator.generate(stage);
+}
+
+void World::add_actor(Actor* actor)
+{
+	//アクターマネージャーへ中継
+	actor_manager_.add(actor);
+}
+
+Actor* World::find_actor(const std::string& name) const
+{
+	//アクターマネージャーに中継
+	return actor_manager_.find(name);
+}
+
+Actor* World::find_actor_with_tag(const std::string& tag) const
+{
+	//アクターマネージャーに中継
+	return actor_manager_.find_with_tag(tag);
+}
+
+void World::clear_actor()
+{
+	//全アクターの削除
+	actor_manager_.clear();
 }
 
 bool World::is_level_clear() const

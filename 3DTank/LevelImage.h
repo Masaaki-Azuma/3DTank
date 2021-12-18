@@ -5,9 +5,11 @@
 class LevelImage
 {
 public:
+	//‰Šú‰»
 	void initialize();
 	void update(float delta_time);
 	void draw() const;
+	//I—¹‚µ‚½‚©H
 	bool is_end() const;
 
 private:

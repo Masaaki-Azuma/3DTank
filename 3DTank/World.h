@@ -20,7 +20,6 @@ public:
 	//ステージを読み込み
 	void load_stage(int stage);
 
-
 	//アクターの追加
 	virtual void add_actor(Actor* actor) override;
 	//アクターの名前検索
@@ -29,6 +28,7 @@ public:
 	virtual Actor* find_actor_with_tag(const std::string& tag) const;
 	//全アクターを消去
 	virtual void clear_actor() override;
+
 	//レベルクリア状態か？
 	virtual bool is_level_clear() const override;
 	//ステージの取得
@@ -41,10 +41,5 @@ private:
 	CameraFixedPoint* camera_{ nullptr };
 	//ステージ
 	Stage* stage_{ nullptr };
-
-	//ForDebug
-
-	int state_;
-	int level_;
 };
 #endif//!WORLD_H_

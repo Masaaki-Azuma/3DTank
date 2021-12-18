@@ -1,6 +1,5 @@
 #include <GSgame.h>
 #include "SceneManager.h"
-#include "IScene.h"
 #include "TitleScene.h"
 #include "PlayScene.h"
 

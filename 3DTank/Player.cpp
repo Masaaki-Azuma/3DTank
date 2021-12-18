@@ -117,7 +117,6 @@ void Player::shoot()
 	}
 }
 
-
 void Player::collide_field()
 {
 	//ínå`Ç∆ÇÃà íuï‚ê≥
