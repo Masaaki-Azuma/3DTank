@@ -2,6 +2,8 @@
 #define TITLE_SCENE_H_
 
 #include "IScene.h"
+
+//タイトルシーン
 class TitleScene : public IScene
 {
 public:
@@ -13,7 +15,7 @@ public:
     virtual void draw() const override;
     //シーンの終了処理
     virtual void end() override;
-
+    //シーンが終了したか？
     virtual bool is_end() const override;
     //次のシーン名を取得
     virtual const std::string next() const override;

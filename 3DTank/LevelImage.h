@@ -1,20 +1,20 @@
 #ifndef LEVEL_IMAGE_H_
 #define LEVEL_IMAGE_H_
 
-#include "Actor.h"
-
-class IWorld;
-
-//レベル情報演出を管理するクラス
-class LevelImage : public Actor
+//レベル情報演出を管理するクラス。ミニシーン
+class LevelImage
 {
 public:
-	LevelImage(IWorld* world);
-	virtual void update(float delta_time) override;
-	virtual void draw_gui() const override;
+	//初期化
+	void initialize();
+	void update(float delta_time);
+	void draw() const;
+	//終了したか？
+	bool is_end() const;
 
 private:
 	float timer_{ 0.0f };
+	bool is_end_{ false };
 };
 #endif//!LEVEL_IMAGE_H_
 

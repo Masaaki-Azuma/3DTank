@@ -2,7 +2,6 @@
 #include "IWorld.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "LevelImage.h"
 
 ActorGenerator::ActorGenerator(IWorld* world):
 	world_{world}
@@ -27,13 +26,9 @@ void ActorGenerator::generate(unsigned int stage)
 		GSvector3 position{ actor_generate_table_.getf(i, 1), actor_generate_table_.getf(i, 2), actor_generate_table_.getf(i, 3) };
 		//生成アクター
 		Actor* actor{ nullptr };
-		if (name == "Player") actor = new Player{ world_, position };
+		if      (name == "Player") actor = new Player{ world_, position };
 		else if (name == "Enemy")  actor = new Enemy{ world_, position };
 		//アクターを生成
 		if (actor)world_->add_actor(actor);
 	}
-
-	//ステージ情報演出を追加
-	world_->add_actor(new LevelImage{ world_ });
-
 }

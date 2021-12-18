@@ -27,6 +27,8 @@ Player::Player(IWorld* world, const GSvector3& position)
 
 void Player::update(float delta_time)
 {
+	//ƒNƒŠƒAó‘Ô‚È‚çˆÚ“®‚ð‘€ì‚ð‹ÖŽ~
+	if (world_->is_level_clear()) return;
 	//ˆÚ“®
 	move(delta_time);
 	//d—Í‚É‚æ‚éŽ©—R—Ž‰º
@@ -52,6 +54,9 @@ void Player::draw() const
 
 void Player::react(Actor& other)
 {
+	//ƒNƒŠƒAó‘Ô‚È‚çŽ€–S‚µ‚È‚¢
+	if (world_->is_level_clear()) return;
+
 	//“G’e‚É“–‚½‚Á‚½‚çŽ€–S
 	if (other.tag() == "EnemyCannonBallTag") {
 		die();
@@ -111,7 +116,6 @@ void Player::shoot()
 			world_, position, destination, "PlayerCannonBallTag" });
 	}
 }
-
 
 void Player::collide_field()
 {
