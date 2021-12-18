@@ -96,23 +96,39 @@ void Player::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
+//TODO:‘¬“x“n‚µ–CŠÛ¶¬ƒo[ƒWƒ‡ƒ“
+//void Player::shoot()
+//{
+//	//HACK:“G‚Ìshoot()‚Æˆ—‚ª”í‚è‚Ü‚­‚Á‚Ä‚¢‚éB”­ŽËˆÊ’u‚Æ’…’eˆÊ’u‚ð“n‚µ‚ÄA–CŠÛŽ©g‚ÉŒvŽZ‚³‚¹‚½‚¢
+//	if (gsGetKeyTrigger(GKEY_SPACE)) {
+//		Actor* target = world_->find_actor("TargetSign");
+//		if (!target) return;
+//		//Æ€•ûŒü‚ÌƒxƒNƒgƒ‹‚ðŽæ“¾
+//		GSvector3 direction = target->transform().position() - transform_.position();
+//		//y‚Í–³Ž‹
+//		direction.y = 0.0f;
+//		//’e‚ÌˆÚ“®—Ê‚ðŽZo
+//		GSvector3 velocity = direction / CannonVelocityFactor;
+//		//y¬•ª‚Íˆê’è
+//		velocity.y = CannonVerticalSpeed;
+//		//’e‚ð¶¬
+//		world_->add_actor(new CannonBall{
+//			world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
+//	}
+//}
+//TODO:’…’eˆÊ’u“n‚µ–CŠÛ¶¬ƒo[ƒWƒ‡ƒ“
 void Player::shoot()
 {
-	//HACK:“G‚Ìshoot()‚Æˆ—‚ª”í‚è‚Ü‚­‚Á‚Ä‚¢‚éB”­ŽËˆÊ’u‚Æ’…’eˆÊ’u‚ð“n‚µ‚ÄA–CŠÛŽ©g‚ÉŒvŽZ‚³‚¹‚½‚¢
 	if (gsGetKeyTrigger(GKEY_SPACE)) {
 		Actor* target = world_->find_actor("TargetSign");
 		if (!target) return;
-		//Æ€•ûŒü‚ÌƒxƒNƒgƒ‹‚ðŽæ“¾
-		GSvector3 direction = target->transform().position() - transform_.position();
-		//y‚Í–³Ž‹
-		direction.y = 0.0f;
-		//’e‚ÌˆÚ“®—Ê‚ðŽZo
-		GSvector3 velocity = direction / CannonVelocityFactor;
-		//y¬•ª‚Íˆê’è
-		velocity.y = CannonVerticalSpeed;
+		//’e’…’eˆÊ’u
+		GSvector3 destination = target->transform().position();
+		//’e¶¬ˆÊ’u
+		GSvector3 position = transform_.position() + CannonOffset;
 		//’e‚ð¶¬
 		world_->add_actor(new CannonBall{
-			world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
+			world_, position, destination, "PlayerCannonBallTag" });
 	}
 }
 
