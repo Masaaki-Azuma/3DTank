@@ -63,7 +63,6 @@ void World::add_stage(Stage* stage)
 
 void World::load_stage(int stage)
 {
-	//TODO:以下を別のクラスに委譲し、1メソッドでステージの切り替えがしたい
 	//ステージの読み込み（消去も行う）
 	stage_->load(stage);
 	//アクターを配置する
