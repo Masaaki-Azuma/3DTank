@@ -31,13 +31,13 @@ Enemy::Enemy(IWorld* world, const GSvector3& position)
 void Enemy::update(float delta_time)
 {
 	//ˆÚ“®
-	move(delta_time);
+	//move(delta_time);
 	//Ž©—R—Ž‰º
 	free_fall(delta_time);
-	//’e‚ð”­ŽË
-	shoot(delta_time);
 	//’nŒ`‚ÆÕ“Ë”»’è
 	collide_field();
+	//’e‚ð”­ŽË
+	shoot(delta_time);
 }
 
 void Enemy::draw() const
@@ -75,6 +75,33 @@ void Enemy::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
+//TODO:‘¬“x“n‚µ–CŠÛ¶¬ƒo[ƒWƒ‡ƒ“
+//void Enemy::shoot(float delta_time)
+//{
+//	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
+//	shot_timer_ += delta_time;
+//	if (shot_timer_ >= ShotInterval) {
+//		//ƒvƒŒƒCƒ„[‚ðŽæ“¾
+//		Actor* player = world_->find_actor("Player");
+//		//Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚çI—¹
+//		if (!player) return;
+//		//ƒvƒŒƒCƒ„[•ûŒü‚ðŒvŽZ
+//		GSvector3 direction = player->transform().position() - transform_.position();
+//		//y¬•ª‚Í–³Ž‹
+//		direction.y = 0.0f;
+//		//’…’e’n“_‚Ü‚Å‚Ì‹——£‚ðŽZo
+//		float distance = std::min(direction.length(), CannonRange);
+//		//’e‚ÌˆÚ“®—Ê‚ðŽZo
+//		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;
+//		//y¬•ª‚Íˆê’è
+//		velocity.y = CannonVerticalSpeed;
+//		//’e‚ð¶¬
+//		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
+//		shot_timer_ -= ShotInterval;
+//	}
+//}
+
+//TODO:’…’eˆÊ’u“n‚µ–CŠÛ¶¬ƒo[ƒWƒ‡ƒ“
 void Enemy::shoot(float delta_time)
 {
 	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
@@ -84,18 +111,17 @@ void Enemy::shoot(float delta_time)
 		Actor* player = world_->find_actor("Player");
 		//Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚çI—¹
 		if (!player) return;
+		//’e¶¬ˆÊ’u
+		GSvector3 position = transform_.position() + CannonOffset;
 		//ƒvƒŒƒCƒ„[•ûŒü‚ðŒvŽZ
 		GSvector3 direction = player->transform().position() - transform_.position();
-		//y¬•ª‚Í–³Ž‹
 		direction.y = 0.0f;
 		//’…’e’n“_‚Ü‚Å‚Ì‹——£‚ðŽZo
 		float distance = std::min(direction.length(), CannonRange);
-		//’e‚ÌˆÚ“®—Ê‚ðŽZo
-		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;
-		//y¬•ª‚Íˆê’è
-		velocity.y = CannonVerticalSpeed;
+		//’e’…’eˆÊ’u
+		GSvector3 destination = transform_.position() + direction.normalized() * distance;
 		//’e‚ð¶¬
-		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
+		world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
 		shot_timer_ -= ShotInterval;
 	}
 }
