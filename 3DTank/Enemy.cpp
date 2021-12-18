@@ -5,16 +5,13 @@
 #include "CannonBall.h"
 #include "Assets.h"
 
-const float MoveSpeed{ 0.2f };                     //移動速さ
+//const float MoveSpeed{ 0.2f };                     //移動速さ
 const float Gravity{ -0.02f };                     //重力加速度
 const float EnemyHeight{ 2.0f };                   //境界球中心の高さ
 const float FootOffset{ 0.1f };                    //地面との当たり判定用の足元オフセット
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
-const float ShotInterval{ 90.0f };                 //弾の発射間隔
-const float CannonVerticalSpeed{ 0.8f };           //弾の鉛直初速度
-const float CannonRange{ 16.0f };                  //弾が届く距離
-const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //弾の水平速度を決定する係数、= -2*CannonVerticalSpeed/CannonBall::Gravity
-
+//const float ShotInterval{ 90.0f };                 //弾の発射間隔
+//const float CannonRange{ 16.0f };                  //弾が届く距離
 
 Enemy::Enemy(IWorld* world, const GSvector3& position):
 	mesh_{Mesh_Enemy}
