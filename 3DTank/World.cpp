@@ -74,6 +74,12 @@ Actor* World::find_actor_with_tag(const std::string& tag) const
 	return actor_manager_.find_with_tag(tag);
 }
 
+void World::clear_actor()
+{
+	//全アクターの削除
+	actor_manager_.clear();
+}
+
 void World::add_camera(CameraFixedPoint* camera)
 {
 	//既に作成されたカメラがあったら削除
@@ -95,29 +101,17 @@ void World::add_stage(Stage* stage)
 	stage_ = stage;
 }
 
-void World::clear_actor()
-{
-	//全アクターの削除
-	actor_manager_.clear();
-}
-
 void World::load_stage(int stage)
 {
 	//Introducion状態にする
 	state_ = Introduction;
 
+	//TODO:以下を別のクラスに委譲し、1メソッドでステージの切り替えがしたい
 	//ステージの読み込み（消去も行う）
 	stage_->load(stage);
-
-	//全アクターを削除する
-	clear_actor();
-	//TODO:いちいち生成するの無駄じゃない？ポインタ型のメンバにする
-	//ステージに応じた生成表をもとにアクターを配置する
-	ActorGenerator actor_generator{ this };
+	//アクターを配置する
+	static ActorGenerator actor_generator{ this };
 	actor_generator.generate(stage);
-
-	//ステージ情報演出を追加
-	actor_manager_.add(new LevelImage{ this });
 }
 
 Stage& World::stage()

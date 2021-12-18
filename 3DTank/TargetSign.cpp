@@ -2,7 +2,7 @@
 #include "IWorld.h"
 #include "Assets.h"
 
-const float MoveSpeed{ 0.1f };     //移動速さ
+const float MoveSpeed{ 0.3f };     //移動速さ
 const float Height{ 0.9f };        //一定高さ、これより下げると地形に埋まる
 const float RangeRadius{ 16.0f };  //プレイヤーから離れられる最大距離
 

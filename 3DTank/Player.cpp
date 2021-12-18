@@ -96,6 +96,7 @@ void Player::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
+//’…’eˆÊ’u‚ğ–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
 void Player::shoot()
 {
 	if (gsGetKeyTrigger(GKEY_SPACE)) {

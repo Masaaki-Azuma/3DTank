@@ -17,8 +17,6 @@ public:
 	void add_camera(CameraFixedPoint* camera);
 	//ステージインスタンスの追加
 	void add_stage(Stage* stage);
-	//全アクターを消去
-	void clear_actor();
 	//ステージを読み込み
 	void load_stage(int stage);
 
@@ -28,6 +26,8 @@ public:
 	virtual Actor* find_actor(const std::string& name) const;
 	//アクターのタグ検索
 	virtual Actor* find_actor_with_tag(const std::string& tag) const;
+	//全アクターを消去
+	virtual void clear_actor() override;
 	//ステージの取得
 	virtual Stage& stage() override;
 	//レベルの開始
@@ -42,7 +42,7 @@ private:
 	void battle(float delta_time);
 	//ステージクリア状態更新
 	void level_clear(float delta_time);
-
+	//ステージ終了状態更新
 	void level_end(float delta_time);
 
 private:

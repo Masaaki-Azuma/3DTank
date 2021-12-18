@@ -2,6 +2,7 @@
 #include "IWorld.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "LevelImage.h"
 
 ActorGenerator::ActorGenerator(IWorld* world):
 	world_{world}
@@ -11,6 +12,9 @@ ActorGenerator::ActorGenerator(IWorld* world):
 //ステージに応じた生成表をもとにアクターを生成
 void ActorGenerator::generate(unsigned int stage)
 {
+	//全アクターを削除する
+	world_->clear_actor();
+
 	//ファイル名を作成
 	std::string file_name = "Assets/Actor_tables/actor_generate_table" + std::to_string(stage) + ".csv";
 	//ファイルを読み込み
@@ -28,4 +32,8 @@ void ActorGenerator::generate(unsigned int stage)
 		//アクターを生成
 		if (actor)world_->add_actor(actor);
 	}
+
+	//ステージ情報演出を追加
+	world_->add_actor(new LevelImage{ world_ });
+
 }
