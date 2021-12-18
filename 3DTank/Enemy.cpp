@@ -75,6 +75,7 @@ void Enemy::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
+//’…’eˆÊ’u‚ðŽZo‚µA–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
 void Enemy::shoot(float delta_time)
 {
 	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
@@ -89,10 +90,8 @@ void Enemy::shoot(float delta_time)
 		//ƒvƒŒƒCƒ„[•ûŒü‚ðŒvŽZ
 		GSvector3 direction = player->transform().position() - transform_.position();
 		direction.y = 0.0f;
-		//’…’e’n“_‚Ü‚Å‚Ì‹——£‚ðŽZo
-		float distance = std::min(direction.length(), CannonRange);
-		//’e’…’eˆÊ’u
-		GSvector3 destination = transform_.position() + direction.normalized() * distance;
+		//ŽË’ö”ÍˆÍ‚ð§ŒÀ‚µ‚È‚ª‚çA’e’…’eˆÊ’u‚ðŽZo
+		GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
 		//’e‚ð¶¬
 		world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
 		shot_timer_ -= ShotInterval;
