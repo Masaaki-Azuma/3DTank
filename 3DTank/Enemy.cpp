@@ -75,33 +75,6 @@ void Enemy::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
-//TODO:速度渡し砲丸生成バージョン
-//void Enemy::shoot(float delta_time)
-//{
-//	//一定時間ごとに弾を発射
-//	shot_timer_ += delta_time;
-//	if (shot_timer_ >= ShotInterval) {
-//		//プレイヤーを取得
-//		Actor* player = world_->find_actor("Player");
-//		//見つからなかったら終了
-//		if (!player) return;
-//		//プレイヤー方向を計算
-//		GSvector3 direction = player->transform().position() - transform_.position();
-//		//y成分は無視
-//		direction.y = 0.0f;
-//		//着弾地点までの距離を算出
-//		float distance = std::min(direction.length(), CannonRange);
-//		//弾の移動量を算出
-//		GSvector3 velocity = direction.normalized() * distance / CannonVelocityFactor;
-//		//y成分は一定
-//		velocity.y = CannonVerticalSpeed;
-//		//弾を生成
-//		world_->add_actor(new CannonBall{ world_, transform_.position() + CannonOffset, velocity, "EnemyCannonBallTag"});
-//		shot_timer_ -= ShotInterval;
-//	}
-//}
-
-//TODO:着弾位置渡し砲丸生成バージョン
 void Enemy::shoot(float delta_time)
 {
 	//一定時間ごとに弾を発射

@@ -20,7 +20,7 @@ Player::Player(IWorld* world, const GSvector3& position)
 	world_ = world;
 	name_ = "Player";
 	tag_ = "PlayerTag";
-	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, 2.0f, 0.0f} };
+	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, PlayerHeight, 0.0f} };
 	transform_.position(position);
 	world_->add_actor(new TargetSign{ world_, position });
 }
@@ -31,10 +31,10 @@ void Player::update(float delta_time)
 	move(delta_time);
 	//重力による自由落下
 	free_fall(delta_time);
-	//砲丸の発射
-	shoot();
 	//地形と衝突判定
 	collide_field();
+	//砲丸の発射
+	shoot();
 }
 
 void Player::draw() const
@@ -96,27 +96,6 @@ void Player::free_fall(float delta_time)
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
-//TODO:速度渡し砲丸生成バージョン
-//void Player::shoot()
-//{
-//	//HACK:敵のshoot()と処理が被りまくっている。発射位置と着弾位置を渡して、砲丸自身に計算させたい
-//	if (gsGetKeyTrigger(GKEY_SPACE)) {
-//		Actor* target = world_->find_actor("TargetSign");
-//		if (!target) return;
-//		//照準方向のベクトルを取得
-//		GSvector3 direction = target->transform().position() - transform_.position();
-//		//yは無視
-//		direction.y = 0.0f;
-//		//弾の移動量を算出
-//		GSvector3 velocity = direction / CannonVelocityFactor;
-//		//y成分は一定
-//		velocity.y = CannonVerticalSpeed;
-//		//弾を生成
-//		world_->add_actor(new CannonBall{
-//			world_, transform_.position() + CannonOffset, velocity, "PlayerCannonBallTag" });
-//	}
-//}
-//TODO:着弾位置渡し砲丸生成バージョン
 void Player::shoot()
 {
 	if (gsGetKeyTrigger(GKEY_SPACE)) {
