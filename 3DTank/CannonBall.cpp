@@ -4,15 +4,34 @@
 #include "Assets.h"
 
 const float Gravity{ -0.02f };
+const float CannonVerticalSpeed{ 0.8f };  //弾の鉛直初速度
 
-CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag)
+const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //弾の水平速度を決定する係数、= -2*CannonVerticalSpeed/CannonBall::Gravity
+
+////TODO:コンストラクタ、取り壊し予定
+//CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag)
+//{
+//	world_ = world;
+//	name_ = "CannonBall";
+//	tag_ = tag;
+//	transform_.position(position);
+//	velocity_ = velocity;
+//	collider_ = BoundingSphere{ 1.0f };
+//}
+
+//TODO:コンストラクタ、こちらへ統合予定
+CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& destination, const std::string& tag)
 {
 	world_ = world;
 	name_ = "CannonBall";
 	tag_ = tag;
 	transform_.position(position);
-	velocity_ = velocity;
 	collider_ = BoundingSphere{ 1.0f };
+	//生成位置と着弾予定位置から初速度を計算
+	GSvector3 direction = destination - position;
+	direction.y = 0.0f;
+	velocity_ = direction / CannonVelocityFactor;
+	velocity_.y = CannonVerticalSpeed;
 }
 
 void CannonBall::update(float delta_time)

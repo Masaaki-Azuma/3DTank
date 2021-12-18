@@ -8,7 +8,11 @@ class CannonBall :
     public Actor
 {
 public:
-    CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag = "CannonBallTag");
+    //コンストラクタ、生成位置と初速度
+    //CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag = "CannonBallTag");
+    //コンストラクタ、生成位置と着弾予定位置
+    CannonBall(IWorld* world, const GSvector3& position, const GSvector3& destination, const std::string& tag = "CannonBallTag");
+
     virtual void update(float delta_time) override;
     virtual void draw() const override;
     virtual void react(Actor& other) override;
