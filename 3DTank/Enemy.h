@@ -9,22 +9,23 @@ public:
 	Enemy(IWorld* world, const GSvector3& position);
 	virtual ~Enemy() = default;
 
-	virtual void update(float delta_time) override;
-	virtual void draw() const override;
+	virtual void update(float delta_time) override final;
+	virtual void draw() const override final;
 	virtual void react(Actor& other) override;
-private:
+protected:
 	//移動
-	void move(float delta_time);
+	virtual void move(float delta_time);
+	//弾を発射
+	virtual void shoot(float delta_time);
+	//壁に衝突時の挙動
+	virtual void react_wall();
+private:
 	//重力を作用
 	void free_fall(float delta_time);
-	//弾を発射
-	void shoot(float delta_time);
 	//地形との衝突判定
 	void collide_field();
-	//壁に衝突時の挙動
-	void react_wall();
 
-private:
+protected:
 	float shot_timer_{ 0.0f };
 	GSuint mesh_;
 };

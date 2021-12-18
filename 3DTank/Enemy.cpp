@@ -23,8 +23,8 @@ Enemy::Enemy(IWorld* world, const GSvector3& position):
 	name_ = "Enemy";
 	tag_ = "EnemyTag";
 	transform_.position(position);
-	velocity_ = GSvector3{ 0.0f, 0.0f, -MoveSpeed };
-	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
+	//velocity_ = GSvector3{ 0.0f, 0.0f, -MoveSpeed };
+	//collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
 }
 
 void Enemy::update(float delta_time)
@@ -66,35 +66,22 @@ void Enemy::move(float delta_time)
 	transform_.translate(velocity_, GStransform::Space::World);
 }
 
+//’…’eˆÊ’u‚ðŽZo‚µA–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
+void Enemy::shoot(float delta_time)
+{
+}
+
+void Enemy::react_wall()
+{
+}
+
+/*ˆÈ‰º‚Í‘‚«Š·‚¦‚È‚¢*/
 void Enemy::free_fall(float delta_time)
 {
 	//d—Í‚ðì—p
 	velocity_.y += Gravity * delta_time;
 	//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ð”½‰f
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
-}
-
-//’…’eˆÊ’u‚ðŽZo‚µA–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
-void Enemy::shoot(float delta_time)
-{
-	//ˆê’èŽžŠÔ‚²‚Æ‚É’e‚ð”­ŽË
-	shot_timer_ += delta_time;
-	if (shot_timer_ >= ShotInterval) {
-		//ƒvƒŒƒCƒ„[‚ðŽæ“¾
-		Actor* player = world_->find_actor("Player");
-		//Œ©‚Â‚©‚ç‚È‚©‚Á‚½‚çI—¹
-		if (!player) return;
-		//’e¶¬ˆÊ’u
-		GSvector3 position = transform_.position() + CannonOffset;
-		//ƒvƒŒƒCƒ„[•ûŒü‚ðŒvŽZ
-		GSvector3 direction = player->transform().position() - transform_.position();
-		direction.y = 0.0f;
-		//ŽË’ö”ÍˆÍ‚ð§ŒÀ‚µ‚È‚ª‚çA’e’…’eˆÊ’u‚ðŽZo
-		GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
-		//’e‚ð¶¬
-		world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
-		shot_timer_ -= ShotInterval;
-	}
 }
 
 void Enemy::collide_field()
@@ -119,10 +106,4 @@ void Enemy::collide_field()
 		transform_.position(center);
 		react_wall();
 	}
-}
-
-void Enemy::react_wall()
-{
-	//ˆÚ“®—Ê”½“]
-	velocity_.z = -velocity_.z;
 }
