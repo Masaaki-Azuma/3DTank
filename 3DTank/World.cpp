@@ -97,8 +97,7 @@ void World::clear_actor()
 
 bool World::is_level_clear() const
 {
-	Actor* enemy = actor_manager_.find_with_tag("EnemyTag");
-	return !enemy;
+	return !actor_manager_.find_with_tag("EnemyTag");
 }
 
 Stage& World::stage()
