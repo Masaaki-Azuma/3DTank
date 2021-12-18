@@ -6,22 +6,21 @@ const float MoveSpeed{ 0.3f };     //移動速さ
 const float Height{ 0.9f };        //一定高さ、これより下げると地形に埋まる
 const float RangeRadius{ 16.0f };  //プレイヤーから離れられる最大距離
 
-TargetSign::TargetSign(IWorld* world, const GSvector3& position):
-	offset_{GSvector3::zero()}
+TargetSign::TargetSign(IWorld* world, const GSvector3& position, const Actor& owner):
+	offset_{GSvector3::zero()},
+	owner_{owner}
 {
 	world_ = world;
 	name_ = "TargetSign";
 	tag_ = "TargetSignTag";
 	//y座標一定
-	transform_.position(GSvector3{position.x, Height, position.z});
+	transform_.position(GSvector3{ position.x, Height, position.z });
 }
 
 void TargetSign::update(float delta_time)
 {
-	Actor* player = world_->find_actor("Player");
-	if (!player) return;
-	GSvector3 player_position = player->transform().position();
-	player_position.y = Height;
+	GSvector3 owner_position = owner_.transform().position();
+	owner_position.y = Height;
 	//移動方向を算出
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
 	if (gsGetKeyState(GKEY_UP)) {
@@ -45,7 +44,7 @@ void TargetSign::update(float delta_time)
 	//プレイヤーからの相対距離を制限
 	offset_ = GSvector3::clampMagnitude(offset_, RangeRadius);
 	//プレイヤーから相対移動した座標へ移動
-	transform_.position(player_position + offset_);
+	transform_.position(owner_position + offset_);
 }
 
 void TargetSign::draw() const

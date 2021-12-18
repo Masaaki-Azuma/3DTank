@@ -5,21 +5,8 @@
 
 const float Gravity{ -0.02f };
 const float CannonVerticalSpeed{ 0.8f };  //弾の鉛直初速度
-
 const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //弾の水平速度を決定する係数、= -2*CannonVerticalSpeed/CannonBall::Gravity
 
-////TODO:コンストラクタ、取り壊し予定
-//CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& velocity, const std::string& tag)
-//{
-//	world_ = world;
-//	name_ = "CannonBall";
-//	tag_ = tag;
-//	transform_.position(position);
-//	velocity_ = velocity;
-//	collider_ = BoundingSphere{ 1.0f };
-//}
-
-//TODO:コンストラクタ、こちらへ統合予定
 CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3& destination, const std::string& tag)
 {
 	world_ = world;

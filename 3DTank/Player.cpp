@@ -22,7 +22,7 @@ Player::Player(IWorld* world, const GSvector3& position)
 	tag_ = "PlayerTag";
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, PlayerHeight, 0.0f} };
 	transform_.position(position);
-	world_->add_actor(new TargetSign{ world_, position });
+	world_->add_actor(new TargetSign{ world_, position, *this });
 }
 
 void Player::update(float delta_time)
