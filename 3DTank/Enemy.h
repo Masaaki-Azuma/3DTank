@@ -6,7 +6,7 @@
 class Enemy : public Actor
 {
 public:
-	Enemy(IWorld* world, const GSvector3& position);
+	Enemy(IWorld* world, const GSvector3& position, float shot_interval = 90.0f, float cannon_range = 16.0f);
 	virtual ~Enemy() = default;
 
 	virtual void update(float delta_time) override final;
@@ -26,8 +26,10 @@ private:
 	void collide_field();
 
 protected:
-	float shot_timer_{ 0.0f };
 	GSuint mesh_;
+	float shot_timer_{ 0.0f };
+	const float ShotInterval; //’e‚Ì”­ŽËŠÔŠu
+	const float CannonRange; //’e‚ª“Í‚­‹——£
 };
 #endif//!ENEMY_H_
 
