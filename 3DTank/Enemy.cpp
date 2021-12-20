@@ -44,6 +44,7 @@ void Enemy::draw() const
 	//ForDebug
 	//‹«ŠE‹…‚Ì•`‰æ
 	collider().draw();
+	BoundingSphere{ CannonRange, transform_.position()}.draw();
 }
 
 void Enemy::react(Actor& other)
