@@ -147,8 +147,12 @@ void Player::collide_actor(Actor& other)
 	direction.y = 0.0f;
 	//取るべき距離
 	float length = collider().radius() + other.collider().radius();
+	//重なり長さ
+	float overlap = length - direction.length();
 	//押し出し後の位置
-	GSvector3 position = other.transform().position() + direction.normalized() * length;
+	GSvector3 velocity = direction.normalized() * overlap;
 	//計算値分移動
-	transform_.position(position);
+	transform_.translate(velocity, GStransform::Space::World);
+	//地形からはみ出ないように再判定
+	collide_field();
 }

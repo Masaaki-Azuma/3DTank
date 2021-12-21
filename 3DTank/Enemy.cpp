@@ -53,6 +53,10 @@ void Enemy::react(Actor& other)
 	if (other.tag() == "PlayerCannonBallTag") {
 		die();
 	}
+	else if(other.tag() == "PlayerTag" || other.tag() == "EnemyTag"){
+		collide_actor(other);
+	}
+
 }
 
 void Enemy::move(float delta_time)
@@ -119,4 +123,21 @@ void Enemy::collide_field()
 		transform_.position(center);
 		react_wall();
 	}
+}
+
+void Enemy::collide_actor(Actor& other)
+{
+	//相手から自分へ向かうベクトル
+	GSvector3 direction = transform_.position() - other.transform().position();
+	direction.y = 0.0f;
+	//取るべき距離
+	float length = collider().radius() + other.collider().radius();
+	//重なり長さ
+	float overlap = length - direction.length();
+	//押し出し後の位置
+	GSvector3 velocity = direction.normalized() * overlap;
+	//計算値分移動
+	transform_.translate(velocity, GStransform::Space::World);
+	//地形からはみ出ないように再判定
+	collide_field();
 }

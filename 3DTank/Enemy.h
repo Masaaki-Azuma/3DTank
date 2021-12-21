@@ -25,6 +25,8 @@ private:
 	//’nŒ`‚Æ‚ÌÕ“Ë”»’è
 	void collide_field();
 
+	//
+	void collide_actor(Actor& other);
 protected:
 	GSuint mesh_;
 	float shot_timer_{ 0.0f };
