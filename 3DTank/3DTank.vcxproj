@@ -153,6 +153,7 @@
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="CannonBall.cpp" />
+    <ClCompile Include="ChaseEnemy.cpp" />
     <ClCompile Include="ClearImage.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
@@ -190,6 +191,7 @@
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="CannonBall.h" />
+    <ClInclude Include="ChaseEnemy.h" />
     <ClInclude Include="ClearImage.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>

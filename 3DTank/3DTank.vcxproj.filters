@@ -33,6 +33,7 @@
     <ClCompile Include="ImmovableEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="ChaseEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="ImmovableEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="ChaseEnemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
