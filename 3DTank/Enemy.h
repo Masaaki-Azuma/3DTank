@@ -17,6 +17,8 @@ protected:
 	virtual void move(float delta_time);
 	//’e‚ğ”­Ë
 	virtual void shoot(float delta_time);
+	//’e‚ğ¶¬
+	virtual void generate_cannon_ball(const GSvector3& position, const GSvector3& destination);
 	//•Ç‚ÉÕ“Ë‚Ì‹““®
 	virtual void react_wall();
 private:

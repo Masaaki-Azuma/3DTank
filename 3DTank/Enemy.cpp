@@ -84,10 +84,15 @@ void Enemy::shoot(float delta_time)
 		//ŽË’ö”ÍˆÍ‚ð§ŒÀ‚µ‚È‚ª‚çA’e’…’eˆÊ’u‚ðŽZo
 		GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
 		//’e‚ð¶¬
-		world_->add_actor(new CommonCannonBall{ world_, position, destination});
-		//world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
+		//world_->add_actor(new CommonCannonBall{ world_, position, destination});
+		generate_cannon_ball(position, destination);
 		shot_timer_ -= ShotInterval;
 	}
+}
+
+void Enemy::generate_cannon_ball(const GSvector3& position, const GSvector3& destination)
+{
+	world_->add_actor(new CommonCannonBall{ world_, position, destination });
 }
 
 void Enemy::react_wall()
