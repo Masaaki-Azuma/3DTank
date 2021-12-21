@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "CannonBall.h"
+#include "PlayerCannonBall.h"
 #include "TargetSign.h"
 #include "IWorld.h"
 #include "Line.h"
@@ -112,8 +113,8 @@ void Player::shoot()
 		//’e¶¬ˆÊ’u
 		GSvector3 position = transform_.position() + CannonOffset;
 		//’e‚ð¶¬
-		world_->add_actor(new CannonBall{
-			world_, position, destination, "PlayerCannonBallTag" });
+		world_->add_actor(new PlayerCannonBall{
+			world_, position, destination});
 	}
 }
 

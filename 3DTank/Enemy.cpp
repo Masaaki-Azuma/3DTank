@@ -2,7 +2,8 @@
 #include "IWorld.h"
 #include "Stage.h"
 #include "Line.h"
-#include "CannonBall.h"
+//#include "CannonBall.h"
+#include "CommonCannonBall.h"
 #include "Assets.h"
 
 const float Gravity{ -0.02f };                     //d—Í‰Á‘¬“x
@@ -83,7 +84,8 @@ void Enemy::shoot(float delta_time)
 		//ŽË’ö”ÍˆÍ‚ð§ŒÀ‚µ‚È‚ª‚çA’e’…’eˆÊ’u‚ðŽZo
 		GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
 		//’e‚ð¶¬
-		world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
+		world_->add_actor(new CommonCannonBall{ world_, position, destination});
+		//world_->add_actor(new CannonBall{ world_, position, destination, "EnemyCannonBallTag" });
 		shot_timer_ -= ShotInterval;
 	}
 }
