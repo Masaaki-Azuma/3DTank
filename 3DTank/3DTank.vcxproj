@@ -150,6 +150,8 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorGenerator.cpp" />
     <ClCompile Include="ActorManager.cpp" />
+    <ClCompile Include="BounceCannonBall.cpp" />
+    <ClCompile Include="BounceEnemy.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
     <ClCompile Include="CannonBall.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="ActorGenerator.h" />
     <ClInclude Include="ActorManager.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="BounceCannonBall.h" />
+    <ClInclude Include="BounceEnemy.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="CameraFixedPoint.h" />
     <ClInclude Include="CannonBall.h" />
