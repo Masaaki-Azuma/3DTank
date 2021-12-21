@@ -160,6 +160,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="CommonCannonBall.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Field.cpp">
@@ -173,6 +174,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MortorEnemy.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerCannonBall.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="ReflectionEnemy.cpp" />
@@ -198,6 +200,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="CommonCannonBall.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Field.h">
@@ -213,6 +216,7 @@
     <ClInclude Include="MortorEnemy.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerCannonBall.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="ReflectionEnemy.h" />

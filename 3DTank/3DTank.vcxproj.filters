@@ -34,6 +34,8 @@
       <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="ChaseEnemy.cpp" />
+    <ClCompile Include="CommonCannonBall.cpp" />
+    <ClCompile Include="PlayerCannonBall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -72,6 +74,8 @@
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="ChaseEnemy.h" />
+    <ClInclude Include="CommonCannonBall.h" />
+    <ClInclude Include="PlayerCannonBall.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
