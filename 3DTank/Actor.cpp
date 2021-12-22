@@ -28,12 +28,16 @@ bool Actor::is_dead() const
 
 void Actor::collide(Actor& other)
 {
-	//Õ“Ë‚µ‚Ä‚¢‚½‚çÕ“Ëˆ—‚ğ‚·‚é
-	if (is_collide(other)) {
-		//“ñÒ‚ÌÕ“Ëˆ—
-		react(other);
-		other.react(*this);
+	//“ñÒ‚ÌÕ“Ë”»’è‚ª—LŒø‚©H
+	if (enable_collider_ && other.enable_collider_) {
+		//Õ“Ë‚µ‚Ä‚¢‚½‚çÕ“Ëˆ—‚ğ‚·‚é
+		if (is_collide(other)) {
+			//“ñÒ‚ÌÕ“Ëˆ—
+			react(other);
+			other.react(*this);
+		}
 	}
+	
 }
 
 bool Actor::is_collide(const Actor& other) const

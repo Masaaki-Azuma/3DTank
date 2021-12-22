@@ -52,6 +52,8 @@ protected:
 	GStransform transform_;
 	//移動量
 	GSvector3 velocity_;
+	//衝突判定が有効か？
+	bool enable_collider_{ true };
 	//境界球
 	BoundingSphere collider_;
 	//死亡フラグ
