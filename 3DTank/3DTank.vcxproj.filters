@@ -38,6 +38,9 @@
     <ClCompile Include="PlayerCannonBall.cpp" />
     <ClCompile Include="BounceCannonBall.cpp" />
     <ClCompile Include="BounceEnemy.cpp" />
+    <ClCompile Include="BlastCannonBall.cpp" />
+    <ClCompile Include="Blast.cpp" />
+    <ClCompile Include="BlastMortorEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -80,6 +83,9 @@
     <ClInclude Include="PlayerCannonBall.h" />
     <ClInclude Include="BounceCannonBall.h" />
     <ClInclude Include="BounceEnemy.h" />
+    <ClInclude Include="BlastCannonBall.h" />
+    <ClInclude Include="Blast.h" />
+    <ClInclude Include="BlastMortorEnemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
