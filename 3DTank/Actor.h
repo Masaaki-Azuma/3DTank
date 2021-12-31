@@ -38,6 +38,8 @@ public:
 	const std::string& tag() const;
 	//ˆÊ’uî•ñ‚ğæ“¾
 	const GStransform& transform() const;
+	//‘¬“x‚ğæ“¾
+	const GSvector3& velocity() const;
 	//Õ“Ë”»’è}Œ`‚ğæ“¾
 	BoundingSphere collider() const;
 

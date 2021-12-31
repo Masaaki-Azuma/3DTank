@@ -60,6 +60,11 @@ const GStransform& Actor::transform() const
 	return transform_;
 }
 
+const GSvector3& Actor::velocity() const
+{
+	return velocity_;
+}
+
 BoundingSphere Actor::collider() const
 {
 	return collider_.transform(transform_.localToWorldMatrix());
