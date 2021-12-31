@@ -9,7 +9,7 @@
 const float Gravity{ -0.02f };                     //重力加速度
 //const float EnemyHeight{ 2.0f };                   //境界球中心の高さ
 const float FootOffset{ 0.1f };                    //地面との当たり判定用の足元オフセット
-const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
+//const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
 
 Enemy::Enemy(IWorld* world, const GSvector3& position, float shot_inteval, float cannon_range):
 	mesh_{Mesh_Enemy},
@@ -84,7 +84,6 @@ void Enemy::shoot(float delta_time)
 		//射程範囲を制限しながら、弾着弾位置を算出
 		GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
 		//弾を生成
-		//world_->add_actor(new CommonCannonBall{ world_, position, destination});
 		generate_cannon_ball(position, destination);
 		shot_timer_ -= ShotInterval;
 	}

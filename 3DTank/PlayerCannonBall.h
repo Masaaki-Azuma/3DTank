@@ -2,8 +2,8 @@
 #define PLAYER_CANNON_BALL_H_
 
 #include "CannonBall.h"
-class PlayerCannonBall :
-    public CannonBall
+
+class PlayerCannonBall : public CannonBall
 {
 public :
     PlayerCannonBall(IWorld* world, const GSvector3& position, const GSvector3& destination);

@@ -22,6 +22,8 @@ void Stage::load(int stage)
 	//stageに応じたステージを読み込む
 	gsLoadOctree(mesh_, "Assets/stage_mesh.oct");
 	gsLoadOctree(collider_, "Assets/stage_collide.oct");
+	//gsLoadOctree(mesh_, "Assets/stage_mesh_high.oct");
+	//gsLoadOctree(collider_, "Assets/stage_collide_high.oct");
 }
 
 void Stage::clear()

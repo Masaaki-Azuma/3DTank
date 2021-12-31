@@ -86,12 +86,12 @@ void Player::move(float delta_time)
 		direction.z += 1.0f;
 	}
 	//ˆÚ“®—Ê‚ÌZo
-	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
+	GSvector3 velocity = direction.normalized() * MoveSpeed;
 	//x,z²•ûŒü‚ÌˆÚ“®—Ê‚ğ•Û‘¶
 	velocity_.x = velocity.x;
 	velocity_.z = velocity.z;
 	//…•½•ûŒü‚ÌˆÚ“®—Ê‚ğ”½‰f
-	transform_.translate(velocity, GStransform::Space::World);
+	transform_.translate(velocity * delta_time, GStransform::Space::World);
 }
 
 void Player::free_fall(float delta_time)

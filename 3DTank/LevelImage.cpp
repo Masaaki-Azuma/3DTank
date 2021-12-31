@@ -2,7 +2,7 @@
 #include <GSgame.h>
 #include "Assets.h"
 
-const float HoldTime{ 90.0f }; //Å’á•`‰æŠÔ
+const float HoldTime{ 60.0f }; //Å’á•`‰æŠÔ
 
 void LevelImage::initialize()
 {

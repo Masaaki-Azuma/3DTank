@@ -34,6 +34,7 @@ protected:
 	float shot_timer_{ 0.0f };
 	const float ShotInterval; //’e‚Ì”­ŽËŠÔŠu
 	const float CannonRange; //’e‚ª“Í‚­‹——£
+	const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //’e‚ðŒ‚‚ÂˆÊ’u‚ÌƒIƒtƒZƒbƒg
 };
 #endif//!ENEMY_H_
 
