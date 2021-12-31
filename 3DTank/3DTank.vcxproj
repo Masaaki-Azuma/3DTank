@@ -181,6 +181,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerCannonBall.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="PredictionEnemy.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="ReflectionEnemy.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerCannonBall.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="PredictionEnemy.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="ReflectionEnemy.h" />
     <ClInclude Include="SceneManager.h" />

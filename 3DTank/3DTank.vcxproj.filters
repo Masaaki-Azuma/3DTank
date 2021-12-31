@@ -41,6 +41,7 @@
     <ClCompile Include="BlastCannonBall.cpp" />
     <ClCompile Include="Blast.cpp" />
     <ClCompile Include="BlastMortorEnemy.cpp" />
+    <ClCompile Include="PredictionEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h" />
@@ -86,6 +87,7 @@
     <ClInclude Include="BlastCannonBall.h" />
     <ClInclude Include="Blast.h" />
     <ClInclude Include="BlastMortorEnemy.h" />
+    <ClInclude Include="PredictionEnemy.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
