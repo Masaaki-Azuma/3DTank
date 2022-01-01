@@ -7,6 +7,11 @@
 class MyGame : public gslib::Game
 {
 public:
+	MyGame():
+		gslib::Game{1920, 1080}
+	{
+
+	}
 	void start() override
 	{
 		scene_manager_.add("TitleScene", new TitleScene{});
