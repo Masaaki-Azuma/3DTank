@@ -4,7 +4,10 @@
 //テクスチャ
 enum
 {
-	Texture_TitleLogo,
+	Texture_Title_Logo,
+	Texture_Title_Menu,
+	Texture_Title_Background,
+	Texture_Title_Cursor,
 	Texture_PressZ,
 	Texture_Stage,
 	Texture_Clear,

@@ -1,42 +1,65 @@
 #include "TitleScene.h"
-#include <gslib.h>
 #include "Assets.h"
 
+enum //次の遷移シーン
+{
+	GameStart = 0,
+	Tutorial = 1,
+	Exit = 2,
+};
+
+const int MaxSelection{ 3 };
 void TitleScene::start()
 {
 	//ForDebug
 	//終了フラグの初期化
 	is_end_ = false;
 	//!ForDebug
+	//選択肢番号を初期化
+	selection_id_ = 0;
+
 	//リソースの読み込み
-	gsLoadTexture(Texture_TitleLogo, "Assets/title_logo.png");
+	gsLoadTexture(Texture_Title_Logo, "Assets/title_logo.png");
+	gsLoadTexture(Texture_Title_Background, "Assets/background.png");
+	gsLoadTexture(Texture_Title_Menu, "Assets/title_menuText.png");
 	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
+	gsLoadTexture(Texture_Title_Cursor, "Assets/title_cursor.png");
 }
 
 void TitleScene::update(float delta_time)
 {
-	//ForDebug
-	//zキーでシーン遷移
-	if (gsGetKeyTrigger(GKEY_Z)) {
-		is_end_ = true;
-	}
-	//!ForDebug
+	confirm_menu();
+	select_menu();
 }
 
 void TitleScene::draw() const
 {
+	//背景を描画
+	draw_2Dsprite(Texture_Title_Background);
 	//タイトルロゴを表示
-	GSvector2 position_title{ 0, 0 };
-	gsDrawSprite2D(Texture_TitleLogo, &position_title, NULL, NULL, NULL, NULL, NULL);
+	draw_2Dsprite(Texture_Title_Logo, GSvector2{ 150, 130 });
+
+	//選択肢を描画
+	static const int selection_top{ 540 };
+	static const int selection_gap{ 140 };
+	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top                     }, GSrect{ 0, 0, 720, 120 });
+	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top + selection_gap     }, GSrect{ 0, 120, 720, 240 });
+	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 520, selection_top + selection_gap * 2 }, GSrect{ 0, 240, 720, 360 });
+	//カーソルを描画
+	draw_2Dsprite(Texture_Title_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
+
 	//「キーを押してスタート」を表示
-	GSvector2 position_pressZ{ 0, 200 };
-	gsDrawSprite2D(Texture_PressZ, &position_pressZ, NULL, NULL, NULL, NULL, NULL);
+	/*GSvector2 position_pressZ{ 0, 200 };
+	gsDrawSprite2D(Texture_PressZ, &position_pressZ, NULL, NULL, NULL, NULL, NULL);*/
+
 }
 
 void TitleScene::end()
 {
 	//リソースの解放
-	gsDeleteTexture(Texture_TitleLogo);
+	gsDeleteTexture(Texture_Title_Logo);
+	gsDeleteTexture(Texture_Title_Background);
+	gsDeleteTexture(Texture_Title_Menu);
 	gsDeleteTexture(Texture_PressZ);
 }
 
@@ -47,5 +70,47 @@ bool TitleScene::is_end() const
 
 const std::string TitleScene::next() const
 {
-	return "PlayScene";
+	switch (selection_id_) {
+	case GameStart: return "PlayScene"; break;
+	case Tutorial:  return "TutorialScene"; break; //?
+	case Exit:      return ""; break;
+	}
+}
+
+void TitleScene::select_menu()
+{
+	//上下キーでカーソル移動
+	if (gsGetKeyTrigger(GKEY_DOWN)) {
+		selection_id_ += 1;
+	}
+	else if (gsGetKeyTrigger(GKEY_UP)) {
+		selection_id_ += MaxSelection - 1;
+	}
+	//選択肢番号を選択肢数に応じてループ調整
+	selection_id_ %= MaxSelection;
+}
+
+void TitleScene::confirm_menu()
+{
+	//zキーでシーン遷移
+	if (gsGetKeyTrigger(GKEY_Z)) {
+		is_end_ = true;
+	}
+}
+
+void TitleScene::draw_2Dsprite(GSuint texture_id, const GSvector2& position, const GSrect source_rect) const
+{
+	//画像の一部を切り出しているか？
+	bool is_clipped = !(
+		source_rect.left   == 0 &&
+		source_rect.top    == 0 &&
+		source_rect.right  == 0 &&
+		source_rect.bottom == 0);
+
+	if (is_clipped) {
+		gsDrawSprite2D(texture_id, &position, &source_rect, NULL, NULL, NULL, NULL);
+	}
+	else {
+		gsDrawSprite2D(texture_id, &position, NULL, NULL, NULL, NULL, NULL);
+	}
 }
