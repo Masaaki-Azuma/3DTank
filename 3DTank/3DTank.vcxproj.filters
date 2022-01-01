@@ -2,25 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="CameraFixedPoint.cpp" />
-    <ClCompile Include="CannonBall.cpp" />
-    <ClCompile Include="World.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="ActorGenerator.cpp" />
     <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="ClearImage.cpp" />
-    <ClCompile Include="LevelImage.cpp" />
-    <ClCompile Include="TargetSign.cpp" />
     <ClCompile Include="ReflectionEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
@@ -33,40 +24,74 @@
     <ClCompile Include="ImmovableEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="ChaseEnemy.cpp" />
-    <ClCompile Include="CommonCannonBall.cpp" />
-    <ClCompile Include="PlayerCannonBall.cpp" />
-    <ClCompile Include="BounceCannonBall.cpp" />
-    <ClCompile Include="BounceEnemy.cpp" />
-    <ClCompile Include="BlastCannonBall.cpp" />
-    <ClCompile Include="Blast.cpp" />
-    <ClCompile Include="BlastMortorEnemy.cpp" />
-    <ClCompile Include="PredictionEnemy.cpp" />
+    <ClCompile Include="PredictionEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BlastMortorEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BounceEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BlastCannonBall.cpp">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="BounceCannonBall.cpp">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="Blast.cpp">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonBall.cpp">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonCannonBall.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCannonBall.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TargetSign.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearImage.cpp">
+      <Filter>MiniScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelImage.cpp">
+      <Filter>MiniScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IScene.h" />
-    <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="NullScene.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="CameraFixedPoint.h" />
-    <ClInclude Include="CannonBall.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="IWorld.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Field.h" />
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="ActorGenerator.h" />
     <ClInclude Include="Stage.h" />
-    <ClInclude Include="ClearImage.h" />
-    <ClInclude Include="LevelImage.h" />
-    <ClInclude Include="TargetSign.h" />
     <ClInclude Include="ReflectionEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
@@ -79,19 +104,89 @@
     <ClInclude Include="ImmovableEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="ChaseEnemy.h" />
-    <ClInclude Include="CommonCannonBall.h" />
-    <ClInclude Include="PlayerCannonBall.h" />
-    <ClInclude Include="BounceCannonBall.h" />
-    <ClInclude Include="BounceEnemy.h" />
-    <ClInclude Include="BlastCannonBall.h" />
-    <ClInclude Include="Blast.h" />
-    <ClInclude Include="BlastMortorEnemy.h" />
-    <ClInclude Include="PredictionEnemy.h" />
+    <ClInclude Include="PredictionEnemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BlastMortorEnemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BounceEnemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BlastCannonBall.h">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="BounceCannonBall.h">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Blast.h">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonBall.h">
+      <Filter>Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseEnemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonCannonBall.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCannonBall.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetSign.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="NullScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="IWorld.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearImage.h">
+      <Filter>MiniScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelImage.h">
+      <Filter>MiniScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
       <UniqueIdentifier>{e247e3a9-4d35-43a9-9d53-fddde5e0a9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy\CannonBall">
+      <UniqueIdentifier>{7ad529f5-c863-4ec9-beee-a258bc533112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{8555cb96-2c9a-48c0-9d14-798d926552a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{f7ae103a-7537-40ab-8860-918ed605b511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{49bdeeab-80bf-4ea8-8679-ff819cc5070f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MiniScene">
+      <UniqueIdentifier>{b28e8e76-41d5-4046-a315-a570ea531e7d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

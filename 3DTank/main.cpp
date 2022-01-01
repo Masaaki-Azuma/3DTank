@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "PlayScene.h"
-
+#include "TutorialScene.h"
 
 class MyGame : public gslib::Game
 {
@@ -16,6 +16,7 @@ public:
 	{
 		scene_manager_.add("TitleScene", new TitleScene{});
 		scene_manager_.add("PlayScene", new PlayScene{});
+		scene_manager_.add("TutorialScene", new TutorialScene{});
 		scene_manager_.change("TitleScene");
 		//scene_manager_.change("PlayScene");
 	}
