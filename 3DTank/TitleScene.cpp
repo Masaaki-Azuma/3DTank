@@ -1,14 +1,15 @@
 #include "TitleScene.h"
+#include <stdexcept>
 #include "Assets.h"
 
 enum //次の遷移シーン
 {
 	GameStart = 0,
 	Tutorial = 1,
-	Exit = 2,
 };
 
-const int MaxSelection{ 3 };
+const int MaxSelection{ 2 }; //選択肢の個数
+
 void TitleScene::start()
 {
 	//ForDebug
@@ -41,10 +42,9 @@ void TitleScene::draw() const
 
 	//選択肢を描画
 	static const int selection_top{ 540 };
-	static const int selection_gap{ 140 };
+	static const int selection_gap{ 200 };
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top                     }, GSrect{ 0, 0, 720, 120 });
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top + selection_gap     }, GSrect{ 0, 120, 720, 240 });
-	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 520, selection_top + selection_gap * 2 }, GSrect{ 0, 240, 720, 360 });
 	//カーソルを描画
 	draw_2Dsprite(Texture_Title_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
 
@@ -71,9 +71,11 @@ bool TitleScene::is_end() const
 const std::string TitleScene::next() const
 {
 	switch (selection_id_) {
-	case GameStart: return "PlayScene"; break;
-	case Tutorial:  return "TutorialScene"; break; //?
-	case Exit:      return ""; break;
+	case GameStart: return "PlayScene";     break;
+	case Tutorial:  return "TutorialScene"; break;
+	default:
+		throw std::runtime_error("タイトルシーンからの不正な遷移です");
+		break;
 	}
 }
 
