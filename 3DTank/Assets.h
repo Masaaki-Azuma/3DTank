@@ -11,6 +11,7 @@ enum
 	Texture_PressZ,
 	Texture_Stage,
 	Texture_Clear,
+	Texture_RedCurtain,
 };
 
 //ƒƒbƒVƒ…
