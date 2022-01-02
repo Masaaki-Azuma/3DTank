@@ -48,7 +48,6 @@ void TitleScene::draw() const
 	//カーソルを描画
 	draw_2Dsprite(Texture_Title_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
 
-	draw_2Dsprite(Texture_RedCurtain);
 	//「キーを押してスタート」を表示
 	/*GSvector2 position_pressZ{ 0, 200 };
 	gsDrawSprite2D(Texture_PressZ, &position_pressZ, NULL, NULL, NULL, NULL, NULL);*/
