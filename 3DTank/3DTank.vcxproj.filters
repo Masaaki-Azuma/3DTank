@@ -79,6 +79,7 @@
       <Filter>MiniScene</Filter>
     </ClCompile>
     <ClCompile Include="TutorialScene.cpp" />
+    <ClCompile Include="SceneCover.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h" />
@@ -168,6 +169,7 @@
       <Filter>MiniScene</Filter>
     </ClInclude>
     <ClInclude Include="TutorialScene.h" />
+    <ClInclude Include="SceneCover.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">

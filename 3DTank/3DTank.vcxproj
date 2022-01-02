@@ -184,6 +184,7 @@
     <ClCompile Include="PredictionEnemy.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="ReflectionEnemy.cpp" />
+    <ClCompile Include="SceneCover.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="LevelImage.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="PredictionEnemy.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="ReflectionEnemy.h" />
+    <ClInclude Include="SceneCover.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="LevelImage.h" />
