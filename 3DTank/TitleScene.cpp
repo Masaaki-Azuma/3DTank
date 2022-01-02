@@ -21,7 +21,7 @@ void TitleScene::start()
 
 	//リソースの読み込み
 	gsLoadTexture(Texture_Title_Logo, "Assets/title_logo.png");
-	gsLoadTexture(Texture_Title_Background, "Assets/background.png");
+	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Title_Menu, "Assets/title_menuText.png");
 	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
 	gsLoadTexture(Texture_Title_Cursor, "Assets/title_cursor.png");
@@ -36,7 +36,7 @@ void TitleScene::update(float delta_time)
 void TitleScene::draw() const
 {
 	//背景を描画
-	draw_2Dsprite(Texture_Title_Background);
+	draw_2Dsprite(Texture_Background);
 	//タイトルロゴを表示
 	draw_2Dsprite(Texture_Title_Logo, GSvector2{ 150, 130 });
 
@@ -58,7 +58,7 @@ void TitleScene::end()
 {
 	//リソースの解放
 	gsDeleteTexture(Texture_Title_Logo);
-	gsDeleteTexture(Texture_Title_Background);
+	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Title_Menu);
 	gsDeleteTexture(Texture_PressZ);
 }
