@@ -15,17 +15,19 @@ SceneManager::~SceneManager()
 
 void SceneManager::update(float delta_time)
 {
+	/*シーン遷移演出処理*/
 	//シーン隠しが開閉しているか？
-	if (cover_.is_running()) { //openning || closing
+	if (cover_.is_running()) { 
 		//シーン隠しを更新
 		cover_.update(delta_time);
 		//シーンを隠し終わったか？
-		if (cover_.is_closed()) {  //closed
+		if (cover_.is_closed()) {
 			change(currentScene_->next());
 		}
-		return;
+		return; //シーン遷移中はシーンを更新せず終了
 	}
 	
+	/*シーン本体処理*/
 	//現在のシーンを更新
 	currentScene_->update(delta_time);
 	//シーンが終了していたら、シーン遷移
