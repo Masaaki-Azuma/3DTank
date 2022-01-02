@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include "SceneCover.h"
 
 class IScene;
 
@@ -32,6 +33,7 @@ public:
 private:
 	std::unordered_map<std::string, IScene*> scenes_;
 	IScene* currentScene_;
+	SceneCover cover_;
 };
 #endif//!SCENE_MANAGER_H_
 
