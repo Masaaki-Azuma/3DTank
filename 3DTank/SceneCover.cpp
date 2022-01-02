@@ -2,7 +2,7 @@
 #include "Assets.h"
 
 const int ImageHeight{ 1200 };
-const float ScrollSpeed{ 20.0f };
+const float ScrollSpeed{ 30.0f };
 
 SceneCover::SceneCover():
 	state_{ State::Opened },
