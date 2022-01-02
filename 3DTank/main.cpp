@@ -9,7 +9,7 @@ class MyGame : public gslib::Game
 {
 public:
 	MyGame():
-		gslib::Game{1920, 1080}
+		gslib::Game{1920, 1080, true}
 	{
 
 	}
