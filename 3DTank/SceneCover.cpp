@@ -1,8 +1,8 @@
 #include "SceneCover.h"
 #include "Assets.h"
 
-const int ImageHeight{ 1200 };
-const float ScrollSpeed{ 30.0f };
+const int ImageHeight{ 1200 };    //シーンを隠す画像の高さ
+const float ScrollSpeed{ 30.0f }; //シーン遷移の速さ
 
 SceneCover::SceneCover():
 	state_{ State::Opened },
@@ -12,6 +12,7 @@ SceneCover::SceneCover():
 
 void SceneCover::update(float delta_time)
 {
+	//HACK:関数ポインタで簡潔に書けるらしい
 	//状態によって分岐
 	switch (state_) {
 	case State::Closing: update_close(delta_time); break;
