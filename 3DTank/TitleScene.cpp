@@ -24,7 +24,7 @@ void TitleScene::start()
 	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Title_Menu, "Assets/title_menuText.png");
 	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
-	gsLoadTexture(Texture_Title_Cursor, "Assets/title_cursor.png");
+	gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
 }
 
 void TitleScene::update(float delta_time)
@@ -46,7 +46,7 @@ void TitleScene::draw() const
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top                     }, GSrect{ 0, 0, 720, 120 });
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top + selection_gap     }, GSrect{ 0, 120, 720, 240 });
 	//カーソルを描画
-	draw_2Dsprite(Texture_Title_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
+	draw_2Dsprite(Texture_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
 
 	//「キーを押してスタート」を表示
 	/*GSvector2 position_pressZ{ 0, 200 };

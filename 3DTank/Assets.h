@@ -11,10 +11,10 @@ enum
 {
 	Texture_Title_Logo,
 	Texture_Title_Menu,
-	Texture_Title_Cursor,
 	Texture_Tutorial_Board0,
 	Texture_Tutorial_Board1,
 	Texture_Tutorial_PressXToTitle,
+	Texture_Cursor,
 	Texture_Background,
 	Texture_PressXToBack,
 	Texture_PressZ,
