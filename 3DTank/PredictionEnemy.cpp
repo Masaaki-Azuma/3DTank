@@ -45,23 +45,16 @@ void PredictionEnemy::shoot(float delta_time)
 		if (!player) return;
 		//弾生成位置
 		GSvector3 position = transform_.position() + CannonOffset;
-
 		//発射先（射的距離補正前）
+		//TODO:砲丸クラスの定数をどうにか取得する
 		GSvector3 destination = player->transform().position() + player->velocity() * 80.0f;
-
+		//発射方向（射的距離補正前）
 		GSvector3 direction = destination - transform_.position();
 		direction.y = 0.0f;
+		//発射方向（射的距離補正後）
 		direction = GSvector3::clampMagnitude(direction, CannonRange);
 		//発射先（射的距離補正後）
 		destination = position + direction;
-
-		////プレイヤー方向を計算
-		//GSvector3 direction = player->transform().position() - transform_.position();
-		//direction.y = 0.0f;
-		////射程範囲を制限しながら、弾着弾位置を算出
-		//GSvector3 destination = transform_.position() + GSvector3::clampMagnitude(direction, CannonRange);
-		////TODO:砲丸クラスの定数をどうにか取得する
-		//destination += player->velocity() * 80.0f;
 		//弾を生成
 		generate_cannon_ball(position, destination);
 		shot_timer_ -= ShotInterval;
