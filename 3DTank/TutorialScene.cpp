@@ -26,14 +26,14 @@ void TutorialScene::start()
 
 void TutorialScene::update(float delta_time)
 {
-    //ページを変える
+    //ページを変える操作
     turn_page();
     //ページをスクロールする
     scroll_page(delta_time);
 
     //ページ移動中ならここで更新終了
     if (scroll_speed_ != 0.0f) return;
-    //シーンを抜ける
+    //シーンを抜ける操作
     exit();
 }
 
@@ -79,6 +79,8 @@ void TutorialScene::end()
 {
     gsDeleteTexture(Texture_Background);
     gsDeleteTexture(Texture_Tutorial_Board0);
+    gsDeleteTexture(Texture_Tutorial_Board1);
+    gsDeleteTexture(Texture_Tutorial_PressXToTitle);
 }
 
 bool TutorialScene::is_end() const
