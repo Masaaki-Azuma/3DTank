@@ -9,7 +9,8 @@ class BounceEnemy :
 public:
     BounceEnemy(IWorld* world, const GSvector3& position);
 
-private:
+protected:
+    virtual void move(float delta_time) override;
     virtual void generate_cannon_ball(const GSvector3& position, const GSvector3& destination) override;
 };
 #endif//!BOUNCE_ENEMY_H_

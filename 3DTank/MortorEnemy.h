@@ -8,7 +8,7 @@ class MortorEnemy : public Enemy
 {
 public:
 	MortorEnemy(IWorld* world, const GSvector3& position);
-private:
+protected:
 	//ˆÚ“®
 	virtual void move(float delta_time) override;
 };

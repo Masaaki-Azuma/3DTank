@@ -8,7 +8,7 @@ class PredictionEnemy : public Enemy
 {
 public:
 	PredictionEnemy(IWorld* world, const GSvector3& position);
-
+protected:
 	//ˆÚ“®
 	virtual void move(float delta_time) override;
 	//’e‚ð”­ŽË

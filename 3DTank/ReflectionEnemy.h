@@ -8,7 +8,7 @@ class ReflectionEnemy : public Enemy
 {
 public:
 	ReflectionEnemy(IWorld* world, const GSvector3& position);
-private:
+protected:
 	//•Ç‚ÉÕ“Ë‚Ì‹““®
 	virtual void react_wall() override;
 };

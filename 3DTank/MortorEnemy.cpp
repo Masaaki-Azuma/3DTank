@@ -14,4 +14,5 @@ MortorEnemy::MortorEnemy(IWorld* world, const GSvector3& position):
 
 void MortorEnemy::move(float delta_time)
 {
+	//“®‚©‚È‚¢
 }
