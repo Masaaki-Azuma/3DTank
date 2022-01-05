@@ -27,7 +27,15 @@ enum
 enum
 {
 	Mesh_Player,
+	Mesh_ImmovableEnemy,
+	Mesh_ReflectionEnemy,
+	Mesh_MortorEnemy,
+	Mesh_BlastMortorEnemy,
+	Mesh_ChaseEnemy,
+	Mesh_BounceEnemy,
+	Mesh_PredictionEnemy,
 	Mesh_Enemy,
+
 	Mesh_CannonBall,
 	Mesh_TargetSign,
 

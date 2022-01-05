@@ -11,7 +11,7 @@ PredictionEnemy::PredictionEnemy(IWorld* world, const GSvector3& position):
 	name_ = "PredictionEnemy";
 	tag_ = "EnemyTag";
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
-	mesh_ = Mesh_Enemy;
+	mesh_ = Mesh_PredictionEnemy;
 }
 
 //プレイヤーから逃げる
@@ -31,7 +31,7 @@ void PredictionEnemy::move(float delta_time)
 	//目標速度と現在速度を補間
 	velocity = GSvector3::slerp(direction, velocity, 0.05f);
 	//移動量を反映
-	//transform_.translate(velocity * delta_time);
+	transform_.translate(velocity * delta_time);
 }
 
 void PredictionEnemy::shoot(float delta_time)

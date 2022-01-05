@@ -15,6 +15,6 @@ ImmovableEnemy::ImmovableEnemy(IWorld* world, const GSvector3& position):
 	tag_ = "EnemyTag";
 	velocity_ = GSvector3{ 0.0f, 0.0f, 0.0f };
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
-	mesh_ = Mesh_Enemy;
+	mesh_ = Mesh_ImmovableEnemy;
 }
 

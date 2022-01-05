@@ -7,11 +7,22 @@
 void PlayScene::start()
 {
 	////リソースの読み込み(ステージ間で共通して使う物のみ)
-	gsLoadMesh(Mesh_Player, "Assets/blue_tank.mshb");
-	gsLoadMesh(Mesh_Enemy, "Assets/red_tank.mshb");
+	gsLoadMesh(Mesh_Player, "Assets/Mesh/Tank/blue_tank.mshb");
+
+	//gsLoadMesh(Mesh_Enemy, "Assets/red_tank.mshb");
+	gsLoadMesh(Mesh_Enemy, "Assets/Mesh/Tank/red_tank.mshb");
+	gsLoadMesh(Mesh_ImmovableEnemy, "Assets/Mesh/Tank/lightGreen_tank.mshb");
+	gsLoadMesh(Mesh_ReflectionEnemy, "Assets/Mesh/Tank/darkGreen_tank.mshb");
+	gsLoadMesh(Mesh_MortorEnemy, "Assets/Mesh/Tank/lightOrange_tank.mshb");
+	gsLoadMesh(Mesh_BlastMortorEnemy, "Assets/Mesh/Tank/darkOrange_tank.mshb");
+	gsLoadMesh(Mesh_ChaseEnemy, "Assets/Mesh/Tank/pink_tank.mshb");
+	gsLoadMesh(Mesh_BounceEnemy, "Assets/Mesh/Tank/yellow_tank.mshb");
+	gsLoadMesh(Mesh_PredictionEnemy, "Assets/Mesh/Tank/purple_tank.mshb");
+
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
 	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
 
+	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Stage, "Assets/stage.png");
 	gsLoadTexture(Texture_Clear, "Assets/clear.png");
 

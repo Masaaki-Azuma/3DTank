@@ -78,8 +78,10 @@
     <ClCompile Include="LevelImage.cpp">
       <Filter>MiniScene</Filter>
     </ClCompile>
-    <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="SceneCover.cpp" />
+    <ClCompile Include="TutorialScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h" />
@@ -168,8 +170,10 @@
     <ClInclude Include="LevelImage.h">
       <Filter>MiniScene</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="SceneCover.h" />
+    <ClInclude Include="TutorialScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">

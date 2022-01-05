@@ -11,7 +11,7 @@ BlastMortorEnemy::BlastMortorEnemy(IWorld* world, const GSvector3& position):
 	name_ = "BlastMortorEnemy";
 	tag_ = "EnemyTag";
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
-	mesh_ = Mesh_Enemy;
+	mesh_ = Mesh_BlastMortorEnemy;
 }
 
 void BlastMortorEnemy::move(float delta_time)
