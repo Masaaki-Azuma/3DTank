@@ -31,11 +31,13 @@ void ActorGenerator::generate(unsigned int stage)
 		std::string name = actor_generate_table_.get(i, 0);
 		//生成位置取得
 		GSvector3 position{ actor_generate_table_.getf(i, 1), actor_generate_table_.getf(i, 2), actor_generate_table_.getf(i, 3) };
+		//生成y軸角度取得
+		float angleY{ actor_generate_table_.getf(i, 4) };
 		//生成アクター
 		Actor* actor{ nullptr };
 		if      (name == "Player")           actor = new Player{ world_, position };
 		else if (name == "ImmovableEnemy")   actor = new ImmovableEnemy{ world_, position };
-		else if (name == "ReflectionEnemy")  actor = new ReflectionEnemy{ world_, position };
+		else if (name == "ReflectionEnemy")  actor = new ReflectionEnemy{ world_, position, angleY };
 		else if (name == "MortorEnemy")      actor = new MortorEnemy{ world_, position };
 		else if (name == "ChaseEnemy")       actor = new ChaseEnemy{ world_, position };
 		else if (name == "BounceEnemy")       actor = new BounceEnemy{ world_, position };
