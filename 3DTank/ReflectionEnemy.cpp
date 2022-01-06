@@ -9,18 +9,31 @@ const float EnemyHeight{ 2.0f };  //境界球中心の高さ
 //const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
 //const float CannonRange{ 16.0f };                  //弾が届く距離
 
-ReflectionEnemy::ReflectionEnemy(IWorld* world, const GSvector3& position):
-	Enemy{world, position, 90.0f, 16.0f}
+ReflectionEnemy::ReflectionEnemy(IWorld* world, const GSvector3& position, float angleY):
+	Enemy{world, position, 90.0f, 16.0f},
+	prev_position_{position}
 {
 	name_ = "ReflectionEnemy";
 	tag_ = "EnemyTag";
-	velocity_ = GSvector3{ 0.0f, 0.0f, MoveSpeed };
+	velocity_ = GSvector3{ MoveSpeed, 0.0f, 0.0f };
 	collider_ = BoundingSphere{ 1.9f, GSvector3{0.0f, EnemyHeight, 0.0f} };
 	mesh_ = Mesh_ReflectionEnemy;
+	transform_.rotate(GSvector3{ 0.0f, angleY, 0.0f });
+}
+
+void ReflectionEnemy::move(float delta_time)
+{
+	//ローカル座標基準で移動
+	transform_.translate(velocity_);
 }
 
 void ReflectionEnemy::react_wall()
 {
-	//移動量反転
-	velocity_.z = -velocity_.z;
+	float diffrence = (transform_.position() - prev_position_).length();
+	//移動距離が短かったら、衝突と判断して移動量を反転
+	if (diffrence < 0.05) {
+		//移動量反転
+		velocity_ = -velocity_;
+	}
+	prev_position_ = transform_.position();
 }
