@@ -1,4 +1,5 @@
 #include "Stage.h"
+#include <string>
 #include "BoundingSphere.h"
 #include "Line.h"
 #include "Assets.h"
@@ -20,10 +21,19 @@ void Stage::load(int stage)
 	//既存のステージを削除する
 	clear();
 	//stageに応じたステージを読み込む
-	gsLoadOctree(mesh_, "Assets/stage_mesh.oct");
-	gsLoadOctree(collider_, "Assets/stage_collide.oct");
-	//gsLoadOctree(mesh_, "Assets/stage_mesh_high.oct");
-	//gsLoadOctree(collider_, "Assets/stage_collide_high.oct");
+	/*gsLoadOctree(mesh_, "Assets/stage_mesh.oct");
+	gsLoadOctree(collider_, "Assets/stage_collide.oct");*/
+	//ステージメッシュをロード
+	std::string file_name = "Assets/Stage/Mesh/stage_mesh";
+	file_name += std::to_string(stage);
+	file_name += ".oct";
+	gsLoadOctree(mesh_, file_name.c_str());
+	//ステージコライダーをロード
+	file_name = "Assets/Stage/Collider/stage_collide";
+	file_name += std::to_string(stage);
+	file_name += ".oct";
+	gsLoadOctree(collider_, file_name.c_str());
+	
 }
 
 void Stage::clear()
@@ -35,6 +45,7 @@ void Stage::clear()
 
 void Stage::draw() const
 {
+	gsDrawSprite2D(Texture_Background, NULL, NULL, NULL, NULL, NULL, NULL);
 	//地形の描画
 	gsDrawOctree(mesh_);
 }
