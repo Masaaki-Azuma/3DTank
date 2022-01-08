@@ -25,6 +25,7 @@ void PlayScene::start()
 	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Stage, "Assets/stage.png");
 	gsLoadTexture(Texture_Clear, "Assets/clear.png");
+	gsLoadTexture(Texture_Number, "Assets/number.png");
 
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
@@ -33,10 +34,10 @@ void PlayScene::start()
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 
 	state_ = State::Introduction;
-	level_image_.initialize();
+	level_ = 0;
+	level_image_.initialize(level_);
 	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
-	level_ = 0;
 	world_.load_stage(level_);
 }
 
@@ -116,8 +117,11 @@ void PlayScene::update_level_clear(float delta_time)
 	//クリア画面が終了したら、遷移
 	if (clear_image_.is_end()) {
 		state_ = State::Introduction;
-		level_image_.initialize();
-		world_.load_stage(++level_);
+		//レベルを1進める
+		++level_;
+		level_image_.initialize(level_);
+		//次のレベルをロード
+		world_.load_stage(level_);
 	}
 }
 
