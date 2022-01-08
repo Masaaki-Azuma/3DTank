@@ -5,6 +5,7 @@
 #include "World.h"
 #include "ClearImage.h"
 #include "LevelImage.h"
+#include "Fade.h"
 
 //メインゲームプレイシーンクラス
 //シーンの更新、描画、およびメモリの確保・解放を管理する
@@ -19,6 +20,7 @@ private:
     };
 
 public:
+    PlayScene();
     virtual void start() override;
     virtual void update(float delta_time) override;
     virtual void draw() const override;
@@ -42,6 +44,8 @@ private:
     LevelImage level_image_;
     //クリア演出
     ClearImage clear_image_;
+    //フェード演出
+    Fade fade_;
     //画面状態
     State state_;
     //現在ステージ番号

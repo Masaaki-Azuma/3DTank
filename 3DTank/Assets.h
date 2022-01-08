@@ -22,6 +22,7 @@ enum
 	Texture_Clear,
 	Texture_RedCurtain,
 	Texture_Number,
+	Texture_SilhouetteBackground,
 };
 
 //ƒƒbƒVƒ…

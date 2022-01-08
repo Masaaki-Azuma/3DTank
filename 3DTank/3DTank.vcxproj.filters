@@ -83,6 +83,7 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="NumberTexture.cpp" />
+    <ClCompile Include="Fade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h" />
@@ -177,6 +178,7 @@
     </ClInclude>
     <ClInclude Include="NumberTexture.h" />
     <ClInclude Include="Screen.h" />
+    <ClInclude Include="Fade.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Enemy">
