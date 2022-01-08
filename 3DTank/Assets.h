@@ -21,6 +21,7 @@ enum
 	Texture_Stage,
 	Texture_Clear,
 	Texture_RedCurtain,
+	Texture_Number,
 };
 
 //ƒƒbƒVƒ…
