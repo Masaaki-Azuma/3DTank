@@ -169,12 +169,6 @@
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fade.cpp" />
-    <ClCompile Include="Field.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="ImmovableEnemy.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
@@ -219,12 +213,6 @@
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Fade.h" />
-    <ClInclude Include="Field.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ImmovableEnemy.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IWorld.h" />

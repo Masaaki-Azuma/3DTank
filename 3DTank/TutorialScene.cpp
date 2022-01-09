@@ -18,6 +18,8 @@ void TutorialScene::start()
     gsLoadTexture(Texture_Tutorial_Board0, "Assets/tutorial_boardControl.png");
     gsLoadTexture(Texture_Tutorial_Board1, "Assets/tutorial_boardHint.png");
     gsLoadTexture(Texture_Tutorial_PressXToTitle, "Assets/tutorial_press_x_to_title.png");
+    gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
+
     page_ = Control;
     position_board_ = GSvector2{ 0.0f, 0.0f };
     scroll_speed_ = 0.0f;
@@ -81,6 +83,7 @@ void TutorialScene::end()
     gsDeleteTexture(Texture_Tutorial_Board0);
     gsDeleteTexture(Texture_Tutorial_Board1);
     gsDeleteTexture(Texture_Tutorial_PressXToTitle);
+    gsDeleteTexture(Texture_Cursor);
 }
 
 bool TutorialScene::is_end() const

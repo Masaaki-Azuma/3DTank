@@ -3,13 +3,14 @@
 #include "TitleScene.h"
 #include "PlayScene.h"
 #include "TutorialScene.h"
+#include "Screen.h"
 #include "Assets.h"
 
 class MyGame : public gslib::Game
 {
 public:
 	MyGame():
-		gslib::Game{1920, 1080, true}
+		gslib::Game{Screen::Width, Screen::Height, false}
 	{
 
 	}

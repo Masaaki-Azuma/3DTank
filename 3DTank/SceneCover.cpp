@@ -12,7 +12,6 @@ SceneCover::SceneCover():
 
 void SceneCover::update(float delta_time)
 {
-	//HACK:ŠÖ”ƒ|ƒCƒ“ƒ^‚ÅŠÈŒ‰‚É‘‚¯‚é‚ç‚µ‚¢
 	//ó‘Ô‚É‚æ‚Á‚Ä•ªŠò
 	switch (state_) {
 	case State::Closing: update_close(delta_time); break;

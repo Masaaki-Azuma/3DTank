@@ -3,14 +3,14 @@
 #include "CannonBall.h"
 #include "Assets.h"
 
-const float MoveSpeed{ 0.2f };    //移動速さ
+const float MoveSpeed{ 0.15f };    //移動速さ
 const float EnemyHeight{ 2.0f };  //境界球中心の高さ
 //const float ShotInterval{ 90.0f };                 //弾の発射間隔
 //const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };  //弾を撃つ位置のオフセット
 //const float CannonRange{ 16.0f };                  //弾が届く距離
 
 ReflectionEnemy::ReflectionEnemy(IWorld* world, const GSvector3& position, float angleY):
-	Enemy{world, position, 90.0f, 16.0f},
+	Enemy{world, position, 100.0f, 16.0f},
 	prev_position_{position}
 {
 	name_ = "ReflectionEnemy";

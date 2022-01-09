@@ -44,8 +44,8 @@ void Enemy::draw() const
 
 	//ForDebug
 	//‹«ŠE‹…‚Ì•`‰æ
-	collider().draw();
-	BoundingSphere{ CannonRange, transform_.position()}.draw();
+	//collider().draw();
+	//BoundingSphere{ CannonRange, transform_.position()}.draw();
 }
 
 void Enemy::react(Actor& other)
@@ -57,7 +57,6 @@ void Enemy::react(Actor& other)
 	else if(other.tag() == "PlayerTag" || other.tag() == "EnemyTag"){
 		collide_actor(other);
 	}
-
 }
 
 void Enemy::move(float delta_time)

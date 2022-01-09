@@ -50,7 +50,7 @@ void Player::draw() const
 
 	//ForDebug
 	//‹«ŠE‹…‚Ì•`‰æ
-	collider().draw();
+	//collider().draw();
 }
 
 void Player::react(Actor& other)

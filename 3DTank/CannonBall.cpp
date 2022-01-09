@@ -33,7 +33,7 @@ void CannonBall::draw() const
 	glPopMatrix();
 
 	//ForDebug
-	collider().draw();
+	//collider().draw();
 }
 
 void CannonBall::react(Actor& other)

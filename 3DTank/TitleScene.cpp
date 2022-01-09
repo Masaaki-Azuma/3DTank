@@ -61,6 +61,7 @@ void TitleScene::end()
 	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Title_Menu);
 	gsDeleteTexture(Texture_PressZ);
+	gsDeleteTexture(Texture_Cursor);
 }
 
 bool TitleScene::is_end() const

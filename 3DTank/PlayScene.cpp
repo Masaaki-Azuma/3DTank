@@ -39,7 +39,7 @@ void PlayScene::start()
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 
 	state_ = State::Introduction;
-	level_ = 0;
+	level_ = 6;
 	level_image_.initialize(level_);
 	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
@@ -53,7 +53,6 @@ void PlayScene::update(float delta_time)
 	case State::Battle: update_battle(delta_time); break;
 	case State::LevelClear: update_level_clear(delta_time); break;
 	}
-	
 }
 
 void PlayScene::draw() const

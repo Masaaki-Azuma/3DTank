@@ -6,7 +6,7 @@
 const float EnemyHeight{ 2.0f };  //‹«ŠE‹…’†S‚Ì‚‚³
 
 BounceEnemy::BounceEnemy(IWorld* world, const GSvector3& position):
-	Enemy{world, position, 120.0f}
+	Enemy{world, position, 100.0f}
 {
 	name_ = "BounceEnemy";
 	tag_ = "EnemyTag";
