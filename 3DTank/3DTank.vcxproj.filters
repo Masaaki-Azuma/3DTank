@@ -38,9 +38,6 @@
     <ClCompile Include="Actor.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="CannonBall.cpp">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClCompile>
     <ClCompile Include="ChaseEnemy.cpp">
       <Filter>Actor\Enemy</Filter>
     </ClCompile>
@@ -101,6 +98,10 @@
     <ClCompile Include="CsvReader.cpp">
       <Filter>Scene\PlayScene\World\ActorManager\ActorGenerator</Filter>
     </ClCompile>
+    <ClCompile Include="CannonBall.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="MissImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraFixedPoint.h" />
@@ -139,9 +140,6 @@
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="CannonBall.h">
-      <Filter>Actor\Enemy\CannonBall</Filter>
     </ClInclude>
     <ClInclude Include="ChaseEnemy.h">
       <Filter>Actor\Enemy</Filter>
@@ -213,6 +211,10 @@
     <ClInclude Include="CsvReader.h">
       <Filter>Scene\PlayScene\World\ActorManager\ActorGenerator</Filter>
     </ClInclude>
+    <ClInclude Include="CannonBall.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="MissImage.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actor">

@@ -20,6 +20,7 @@ enum
 	Texture_PressZ,
 	Texture_Stage,
 	Texture_Clear,
+	Texture_Miss,
 	Texture_RedCurtain,
 	Texture_Number,
 	Texture_SilhouetteBackground,

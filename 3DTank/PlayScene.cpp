@@ -29,6 +29,7 @@ void PlayScene::start()
 	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Stage, "Assets/stage.png");
 	gsLoadTexture(Texture_Clear, "Assets/clear.png");
+	gsLoadTexture(Texture_Miss, "Assets/miss.png");
 	gsLoadTexture(Texture_Number, "Assets/number.png");
 	gsLoadTexture(Texture_SilhouetteBackground, "Assets/silhouetteBackground.png");
 
@@ -52,6 +53,7 @@ void PlayScene::update(float delta_time)
 	case State::Introduction: update_introduction(delta_time); break;
 	case State::Battle: update_battle(delta_time); break;
 	case State::LevelClear: update_level_clear(delta_time); break;
+	case State::LevelMiss: update_level_miss(delta_time); break;
 	}
 }
 
@@ -69,6 +71,9 @@ void PlayScene::draw() const
 	else if (state_ == State::LevelClear) {
 		clear_image_.draw();
 		fade_.draw();
+	}
+	else if (state_ == State::LevelMiss) {
+		miss_image_.draw();
 	}
 }
 
@@ -93,6 +98,7 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Stage);
 	gsDeleteTexture(Texture_Clear);
+	gsDeleteTexture(Texture_Miss);
 	gsDeleteTexture(Texture_Number);
 	gsDeleteTexture(Texture_SilhouetteBackground);
 }
@@ -100,7 +106,8 @@ void PlayScene::end()
 bool PlayScene::is_end() const
 {
 	//プレイヤーが存在していなければ(nullptr)、またはステージが終了したらシーン終了
-	return !world_.find_actor("Player");
+	//return !world_.find_actor("Player");
+	return false;
 }
 
 const std::string PlayScene::next() const
@@ -136,6 +143,10 @@ void PlayScene::update_battle(float delta_time)
 		state_ = State::LevelClear;
 		clear_image_.initialize();
 	}
+	else if (!world_.find_actor("Player")) {
+		state_ = State::LevelMiss;
+		miss_image_.initialize();
+	}
 }
 
 void PlayScene::update_level_clear(float delta_time)
@@ -162,6 +173,19 @@ void PlayScene::update_level_clear(float delta_time)
 	//クリア画面が終了したら、フェードアウト
 	if (clear_image_.is_end()) {
 		fade_.fade_out();
+	}
+}
+
+void PlayScene::update_level_miss(float delta_time)
+{
+	world_.update(delta_time);
+	miss_image_.update(delta_time);
+	if (miss_image_.is_end()) {
+		state_ = State::Introduction;
+		//現在レベルをリスタート
+		level_image_.initialize(level_);
+		//次のレベルをロード
+		world_.load_stage(level_);
 	}
 }
 

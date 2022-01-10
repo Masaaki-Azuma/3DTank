@@ -5,6 +5,7 @@
 #include "World.h"
 #include "ClearImage.h"
 #include "LevelImage.h"
+#include "MissImage.h"
 #include "Fade.h"
 
 //メインゲームプレイシーンクラス
@@ -17,6 +18,7 @@ private:
         Introduction,
         Battle,
         LevelClear,
+        LevelMiss,
     };
 
 public:
@@ -36,6 +38,8 @@ private:
     void update_battle(float delta_time);
     //ステージクリア画面更新
     void update_level_clear(float delta_time);
+    //ステージミス画面更新
+    void update_level_miss(float delta_time);
 
 private:
     //ワールド
@@ -44,6 +48,8 @@ private:
     LevelImage level_image_;
     //クリア演出
     ClearImage clear_image_;
+    //ミス演出
+    MissImage miss_image_;
     //フェード演出
     Fade fade_;
     //画面状態

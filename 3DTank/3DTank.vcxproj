@@ -172,6 +172,7 @@
     <ClCompile Include="ImmovableEnemy.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MissImage.cpp" />
     <ClCompile Include="MortorEnemy.cpp" />
     <ClCompile Include="NumberTexture.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IWorld.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="MissImage.h" />
     <ClInclude Include="MortorEnemy.h" />
     <ClInclude Include="NullScene.h" />
     <ClInclude Include="NumberTexture.h" />
