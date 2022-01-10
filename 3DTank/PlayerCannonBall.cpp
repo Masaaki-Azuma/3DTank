@@ -1,8 +1,8 @@
 #include "PlayerCannonBall.h"
 #include "Assets.h"
 
-const float Gravity{ -0.02f };
-const float CannonVerticalSpeed{ 0.8f };  //’e‚Ì‰”’¼‰‘¬“x
+const float Gravity{ -0.03f };
+const float CannonVerticalSpeed{ 1.0f };  //’e‚Ì‰”’¼‰‘¬“x
 const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  ////’…’e‚Ü‚Å‚É‚©‚©‚éŠÔA’e‚Ì…•½‘¬“x‚ğŒˆ’è‚·‚éŒW”A= -2*CannonVerticalSpeed/CannonBall::Gravity
 
 PlayerCannonBall::PlayerCannonBall(IWorld* world, const GSvector3& position, const GSvector3& destination):
@@ -10,7 +10,8 @@ PlayerCannonBall::PlayerCannonBall(IWorld* world, const GSvector3& position, con
 {
 	name_ = "PlayerCannonBall";
 	tag_ = "PlayerCannonBallTag";
-	mesh_ = Mesh_CannonBall;
+	collider_ = BoundingSphere{ 1.2f }; //ƒvƒŒƒCƒ„[’e‚Í“G’e‚æ‚è‘å‚«–Ú
+	mesh_ = Mesh_PlayerCannonBall;
 
 	GSvector3 relative_position = destination - position;
 	velocity_ = relative_position / CannonVelocityFactor;

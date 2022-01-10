@@ -40,6 +40,8 @@ enum
 	Mesh_Enemy,
 
 	Mesh_CannonBall,
+	Mesh_PlayerCannonBall,
+	Mesh_EnemyCannonBall,
 	Mesh_TargetSign,
 
 };

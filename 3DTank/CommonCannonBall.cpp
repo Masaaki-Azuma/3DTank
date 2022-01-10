@@ -10,7 +10,7 @@ CommonCannonBall::CommonCannonBall(IWorld* world, const GSvector3& position, con
 {
 	name_ = "CommonCannonBall";
 	tag_ = "EnemyCannonBallTag";
-	mesh_ = Mesh_CannonBall;
+	mesh_ = Mesh_EnemyCannonBall;
 
 	GSvector3 relative_position = destination - position;
 	velocity_ = relative_position / CannonVelocityFactor;

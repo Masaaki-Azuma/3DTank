@@ -14,7 +14,7 @@ BounceCannonBall::BounceCannonBall(IWorld* world, const GSvector3& position, con
 {
 	name_ = "BounceCannonBall";
 	tag_ = "EnemyCannonBallTag";
-	mesh_ = Mesh_CannonBall;
+	mesh_ = Mesh_EnemyCannonBall;
 
 	GSvector3 relative_position = destination - position;
 	velocity_ = relative_position / CannonVelocityFactor / 2;

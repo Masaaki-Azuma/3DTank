@@ -24,6 +24,8 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_PredictionEnemy, "Assets/Mesh/Tank/purple_tank.mshb");
 
 	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
+	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/player_cannon_ball.mshb");
+	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/enemy_cannon_ball.mshb");
 	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
 
 	gsLoadTexture(Texture_Background, "Assets/background.png");
@@ -40,7 +42,7 @@ void PlayScene::start()
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 
 	state_ = State::Introduction;
-	level_ = 6;
+	level_ = 1;
 	level_image_.initialize(level_);
 	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
