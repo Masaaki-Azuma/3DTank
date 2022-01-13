@@ -4,7 +4,7 @@
 
 const float HoldTime{ 30.0f }; //最低描画時間
 const GSvector2 ImageSize{ 540, 220 };
-const GSvector2 Acceleration{ 0.0f, 0.5f };
+const GSvector2 Acceleration{ 0.0f, 0.8f };
 
 void MissImage::initialize()
 {
@@ -17,8 +17,9 @@ void MissImage::initialize()
 void MissImage::update(float delta_time)
 {
 	timer_ = std::min(timer_ + delta_time, HoldTime);
+	//徐々に画像が下へ落下
 	position_ += velocity_ * delta_time;
-	//決定キーでクリア演出を終了し次へ
+	//決定キーでミス演出を終了し次へ
 	if (gsGetKeyTrigger(GKEY_Z) && timer_ >= HoldTime) {
 		is_end_ = true;
 	}
@@ -32,7 +33,7 @@ void MissImage::update(float delta_time)
 void MissImage::draw() const
 {
 	const static GSvector2 center{ ImageSize / 2 };
-	gsDrawSprite2D(Texture_Miss, &position_, NULL, &center, NULL, NULL, NULL);
+	gsDrawSprite2D(Texture_Miss, &position_, NULL, &center, NULL, NULL, 5.0f);
 }
 
 bool MissImage::is_end() const

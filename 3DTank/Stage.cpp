@@ -33,7 +33,6 @@ void Stage::load(int stage)
 	file_name += std::to_string(stage);
 	file_name += ".oct";
 	gsLoadOctree(collider_, file_name.c_str());
-	
 }
 
 void Stage::clear()

@@ -3,7 +3,7 @@
 #include "Screen.h"
 #include "Assets.h"
 
-const float HoldTime{ 60.0f }; //Å’á•`‰æŠÔ
+const float HoldTime{ 30.0f }; //Å’á•`‰æŠÔ
 const GSvector2 ImageSize{ 840,220 };
 
 
