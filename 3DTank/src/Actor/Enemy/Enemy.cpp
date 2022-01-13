@@ -1,9 +1,8 @@
 #include "Enemy.h"
-#include "IWorld.h"
-#include "Stage.h"
-#include "Line.h"
-//#include "CannonBall.h"
-#include "CommonCannonBall.h"
+#include "PlayScene/IWorld.h"
+#include "PlayScene/Stage.h"
+#include "Figure/Line.h"
+#include "../CannonBall/CommonCannonBall.h"
 #include "Assets.h"
 
 const float Gravity{ -0.02f };                     //èdóÕâ¡ë¨ìx

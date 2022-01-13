@@ -1,7 +1,7 @@
 #ifndef LEVEL_IMAGE_H_
 #define LEVEL_IMAGE_H_
 
-#include "NumberTexture.h"
+#include "Util/NumberTexture.h"
 
 //レベル情報演出を管理するクラス。ミニシーン
 class LevelImage

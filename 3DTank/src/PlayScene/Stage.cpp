@@ -1,7 +1,7 @@
 #include "Stage.h"
 #include <string>
-#include "BoundingSphere.h"
-#include "Line.h"
+#include "Figure/BoundingSphere.h"
+#include "Figure/Line.h"
 #include "Assets.h"
 
 //‚Ç‚ÌID‚ð—p‚¢‚Ä•`‰æ‚·‚é‚Ì‚©‚ðŠo‚¦‚Ä‚¨‚­

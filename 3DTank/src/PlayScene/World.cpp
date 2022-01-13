@@ -1,7 +1,6 @@
 #include "World.h"
 #include <GSeffect.h>
 #include "CameraFixedPoint.h"
-#include "Player.h"
 #include "LevelImage.h"
 #include "ClearImage.h"
 #include "Stage.h"

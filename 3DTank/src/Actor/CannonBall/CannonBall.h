@@ -1,7 +1,7 @@
 #ifndef CANNON_BALL_H_
 #define CANNON_BALL_H_
 
-#include "Actor.h"
+#include "../Actor.h"
 
 //タンクが撃つ砲丸クラス
 class CannonBall : public Actor

@@ -1,10 +1,9 @@
 #include "Player.h"
-#include "CannonBall.h"
-#include "PlayerCannonBall.h"
+#include "CannonBall/PlayerCannonBall.h"
 #include "TargetSign.h"
-#include "IWorld.h"
-#include "Line.h"
-#include "Stage.h"
+#include "PlayScene/IWorld.h"
+#include "Figure/Line.h"
+#include "PlayScene/Stage.h"
 #include "Assets.h"
 
 const float MoveSpeed{ 0.2f };

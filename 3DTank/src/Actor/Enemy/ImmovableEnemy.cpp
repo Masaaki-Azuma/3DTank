@@ -1,6 +1,5 @@
 #include "ImmovableEnemy.h"
-#include "IWorld.h"
-#include "CannonBall.h"
+#include "PlayScene/IWorld.h"
 #include "Assets.h"
 
 const float EnemyHeight{ 2.0f };  //‹«ŠE‹…’†S‚Ì‚‚³

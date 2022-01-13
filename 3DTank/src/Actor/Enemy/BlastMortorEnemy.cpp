@@ -1,6 +1,6 @@
 #include "BlastMortorEnemy.h"
-#include "IWorld.h"
-#include "BlastCannonBall.h"
+#include "PlayScene/IWorld.h"
+#include "../CannonBall/BlastCannonBall.h"
 #include "Assets.h"
 
 const float EnemyHeight{ 2.0f };  //‹«ŠE‹…’†S‚Ì‚‚³

@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;C:\GitProjects\3DTankGit\3DTank\src;$(IncludePath)</IncludePath>
     <LibraryPath>C:\gslib_2021\lib;C:\gseffect_2021\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;C:\GitProjects\3DTankGit\3DTank\src;$(IncludePath)</IncludePath>
     <LibraryPath>C:\gslib_2021\lib;C:\gseffect_2021\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;C:\GitProjects\3DTankGit\3DTank\src;$(IncludePath)</IncludePath>
     <LibraryPath>C:\gslib_2021\lib;C:\gseffect_2021\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\gslib_2021\inc;C:\gseffect_2021\inc;C:\GitProjects\3DTankGit\3DTank\src;$(IncludePath)</IncludePath>
     <LibraryPath>C:\gslib_2021\lib;C:\gseffect_2021\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -147,96 +147,96 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="ActorGenerator.cpp" />
-    <ClCompile Include="ActorManager.cpp" />
-    <ClCompile Include="Blast.cpp" />
-    <ClCompile Include="BlastCannonBall.cpp" />
-    <ClCompile Include="BlastMortorEnemy.cpp" />
-    <ClCompile Include="BounceCannonBall.cpp" />
-    <ClCompile Include="BounceEnemy.cpp" />
-    <ClCompile Include="BoundingSphere.cpp" />
-    <ClCompile Include="CameraFixedPoint.cpp" />
-    <ClCompile Include="CannonBall.cpp" />
-    <ClCompile Include="ChaseEnemy.cpp" />
-    <ClCompile Include="ClearImage.cpp">
+    <ClCompile Include="src\Actor\Actor.cpp" />
+    <ClCompile Include="src\PlayScene\ActorGenerator.cpp" />
+    <ClCompile Include="src\PlayScene\ActorManager.cpp" />
+    <ClCompile Include="src\Actor\Blast.cpp" />
+    <ClCompile Include="src\Actor\CannonBall\BlastCannonBall.cpp" />
+    <ClCompile Include="src\Actor\Enemy\BlastMortorEnemy.cpp" />
+    <ClCompile Include="src\Actor\CannonBall\BounceCannonBall.cpp" />
+    <ClCompile Include="src\Actor\Enemy\BounceEnemy.cpp" />
+    <ClCompile Include="src\Figure\BoundingSphere.cpp" />
+    <ClCompile Include="src\PlayScene\CameraFixedPoint.cpp" />
+    <ClCompile Include="src\Actor\CannonBall\CannonBall.cpp" />
+    <ClCompile Include="src\Actor\Enemy\ChaseEnemy.cpp" />
+    <ClCompile Include="src\PlayScene\ClearImage.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CommonCannonBall.cpp" />
-    <ClCompile Include="CsvReader.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Fade.cpp" />
-    <ClCompile Include="ImmovableEnemy.cpp" />
-    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="src\Actor\CannonBall\CommonCannonBall.cpp" />
+    <ClCompile Include="src\Util\CsvReader.cpp" />
+    <ClCompile Include="src\Actor\Enemy\Enemy.cpp" />
+    <ClCompile Include="src\Fade.cpp" />
+    <ClCompile Include="src\Actor\Enemy\ImmovableEnemy.cpp" />
+    <ClCompile Include="src\Figure\Line.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MissImage.cpp" />
-    <ClCompile Include="MortorEnemy.cpp" />
-    <ClCompile Include="NumberTexture.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerCannonBall.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="PredictionEnemy.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="ReflectionEnemy.cpp" />
-    <ClCompile Include="SceneCover.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="LevelImage.cpp" />
-    <ClCompile Include="TargetSign.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="TutorialScene.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="src\PlayScene\MissImage.cpp" />
+    <ClCompile Include="src\Actor\Enemy\MortorEnemy.cpp" />
+    <ClCompile Include="src\Util\NumberTexture.cpp" />
+    <ClCompile Include="src\Actor\Player.cpp" />
+    <ClCompile Include="src\Actor\CannonBall\PlayerCannonBall.cpp" />
+    <ClCompile Include="src\PlayScene\PlayScene.cpp" />
+    <ClCompile Include="src\Actor\Enemy\PredictionEnemy.cpp" />
+    <ClCompile Include="src\Figure\Ray.cpp" />
+    <ClCompile Include="src\Actor\Enemy\ReflectionEnemy.cpp" />
+    <ClCompile Include="src\SceneCover.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\PlayScene\Stage.cpp" />
+    <ClCompile Include="src\PlayScene\LevelImage.cpp" />
+    <ClCompile Include="src\Actor\TargetSign.cpp" />
+    <ClCompile Include="src\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="src\TutorialScene\TutorialScene.cpp" />
+    <ClCompile Include="src\PlayScene\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="ActorGenerator.h" />
-    <ClInclude Include="ActorManager.h" />
-    <ClInclude Include="Assets.h" />
-    <ClInclude Include="Blast.h" />
-    <ClInclude Include="BlastCannonBall.h" />
-    <ClInclude Include="BlastMortorEnemy.h" />
-    <ClInclude Include="BounceCannonBall.h" />
-    <ClInclude Include="BounceEnemy.h" />
-    <ClInclude Include="BoundingSphere.h" />
-    <ClInclude Include="CameraFixedPoint.h" />
-    <ClInclude Include="CannonBall.h" />
-    <ClInclude Include="ChaseEnemy.h" />
-    <ClInclude Include="ClearImage.h">
+    <ClInclude Include="src\Actor\Actor.h" />
+    <ClInclude Include="src\PlayScene\ActorGenerator.h" />
+    <ClInclude Include="src\PlayScene\ActorManager.h" />
+    <ClInclude Include="src\Assets.h" />
+    <ClInclude Include="src\Actor\Blast.h" />
+    <ClInclude Include="src\Actor\CannonBall\BlastCannonBall.h" />
+    <ClInclude Include="src\Actor\Enemy\BlastMortorEnemy.h" />
+    <ClInclude Include="src\Actor\CannonBall\BounceCannonBall.h" />
+    <ClInclude Include="src\Actor\Enemy\BounceEnemy.h" />
+    <ClInclude Include="src\Figure\BoundingSphere.h" />
+    <ClInclude Include="src\PlayScene\CameraFixedPoint.h" />
+    <ClInclude Include="src\Actor\CannonBall\CannonBall.h" />
+    <ClInclude Include="src\Actor\Enemy\ChaseEnemy.h" />
+    <ClInclude Include="src\PlayScene\ClearImage.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="CommonCannonBall.h" />
-    <ClInclude Include="CsvReader.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Fade.h" />
-    <ClInclude Include="ImmovableEnemy.h" />
-    <ClInclude Include="IScene.h" />
-    <ClInclude Include="IWorld.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="MissImage.h" />
-    <ClInclude Include="MortorEnemy.h" />
-    <ClInclude Include="NullScene.h" />
-    <ClInclude Include="NumberTexture.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerCannonBall.h" />
-    <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="PredictionEnemy.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="ReflectionEnemy.h" />
-    <ClInclude Include="SceneCover.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="Stage.h" />
-    <ClInclude Include="LevelImage.h" />
-    <ClInclude Include="TargetSign.h" />
-    <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="TutorialScene.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="src\Actor\CannonBall\CommonCannonBall.h" />
+    <ClInclude Include="src\Util\CsvReader.h" />
+    <ClInclude Include="src\Actor\Enemy\Enemy.h" />
+    <ClInclude Include="src\Fade.h" />
+    <ClInclude Include="src\Actor\Enemy\ImmovableEnemy.h" />
+    <ClInclude Include="src\IScene.h" />
+    <ClInclude Include="src\PlayScene\IWorld.h" />
+    <ClInclude Include="src\Figure\Line.h" />
+    <ClInclude Include="src\PlayScene\MissImage.h" />
+    <ClInclude Include="src\Actor\Enemy\MortorEnemy.h" />
+    <ClInclude Include="src\NullScene.h" />
+    <ClInclude Include="src\Util\NumberTexture.h" />
+    <ClInclude Include="src\Actor\Player.h" />
+    <ClInclude Include="src\Actor\CannonBall\PlayerCannonBall.h" />
+    <ClInclude Include="src\PlayScene\PlayScene.h" />
+    <ClInclude Include="src\Actor\Enemy\PredictionEnemy.h" />
+    <ClInclude Include="src\Figure\Ray.h" />
+    <ClInclude Include="src\Actor\Enemy\ReflectionEnemy.h" />
+    <ClInclude Include="src\SceneCover.h" />
+    <ClInclude Include="src\SceneManager.h" />
+    <ClInclude Include="src\Screen.h" />
+    <ClInclude Include="src\PlayScene\Stage.h" />
+    <ClInclude Include="src\PlayScene\LevelImage.h" />
+    <ClInclude Include="src\Actor\TargetSign.h" />
+    <ClInclude Include="src\TitleScene\TitleScene.h" />
+    <ClInclude Include="src\TutorialScene\TutorialScene.h" />
+    <ClInclude Include="src\PlayScene\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

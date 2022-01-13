@@ -4,7 +4,7 @@
 #include <gslib.h>
 #include <GStransform.h>
 #include <string>
-#include "BoundingSphere.h"
+#include "Figure/BoundingSphere.h"
 
 class IWorld;
 

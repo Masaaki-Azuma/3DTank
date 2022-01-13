@@ -1,6 +1,6 @@
 #include "BounceCannonBall.h"
-#include "IWorld.h"
-#include "Stage.h"
+#include "PlayScene/IWorld.h"
+#include "PlayScene/Stage.h"
 #include "Assets.h"
 
 const float Gravity{ -0.04f };

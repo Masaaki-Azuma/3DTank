@@ -1,6 +1,6 @@
 #include "BounceEnemy.h"
-#include "IWorld.h"
-#include "BounceCannonBall.h"
+#include "PlayScene/IWorld.h"
+#include "../CannonBall/BounceCannonBall.h"
 #include "Assets.h"
 
 const float EnemyHeight{ 2.0f };  //‹«ŠE‹…’†S‚Ì‚‚³

@@ -1,14 +1,14 @@
 #include "ActorGenerator.h"
 #include "IWorld.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "ImmovableEnemy.h"
-#include "ReflectionEnemy.h"
-#include "MortorEnemy.h"
-#include "ChaseEnemy.h"
-#include "BounceEnemy.h"
-#include "BlastMortorEnemy.h"
-#include "PredictionEnemy.h"
+#include "Actor/Player.h"
+#include "Actor/Enemy/Enemy.h"
+#include "Actor/Enemy/ImmovableEnemy.h"
+#include "Actor/Enemy/ReflectionEnemy.h"
+#include "Actor/Enemy/MortorEnemy.h"
+#include "Actor/Enemy/ChaseEnemy.h"
+#include "Actor/Enemy/BounceEnemy.h"
+#include "Actor/Enemy/BlastMortorEnemy.h"
+#include "Actor/Enemy/PredictionEnemy.h"
 
 ActorGenerator::ActorGenerator(IWorld* world):
 	world_{world}

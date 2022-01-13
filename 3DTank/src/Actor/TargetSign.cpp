@@ -1,6 +1,6 @@
 #include "TargetSign.h"
-#include "IWorld.h"
-#include "Stage.h"
+#include "PlayScene/IWorld.h"
+#include "PlayScene/Stage.h"
 #include "Assets.h"
 
 const float MoveSpeed{ 0.5f };     //ˆÚ“®‘¬‚³
