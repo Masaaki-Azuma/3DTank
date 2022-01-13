@@ -10,7 +10,11 @@ public:
 	TargetSign(IWorld* world, const GSvector3& position, const Actor& owner);
 	void update(float delta_time) override;
 	void draw() const override;
-
+private:
+	//ˆÚ“®
+	void move(float delta_time);
+	//ˆÊ’u‚ğ•Ç‚Ì’†“à‘¤‚É§ŒÀ
+	void collide_wall(const GSvector3& position);
 private:
 	GSvector3 offset_;  //Æ€‚Ì‚¿å‚©‚ç‚Ì‘Š‘ÎˆÊ’u
 	const Actor& owner_;
