@@ -52,4 +52,10 @@ enum
 	Octree_Mesh,
 	Octree_Collide,
 };
+
+//エフェクト
+enum
+{
+	Effect_Smoke,
+};
 #endif//!ASSETS_H_

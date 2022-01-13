@@ -1,4 +1,5 @@
 #include <GSgame.h>
+#include <GSeffect.h>
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "PlayScene.h"
@@ -16,6 +17,8 @@ public:
 	}
 	void start() override
 	{
+		//エフェクトの初期化
+		gsInitEffect();
 		//シーンをまたいで用いるリソースを読み込み
 		gsLoadTexture(Texture_RedCurtain, "Assets/red_curtain.png");
 
@@ -36,6 +39,8 @@ public:
 	void end() override
 	{
 		gsDeleteTexture(Texture_RedCurtain);
+		//エフェクトの終了
+		gsFinishEffect();
 	}
 
 private:

@@ -1,5 +1,6 @@
 #include "PlayScene.h"
 #include <gslib.h>
+#include <GSeffect.h>
 #include "CameraFixedPoint.h"
 #include "Stage.h"
 #include "Assets.h"
@@ -35,6 +36,8 @@ void PlayScene::start()
 	gsLoadTexture(Texture_Number, "Assets/number.png");
 	gsLoadTexture(Texture_SilhouetteBackground, "Assets/silhouetteBackground.png");
 
+	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
+
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 0.0f, 15.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
@@ -42,7 +45,7 @@ void PlayScene::start()
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 
 	state_ = State::Introduction;
-	level_ = 1;
+	level_ = 0;
 	level_image_.initialize(level_);
 	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
@@ -51,11 +54,12 @@ void PlayScene::start()
 
 void PlayScene::update(float delta_time)
 {
+	//シーンの状態によって分岐
 	switch (state_) {
 	case State::Introduction: update_introduction(delta_time); break;
-	case State::Battle: update_battle(delta_time); break;
-	case State::LevelClear: update_level_clear(delta_time); break;
-	case State::LevelMiss: update_level_miss(delta_time); break;
+	case State::Battle:       update_battle(delta_time);       break;
+	case State::LevelClear:   update_level_clear(delta_time);  break;
+	case State::LevelMiss:    update_level_miss(delta_time);   break;
 	}
 }
 
@@ -64,18 +68,22 @@ void PlayScene::draw() const
 	//シーン内オブジェクトの描画
 	world_.draw();
 
+	//バトル状態なら処理を打ち切り
 	if (state_ == State::Battle) return;
 
-	if (state_ == State::Introduction) {
+	//シーンの状態に応じて、追加描画
+	switch (state_) {
+	case State::Introduction:
 		fade_.draw();
 		level_image_.draw();
-	}
-	else if (state_ == State::LevelClear) {
+		break;
+	case State::LevelClear:
 		clear_image_.draw();
 		fade_.draw();
-	}
-	else if (state_ == State::LevelMiss) {
+		break;
+	case State::LevelMiss:
 		miss_image_.draw();
+		break;
 	}
 }
 

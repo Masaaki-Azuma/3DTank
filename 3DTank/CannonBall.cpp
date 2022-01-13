@@ -1,4 +1,5 @@
 #include "CannonBall.h"
+#include <GSeffect.h>
 #include "IWorld.h"
 #include "Stage.h"
 #include "Assets.h"
@@ -53,6 +54,8 @@ void CannonBall::collide_field()
 {
 	//’nŒ`‚É“–‚½‚Á‚½‚çíœ
 	if (world_->stage().collide(collider())) {
+		GSvector3 position = transform_.position();
+		gsPlayEffect(Effect_Smoke, &position);
 		die();
 	}
 }

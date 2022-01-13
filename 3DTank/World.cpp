@@ -1,4 +1,5 @@
 #include "World.h"
+#include <GSeffect.h>
 #include "CameraFixedPoint.h"
 #include "Player.h"
 #include "LevelImage.h"
@@ -12,6 +13,8 @@ void World::update(float delta_time)
 	actor_manager_.update(delta_time);
 	//全アクターの衝突判定
 	actor_manager_.collide();
+	//エフェクトの更新
+	gsUpdateEffect(delta_time);
 	//死亡しているアクターの削除
 	actor_manager_.remove();
 }
@@ -20,12 +23,16 @@ void World::draw() const
 {
 	//カメラの描画
 	camera_->draw();
+	//エフェクト用のカメラを設定
+	gsSetEffectCamera();
 	//ステージの描画
 	stage_->draw();
 	//全アクターの描画
 	actor_manager_.draw();
 	//全GUIの描画
 	actor_manager_.draw_gui();
+	//エフェクトの描画
+	gsDrawEffect();
 }
 
 void World::clear()
