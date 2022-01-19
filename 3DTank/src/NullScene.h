@@ -3,6 +3,7 @@
 
 #include "IScene.h"
 
+//何もしないシーン【ヌルパターン】
 class NullScene : public IScene
 {
 public:

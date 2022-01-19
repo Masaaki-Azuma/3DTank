@@ -80,7 +80,7 @@
     <ClCompile Include="src\Figure\BoundingSphere.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="src\Fade.cpp">
+    <ClCompile Include="src\PlayScene\Fade.cpp">
       <Filter>Scene\PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="src\PlayScene\LevelImage.cpp">
@@ -193,7 +193,7 @@
     <ClInclude Include="src\Figure\BoundingSphere.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fade.h">
+    <ClInclude Include="src\PlayScene\Fade.h">
       <Filter>Scene\PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="src\PlayScene\LevelImage.h">

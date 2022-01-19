@@ -3,6 +3,7 @@
 
 #include <gslib.h>
 
+//
 class Fade
 {
 private:

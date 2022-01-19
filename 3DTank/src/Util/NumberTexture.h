@@ -4,7 +4,7 @@
 #include <gslib.h>
 #include <string>
 
-// ナンバテクスチャ
+//数字テクスチャクラス
 class NumberTexture
 {
 public:

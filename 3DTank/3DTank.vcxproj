@@ -168,7 +168,7 @@
     <ClCompile Include="src\Actor\CannonBall\CommonCannonBall.cpp" />
     <ClCompile Include="src\Util\CsvReader.cpp" />
     <ClCompile Include="src\Actor\Enemy\Enemy.cpp" />
-    <ClCompile Include="src\Fade.cpp" />
+    <ClCompile Include="src\PlayScene\Fade.cpp" />
     <ClCompile Include="src\Actor\Enemy\ImmovableEnemy.cpp" />
     <ClCompile Include="src\Figure\Line.cpp" />
     <ClCompile Include="main.cpp" />
@@ -213,7 +213,7 @@
     <ClInclude Include="src\Actor\CannonBall\CommonCannonBall.h" />
     <ClInclude Include="src\Util\CsvReader.h" />
     <ClInclude Include="src\Actor\Enemy\Enemy.h" />
-    <ClInclude Include="src\Fade.h" />
+    <ClInclude Include="src\PlayScene\Fade.h" />
     <ClInclude Include="src\Actor\Enemy\ImmovableEnemy.h" />
     <ClInclude Include="src\IScene.h" />
     <ClInclude Include="src\PlayScene\IWorld.h" />

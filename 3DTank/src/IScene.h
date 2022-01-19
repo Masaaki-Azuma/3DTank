@@ -3,6 +3,7 @@
 
 #include <string>
 
+//シーン抽象インターフェース
 class IScene
 {
 public:

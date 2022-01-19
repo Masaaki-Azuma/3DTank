@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-// CSVリーダークラス
+// CSV読み込みクラス
 class CsvReader
 {
 public:

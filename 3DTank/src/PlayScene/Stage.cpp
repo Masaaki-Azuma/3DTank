@@ -20,9 +20,6 @@ void Stage::load(int stage)
 {
 	//既存のステージを削除する
 	clear();
-	//stageに応じたステージを読み込む
-	/*gsLoadOctree(mesh_, "Assets/stage_mesh.oct");
-	gsLoadOctree(collider_, "Assets/stage_collide.oct");*/
 	//ステージメッシュをロード
 	std::string file_name = "Assets/Stage/Mesh/stage_mesh";
 	file_name += std::to_string(stage);
@@ -44,6 +41,7 @@ void Stage::clear()
 
 void Stage::draw() const
 {
+	//背景の描画
 	gsDrawSprite2D(Texture_Background, NULL, NULL, NULL, NULL, NULL, NULL);
 	//地形の描画
 	gsDrawOctree(mesh_);

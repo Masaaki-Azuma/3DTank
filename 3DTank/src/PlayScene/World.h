@@ -7,6 +7,7 @@
 class CameraFixedPoint;
 class Stage;
 
+//ワールドクラス、仲介役クラス
 class World : public IWorld
 {
 public:

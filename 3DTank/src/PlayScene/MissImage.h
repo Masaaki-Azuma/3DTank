@@ -4,6 +4,7 @@
 #include <GSgame.h>
 
 //HACK:他のミニシーンと処理かぶり
+//ステージミス演出クラス
 class MissImage
 {
 public:
