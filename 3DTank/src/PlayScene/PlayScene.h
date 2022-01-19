@@ -56,7 +56,8 @@ private:
     State state_;
     //現在ステージ番号
     int level_;
-
+    //終了フラグ
+    bool is_end_;
 };
 #endif//!PLAY_SCENE_H_
 

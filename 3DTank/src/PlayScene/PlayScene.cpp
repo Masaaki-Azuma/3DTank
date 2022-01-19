@@ -5,8 +5,12 @@
 #include "Stage.h"
 #include "Assets.h"
 
+const int MaxLevel{ 10 };
+
 PlayScene::PlayScene():
-	fade_{Texture_SilhouetteBackground}
+	fade_{Texture_SilhouetteBackground},
+	level_{0},
+	is_end_{false}
 {
 }
 
@@ -15,7 +19,6 @@ void PlayScene::start()
 	////リソースの読み込み(ステージ間で共通して使う物のみ)
 	gsLoadMesh(Mesh_Player, "Assets/Mesh/Tank/blue_tank.mshb");
 
-	//gsLoadMesh(Mesh_Enemy, "Assets/Mesh/Tank/red_tank.mshb");
 	gsLoadMesh(Mesh_ImmovableEnemy, "Assets/Mesh/Tank/lightGreen_tank.mshb");
 	gsLoadMesh(Mesh_ReflectionEnemy, "Assets/Mesh/Tank/darkGreen_tank.mshb");
 	gsLoadMesh(Mesh_MortorEnemy, "Assets/Mesh/Tank/lightOrange_tank.mshb");
@@ -40,14 +43,13 @@ void PlayScene::start()
 
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
-	//world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 0.0f, 15.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//ステージの作成
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
-
+	//状態を初期化
 	state_ = State::Introduction;
-	level_ = 0;
+	level_ = 9;
+	is_end_ = false;
 	level_image_.initialize(level_);
-	clear_image_.initialize();
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
 	world_.load_stage(level_);
 }
@@ -89,6 +91,9 @@ void PlayScene::draw() const
 
 void PlayScene::end()
 {
+	//TODO:エフェクト停止関係関数が信用ならない
+	//再生中のエフェクトを削除
+	gsStopAllEffects();
 	//ワールドの管理物を消去
 	world_.clear();
 	//リソースの解放
@@ -111,13 +116,15 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_Miss);
 	gsDeleteTexture(Texture_Number);
 	gsDeleteTexture(Texture_SilhouetteBackground);
+
+	gsDeleteEffect(Effect_Smoke);
 }
 
 bool PlayScene::is_end() const
 {
 	//プレイヤーが存在していなければ(nullptr)、またはステージが終了したらシーン終了
 	//return !world_.find_actor("Player");
-	return false;
+	return is_end_;
 }
 
 const std::string PlayScene::next() const
@@ -167,6 +174,8 @@ void PlayScene::update_level_clear(float delta_time)
 		//フェードアウトし終わったか？
 		if (fade_.is_hiding()) {
 			state_ = State::Introduction;
+			//再生中のエフェクトを削除
+			gsStopEffect(Effect_Smoke);
 			//レベルを1進める
 			++level_;
 			level_image_.initialize(level_);
@@ -182,6 +191,10 @@ void PlayScene::update_level_clear(float delta_time)
 	clear_image_.update(delta_time);
 	//クリア画面が終了したら、フェードアウト
 	if (clear_image_.is_end()) {
+		if (level_ + 1 >= MaxLevel) {
+			is_end_ = true;
+			return;
+		}
 		fade_.fade_out();
 	}
 }
@@ -192,6 +205,8 @@ void PlayScene::update_level_miss(float delta_time)
 	miss_image_.update(delta_time);
 	if (miss_image_.is_end()) {
 		state_ = State::Introduction;
+		//再生中のエフェクトを削除
+		gsStopAllEffects();
 		//現在レベルをリスタート
 		level_image_.initialize(level_);
 		//次のレベルをロード
