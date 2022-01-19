@@ -10,7 +10,6 @@ SceneManager::SceneManager():
 
 SceneManager::~SceneManager()
 {
-	clear();
 }
 
 void SceneManager::update(float delta_time)

@@ -7,6 +7,7 @@
 
 class IScene;
 
+//シーン管理クラス
 class SceneManager
 {
 public:
@@ -21,9 +22,9 @@ public:
 	void add(std::string name, IScene* scene);
 	//シーンの変更
 	void change(std::string name);
-private:
 	//全てのシーンの削除
 	void clear();
+private:
 	//シーンの終了
 	void end();
 public:
