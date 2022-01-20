@@ -75,6 +75,7 @@ void PauseScene::end()
     gsDeleteTexture(Texture_Pause_Board);
     gsDeleteTexture(Texture_Pause_ReturnToGame);
     gsDeleteTexture(Texture_Pause_ReturnToTitle);
+    gsDeleteTexture(Texture_Cursor);
 }
 
 bool PauseScene::is_end() const

@@ -27,7 +27,6 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_BounceEnemy, "Assets/Mesh/Tank/yellow_tank.mshb");
 	gsLoadMesh(Mesh_PredictionEnemy, "Assets/Mesh/Tank/purple_tank.mshb");
 
-	gsLoadMesh(Mesh_CannonBall, "Assets/cannon_ball.mshb");
 	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/player_cannon_ball.mshb");
 	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/enemy_cannon_ball.mshb");
 	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
@@ -47,7 +46,7 @@ void PlayScene::start()
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 	//状態を初期化
 	state_ = State::Introduction;
-	level_ = 9;
+	level_ = 0;
 	is_end_ = false;
 	level_image_.initialize(level_);
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
@@ -111,7 +110,8 @@ void PlayScene::end()
 	gsDeleteMesh(Mesh_BounceEnemy);
 	gsDeleteMesh(Mesh_PredictionEnemy);
 
-	gsDeleteMesh(Mesh_CannonBall);
+	gsDeleteMesh(Mesh_PlayerCannonBall);
+	gsDeleteMesh(Mesh_EnemyCannonBall);
 	gsDeleteMesh(Mesh_TargetSign);
 
 	gsDeleteTexture(Texture_Background);
@@ -126,7 +126,6 @@ void PlayScene::end()
 
 bool PlayScene::is_end() const
 {
-	//プレイヤーが存在していなければ(nullptr)、またはステージが終了したらシーン終了
 	return is_end_;
 }
 
@@ -194,8 +193,6 @@ void PlayScene::update_level_clear(float delta_time)
 		//フェードアウトし終わったか？
 		if (fade_.is_hiding()) {
 			state_ = State::Introduction;
-			//再生中のエフェクトを削除
-			gsStopEffect(Effect_Smoke);
 			//レベルを1進める
 			++level_;
 			level_image_.initialize(level_);
@@ -226,8 +223,6 @@ void PlayScene::update_level_miss(float delta_time)
 	miss_image_.update(delta_time);
 	if (miss_image_.is_end()) {
 		state_ = State::Introduction;
-		//再生中のエフェクトを削除
-		gsStopAllEffects();
 		//現在レベルをリスタート
 		level_image_.initialize(level_);
 		//次のレベルをロード

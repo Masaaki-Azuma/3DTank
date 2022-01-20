@@ -26,15 +26,6 @@
     <ClCompile Include="src\Actor\Enemy\BounceEnemy.cpp">
       <Filter>Actor\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="src\Actor\CannonBall\BlastCannonBall.cpp">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Actor\CannonBall\BounceCannonBall.cpp">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Actor\Blast.cpp">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClCompile>
     <ClCompile Include="src\Actor\Actor.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
@@ -49,9 +40,6 @@
     </ClCompile>
     <ClCompile Include="src\PlayScene\ClearImage.cpp">
       <Filter>Scene\PlayScene\MiniScene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Actor\CannonBall\CommonCannonBall.cpp">
-      <Filter>Actor\Enemy\CannonBall</Filter>
     </ClCompile>
     <ClCompile Include="src\Actor\Player.cpp">
       <Filter>Actor\Player</Filter>
@@ -105,6 +93,18 @@
     <ClCompile Include="src\PlayScene\PauseScene\PauseScene.cpp">
       <Filter>Scene\PlayScene\PauseScene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Actor\Blast.cpp">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\CannonBall\BlastCannonBall.cpp">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\CannonBall\BounceCannonBall.cpp">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\CannonBall\CommonCannonBall.cpp">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PlayScene\CameraFixedPoint.h" />
@@ -132,15 +132,6 @@
     <ClInclude Include="src\Actor\Enemy\BounceEnemy.h">
       <Filter>Actor\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="src\Actor\CannonBall\BlastCannonBall.h">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Actor\CannonBall\BounceCannonBall.h">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Actor\Blast.h">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClInclude>
     <ClInclude Include="src\Actor\Actor.h">
       <Filter>Actor</Filter>
     </ClInclude>
@@ -166,9 +157,6 @@
       <Filter>Scene\PlayScene\MiniScene</Filter>
     </ClInclude>
     <ClInclude Include="src\Screen.h" />
-    <ClInclude Include="src\Actor\CannonBall\CommonCannonBall.h">
-      <Filter>Actor\Enemy\CannonBall</Filter>
-    </ClInclude>
     <ClInclude Include="src\Actor\Player.h">
       <Filter>Actor\Player</Filter>
     </ClInclude>
@@ -220,6 +208,18 @@
     <ClInclude Include="src\PlayScene\MissImage.h" />
     <ClInclude Include="src\PlayScene\PauseScene\PauseScene.h">
       <Filter>Scene\PlayScene\PauseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Blast.h">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\CannonBall\BlastCannonBall.h">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\CannonBall\BounceCannonBall.h">
+      <Filter>Actor\Enemy\CannonBall</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\CannonBall\CommonCannonBall.h">
+      <Filter>Actor\Enemy\CannonBall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
