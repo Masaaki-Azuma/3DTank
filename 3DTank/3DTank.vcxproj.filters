@@ -102,6 +102,9 @@
       <Filter>Actor</Filter>
     </ClCompile>
     <ClCompile Include="src\PlayScene\MissImage.cpp" />
+    <ClCompile Include="src\PlayScene\PauseScene\PauseScene.cpp">
+      <Filter>Scene\PlayScene\PauseScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PlayScene\CameraFixedPoint.h" />
@@ -215,6 +218,9 @@
       <Filter>Actor</Filter>
     </ClInclude>
     <ClInclude Include="src\PlayScene\MissImage.h" />
+    <ClInclude Include="src\PlayScene\PauseScene\PauseScene.h">
+      <Filter>Scene\PlayScene\PauseScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actor">
@@ -264,6 +270,9 @@
     </Filter>
     <Filter Include="SceneManager">
       <UniqueIdentifier>{df00a515-d2a9-42f4-91e5-d68619492377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PlayScene\PauseScene">
+      <UniqueIdentifier>{75429f1c-7f0f-4d9b-a970-17f4c92d76cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

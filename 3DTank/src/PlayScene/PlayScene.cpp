@@ -70,6 +70,9 @@ void PlayScene::draw() const
 	//シーン内オブジェクトの描画
 	world_.draw();
 
+	if (!pause_.is_end()) {
+		pause_.draw();
+	}
 	//バトル状態なら処理を打ち切り
 	if (state_ == State::Battle) return;
 
@@ -91,9 +94,10 @@ void PlayScene::draw() const
 
 void PlayScene::end()
 {
-	//TODO:エフェクト停止関係関数が信用ならない
 	//再生中のエフェクトを削除
 	gsStopAllEffects();
+	//ポーズシーンのリソースを解放
+	pause_.end();
 	//ワールドの管理物を消去
 	world_.clear();
 	//リソースの解放
@@ -123,7 +127,6 @@ void PlayScene::end()
 bool PlayScene::is_end() const
 {
 	//プレイヤーが存在していなければ(nullptr)、またはステージが終了したらシーン終了
-	//return !world_.find_actor("Player");
 	return is_end_;
 }
 
@@ -153,6 +156,22 @@ void PlayScene::update_introduction(float delta_time)
 
 void PlayScene::update_battle(float delta_time)
 {
+	/*ポーズ処理*/
+	//ポーズ中はポーズ画面のみを更新
+	if (!pause_.is_end()) {
+		pause_.update(delta_time);
+		if (pause_.is_end() && pause_.next() == "TitleScene") {
+			is_end_ = true;
+		}
+		return;
+	}
+	//ポーズキーでポーズ
+	if (gsGetKeyTrigger(GKEY_X) && pause_.is_end()) {
+		pause_.start();
+		return;
+	}
+
+	/*メインゲーム処理*/
 	//シーン内オブジェクトの更新
 	world_.update(delta_time);
 	//戦闘画面が終了したら、遷移
@@ -168,6 +187,7 @@ void PlayScene::update_battle(float delta_time)
 
 void PlayScene::update_level_clear(float delta_time)
 {
+	/*フェード処理*/
 	//フェードアウト中か？
 	if (fade_.is_running()) {
 		fade_.update(delta_time);
@@ -185,6 +205,7 @@ void PlayScene::update_level_clear(float delta_time)
 		return;
 	}
 
+	/*クリア画面処理*/
 	//シーン内オブジェクトは続けて更新
 	world_.update(delta_time);
 	//レベルクリア画面を更新

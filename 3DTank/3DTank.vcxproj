@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PlayScene\PauseScene\PauseScene.cpp" />
     <ClCompile Include="src\Actor\Actor.cpp" />
     <ClCompile Include="src\PlayScene\ActorGenerator.cpp" />
     <ClCompile Include="src\PlayScene\ActorManager.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="src\PlayScene\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PlayScene\PauseScene\PauseScene.h" />
     <ClInclude Include="src\Actor\Actor.h" />
     <ClInclude Include="src\PlayScene\ActorGenerator.h" />
     <ClInclude Include="src\PlayScene\ActorManager.h" />

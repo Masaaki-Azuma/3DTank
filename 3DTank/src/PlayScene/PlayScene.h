@@ -6,6 +6,7 @@
 #include "ClearImage.h"
 #include "LevelImage.h"
 #include "MissImage.h"
+#include "PauseScene/PauseScene.h"
 #include "Fade.h"
 
 //メインゲームプレイシーンクラス
@@ -50,6 +51,8 @@ private:
     ClearImage clear_image_;
     //ミス演出
     MissImage miss_image_;
+    //ポーズシーン
+    PauseScene pause_;
     //フェード演出
     Fade fade_;
     //画面状態
