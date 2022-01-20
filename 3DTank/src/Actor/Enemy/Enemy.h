@@ -19,6 +19,8 @@ protected:
 	virtual void shoot(float delta_time);
 	//弾を生成
 	virtual void generate_cannon_ball(const GSvector3& position, const GSvector3& destination);
+	//爆風エフェクトを生成
+	void generate_smoke();
 	//壁に衝突時の挙動
 	virtual void react_wall();
 private:
@@ -26,7 +28,6 @@ private:
 	void free_fall(float delta_time);
 	//地形との衝突判定
 	void collide_field();
-
 	//
 	void collide_actor(Actor& other);
 protected:

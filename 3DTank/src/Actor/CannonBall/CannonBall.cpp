@@ -22,6 +22,8 @@ void CannonBall::update(float delta_time)
 	move(delta_time);
 	//地形との衝突処理
 	collide_field();
+	//ステージ外で死亡
+	die_outside();
 }
 
 void CannonBall::draw() const
@@ -49,9 +51,22 @@ void CannonBall::collide_field()
 {
 	//地形に当たったら削除
 	if (world_->stage().collide(collider())) {
-		GSvector3 position = transform_.position();
-		gsPlayEffect(Effect_Smoke, &position);
+		generate_smoke();
 		die();
 	}
+}
+
+void CannonBall::die_outside()
+{
+	//一定高度を下回ったら削除
+	if (transform_.position().y <= -100.0f) {
+		die();
+	}
+}
+
+void CannonBall::generate_smoke()
+{
+	GSvector3 position = transform_.position();
+	gsPlayEffect(Effect_Smoke, &position);
 }
 

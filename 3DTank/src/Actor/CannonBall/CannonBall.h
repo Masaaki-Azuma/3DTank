@@ -19,6 +19,10 @@ protected:
     virtual void move(float delta_time) = 0;
     //地形との衝突処理
     virtual void collide_field();
+    //ステージ外の弾を消す
+    virtual void die_outside();
+    //爆風エフェクトを生成
+    void generate_smoke();
 private:
     //初速度を算出
     //void calculate_velocity(const GSvector3& position, const GSvector3& destination);

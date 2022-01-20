@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include <GSeffect.h>
 #include "PlayScene/IWorld.h"
 #include "PlayScene/Stage.h"
 #include "Figure/Line.h"
@@ -51,6 +52,7 @@ void Enemy::react(Actor& other)
 {
 	//Ž©‹@’e‚É“–‚½‚Á‚½‚çŽ€–S
 	if (other.tag() == "PlayerCannonBallTag") {
+		generate_smoke();
 		die();
 	}
 	else if(other.tag() == "PlayerTag" || other.tag() == "EnemyTag"){
@@ -90,6 +92,12 @@ void Enemy::shoot(float delta_time)
 void Enemy::generate_cannon_ball(const GSvector3& position, const GSvector3& destination)
 {
 	world_->add_actor(new CommonCannonBall{ world_, position, destination });
+}
+
+void Enemy::generate_smoke()
+{
+	GSvector3 position = transform_.position();
+	gsPlayEffect(Effect_Smoke, &position);
 }
 
 void Enemy::react_wall()

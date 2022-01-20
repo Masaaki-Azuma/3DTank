@@ -1,4 +1,5 @@
 #include "BounceCannonBall.h"
+#include <GSeffect.h>
 #include "PlayScene/IWorld.h"
 #include "PlayScene/Stage.h"
 #include "Assets.h"
@@ -45,9 +46,8 @@ void BounceCannonBall::collide_field()
 		bounce_count++;
 		//’n–Ê‚É3‰ñ’…‚¢‚½‚ç”š”­
 		if (bounce_count >= MaxBounceCount) {
+			generate_smoke();
 			die();
-			//”š”­”»’è‚ğ¶¬
-
 			return;
 		}
 		//’nŒ`‚É–„‚Ü‚ç‚È‚¢‚æ‚¤‰Ÿ‚µ–ß‚µ

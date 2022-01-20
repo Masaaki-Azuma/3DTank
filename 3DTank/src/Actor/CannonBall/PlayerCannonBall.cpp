@@ -22,6 +22,7 @@ void PlayerCannonBall::react(Actor& other)
 {
 	//©‹@’e‚ª“G‚É“–‚½‚Á‚½‚çÁ–Å
 	if (other.tag() == "EnemyTag") {
+		generate_smoke();
 		die();
 	}
 }

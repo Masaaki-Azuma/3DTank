@@ -21,6 +21,7 @@ void CommonCannonBall::react(Actor& other)
 {
 	//“G’e‚ª©‹@‚É“–‚½‚Á‚½‚çÁ–Å
 	if (other.tag() == "PlayerTag") {
+		generate_smoke();
 		die();
 	}
 }
