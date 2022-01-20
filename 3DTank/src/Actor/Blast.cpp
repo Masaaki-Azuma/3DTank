@@ -1,14 +1,19 @@
 #include "Blast.h"
+#include <GSeffect.h>
 #include "Assets.h"
 
-const float AnimationDuration{ 50.0f };
-const float CollisionDuration{ 25.0f };
+const float AnimationDuration{ 60.0f };
 Blast::Blast(const GSvector3& position)
 {
 	name_ = "Blast";
-	tag_ = "EnemyCannonBallTag";
-	collider_ = BoundingSphere{ 5.0f };
-	transform_.position(position);
+	tag_ = "EffectTag";
+	effect_handle_ =  gsPlayEffect(Effect_Smoke, &position);
+	//transform_.position(position);
+}
+
+Blast::~Blast()
+{
+	gsStopEffect(effect_handle_);
 }
 
 void Blast::update(float delta_time)
@@ -17,19 +22,5 @@ void Blast::update(float delta_time)
 	if (timer_ >= AnimationDuration) {
 		die();
 	}
-	else if (timer_ >= CollisionDuration) {
-		enable_collider_ = false;
-	}
 }
 
-void Blast::draw() const
-{
-	//ƒƒbƒVƒ…‚Ì•`‰æ
-	glPushMatrix();
-	glMultMatrixf(transform_.localToWorldMatrix());
-	gsDrawMesh(Mesh_CannonBall);
-	glPopMatrix();
-	//ForDebug
-	if (enable_collider_) collider().draw();
-	//!ForDebug
-}
