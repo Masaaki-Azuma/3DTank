@@ -2,6 +2,7 @@
 #include <GSeffect.h>
 #include "PlayScene/IWorld.h"
 #include "PlayScene/Stage.h"
+#include "../Blast.h"
 #include "Assets.h"
 
 //const float Gravity{ -0.02f };
@@ -66,7 +67,6 @@ void CannonBall::die_outside()
 
 void CannonBall::generate_smoke()
 {
-	GSvector3 position = transform_.position();
-	gsPlayEffect(Effect_Smoke, &position);
+	world_->add_actor(new Blast{ transform_.position() });
 }
 

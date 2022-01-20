@@ -1,7 +1,7 @@
 #include "ClearImage.h"
 #include "Assets.h"
 
-const float HoldTime{ 60.0f };
+const float HoldTime{ 120.0f };
 const float ScaleMaxTime{ HoldTime * 2 / 3 };
 const float SqScaleMaxTime{ ScaleMaxTime * ScaleMaxTime };
 const GSvector2 ImageSize{ 1080,320 };

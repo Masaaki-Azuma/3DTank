@@ -4,6 +4,7 @@
 #include "PlayScene/Stage.h"
 #include "Figure/Line.h"
 #include "../CannonBall/CommonCannonBall.h"
+#include "../Blast.h"
 #include "Assets.h"
 
 const float Gravity{ -0.02f };                     //d—Í‰Á‘¬“x
@@ -96,8 +97,7 @@ void Enemy::generate_cannon_ball(const GSvector3& position, const GSvector3& des
 
 void Enemy::generate_smoke()
 {
-	GSvector3 position = transform_.position();
-	gsPlayEffect(Effect_Smoke, &position);
+	world_->add_actor(new Blast{ transform_.position() });
 }
 
 void Enemy::react_wall()
