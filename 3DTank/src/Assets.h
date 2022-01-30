@@ -63,4 +63,23 @@ enum
 {
 	Effect_Smoke,
 };
+
+//SE
+enum
+{
+	Se_CursorMove,
+	Se_Curtain,
+	Se_StartStage,
+	Se_Bomb,
+	Se_HitEnemy,
+	Se_TankMove,
+};
+
+//BGM
+enum
+{
+	Music_Title,
+	Music_Battle,
+};
+
 #endif//!ASSETS_H_
