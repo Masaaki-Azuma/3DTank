@@ -5,6 +5,7 @@
 #include "Figure/Line.h"
 #include "PlayScene/Stage.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float MoveSpeed{ 0.2f };
 const float Gravity{ -0.02f };
@@ -91,6 +92,10 @@ void Player::move(float delta_time)
 	velocity_.z = velocity.z;
 	//…•½•ûŒü‚ÌˆÚ“®—Ê‚ğ”½‰f
 	transform_.translate(velocity * delta_time, GStransform::Space::World);
+	//ˆÊ’u‚ª•Ï‰»‚µ‚Ä‚¢‚½‚çˆÚ“®SE‚ğÄ¶
+	if (velocity != GSvector3::zero()) {
+		gsPlaySE(Se_PlayerMove);
+	}
 }
 
 void Player::free_fall(float delta_time)
