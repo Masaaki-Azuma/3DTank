@@ -43,6 +43,8 @@ void PlayScene::start()
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 
 	gsLoadSE(Se_StartStage, "Assets/Sound/SE/start.wav", 1, GWAVE_DEFAULT);
+	//gsLoadSE(Se_ChangeStage, "Assets/Sound/SE/change_stage.wav", 1, GWAVE_DEFAULT);
+	gsLoadSE(Se_ClearStage, "Assets/Sound/SE/stage_clear.wav", 1, GWAVE_DEFAULT);
 	gsLoadSE(Se_HitEnemy, "Assets/Sound/SE/hit.wav", 2, GWAVE_DEFAULT);
 	gsLoadSE(Se_PlayerMove, "Assets/Sound/SE/running_tank01.wav", 1, GWAVE_WAIT);
 	gsLoadSE(Se_EnemyMove, "Assets/Sound/SE/running_tank02.wav", 1, GWAVE_WAIT);
@@ -138,6 +140,8 @@ void PlayScene::end()
 	gsDeleteEffect(Effect_Smoke);
 
 	gsDeleteSE(Se_StartStage);
+	gsDeleteSE(Se_ClearStage);
+	//gsDeleteSE(Se_ChangeStage);
 	gsDeleteSE(Se_HitEnemy);
 	gsDeleteSE(Se_PlayerMove);
 	gsDeleteSE(Se_EnemyMove);

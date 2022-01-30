@@ -11,7 +11,9 @@ enum
 {
 	Se_CursorMove,
 	Se_Curtain,
+	Se_ChangeStage,
 	Se_StartStage,
+	Se_ClearStage,
 	Se_Bomb,
 	Se_HitEnemy,
 	Se_PlayerMove,
