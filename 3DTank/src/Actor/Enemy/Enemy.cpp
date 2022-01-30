@@ -54,6 +54,7 @@ void Enemy::react(Actor& other)
 	//Ž©‹@’e‚É“–‚½‚Á‚½‚çŽ€–S
 	if (other.tag() == "PlayerCannonBallTag") {
 		generate_smoke();
+		gsPlaySE(Se_HitEnemy);
 		die();
 	}
 	else if(other.tag() == "PlayerTag" || other.tag() == "EnemyTag"){
