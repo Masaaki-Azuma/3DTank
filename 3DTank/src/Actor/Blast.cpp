@@ -8,6 +8,8 @@ Blast::Blast(const GSvector3& position)
 	name_ = "Blast";
 	tag_ = "EffectTag";
 	effect_handle_ =  gsPlayEffect(Effect_Smoke, &position);
+	//”š”­‰¹‚ğÄ¶
+	gsPlaySE(Se_Bomb);
 	//transform_.position(position);
 }
 
