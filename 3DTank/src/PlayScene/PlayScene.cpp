@@ -1,9 +1,11 @@
 #include "PlayScene.h"
 #include <gslib.h>
 #include <GSeffect.h>
+#include <GSmusic.h>
 #include "CameraFixedPoint.h"
 #include "Stage.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const int MaxLevel{ 10 };
 
@@ -40,6 +42,14 @@ void PlayScene::start()
 
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 
+	gsLoadSE(Se_StartStage, "Assets/Sound/SE/start.wav", 1, GWAVE_DEFAULT);
+	gsLoadSE(Se_HitEnemy, "Assets/Sound/SE/hit.wav", 2, GWAVE_DEFAULT);
+	gsLoadSE(Se_PlayerMove, "Assets/Sound/SE/running_tank01.wav", 1, GWAVE_WAIT);
+	gsLoadSE(Se_EnemyMove, "Assets/Sound/SE/running_tank02.wav", 1, GWAVE_WAIT);
+	gsLoadSE(Se_Bomb, "Assets/Sound/SE/bomb.wav", 3, GWAVE_DEFAULT);
+
+	gsLoadMusic(Music_Battle, "Assets/Sound/BGM/battle.mp3", GS_TRUE);
+
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//ステージの作成
@@ -51,6 +61,8 @@ void PlayScene::start()
 	level_image_.initialize(level_);
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
 	world_.load_stage(level_);
+	//BGMをバインド
+	gsBindMusic(Music_Battle);
 }
 
 void PlayScene::update(float delta_time)
@@ -99,6 +111,8 @@ void PlayScene::end()
 	pause_.end();
 	//ワールドの管理物を消去
 	world_.clear();
+	//BGMを停止
+	gsStopMusic();
 	//リソースの解放
 	gsDeleteMesh(Mesh_Player);
 	
@@ -122,6 +136,14 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_SilhouetteBackground);
 
 	gsDeleteEffect(Effect_Smoke);
+
+	gsDeleteSE(Se_StartStage);
+	gsDeleteSE(Se_HitEnemy);
+	gsDeleteSE(Se_PlayerMove);
+	gsDeleteSE(Se_EnemyMove);
+	gsDeleteSE(Se_Bomb);
+
+	gsDeleteMusic(Music_Battle);
 }
 
 bool PlayScene::is_end() const
@@ -149,6 +171,8 @@ void PlayScene::update_introduction(float delta_time)
 	level_image_.update(delta_time);
 	//レベル情報画面が終了したら、フェードイン
 	if (level_image_.is_end()) {
+		//BGMを再生
+		gsPlayMusic();
 		fade_.fade_in();
 	}
 }
@@ -176,10 +200,14 @@ void PlayScene::update_battle(float delta_time)
 	//戦闘画面が終了したら、遷移
 	if (world_.is_level_clear()) {
 		state_ = State::LevelClear;
+		//一旦全音源を停止
+		gsStopSound();
+		gsStopMusic();
 		clear_image_.initialize();
 	}
 	else if (!world_.find_actor("Player")) {
 		state_ = State::LevelMiss;
+		gsStopSound();
 		miss_image_.initialize();
 	}
 }
