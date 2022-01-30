@@ -23,6 +23,8 @@ protected:
 	void generate_smoke();
 	//•Ç‚ÉÕ“Ë‚Ì‹““®
 	virtual void react_wall();
+	//ˆÚ“®SE‚ğÄ¶
+	void play_moveSE();
 private:
 	//d—Í‚ğì—p
 	void free_fall(float delta_time);

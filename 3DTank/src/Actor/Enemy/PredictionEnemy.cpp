@@ -32,6 +32,9 @@ void PredictionEnemy::move(float delta_time)
 	velocity = GSvector3::slerp(direction, velocity, 0.05f);
 	//移動量を反映
 	transform_.translate(velocity * delta_time);
+	//メンバに水平方向移動量をキープ
+	velocity_.x = velocity.x;
+	velocity_.z = velocity.z;
 }
 
 void PredictionEnemy::shoot(float delta_time)
