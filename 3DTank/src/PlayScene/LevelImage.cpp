@@ -17,6 +17,7 @@ void LevelImage::initialize(int level)
 	timer_ = 0.0f;
 	is_end_ = false;
 	level_ = level;
+	gsPlaySE(Se_StartStage);
 }
 
 void LevelImage::update(float delta_time)
