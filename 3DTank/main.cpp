@@ -22,6 +22,8 @@ public:
 		//シーンをまたいで用いるリソースを読み込み
 		gsLoadTexture(Texture_RedCurtain, "Assets/red_curtain.png");
 
+		gsLoadSE(Se_Curtain, "Assets/Sound/SE/curtain.wav", 1, GWAVE_DEFAULT);
+
 		scene_manager_.add("TitleScene", new TitleScene{});
 		scene_manager_.add("PlayScene", new PlayScene{});
 		scene_manager_.add("TutorialScene", new TutorialScene{});
@@ -41,6 +43,7 @@ public:
 		scene_manager_.clear();
 		//リソースの解放
 		gsDeleteTexture(Texture_RedCurtain);
+		gsDeleteSE(Se_Curtain);
 		//エフェクトの終了
 		gsFinishEffect();
 	}

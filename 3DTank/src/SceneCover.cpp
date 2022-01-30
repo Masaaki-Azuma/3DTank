@@ -27,12 +27,18 @@ void SceneCover::draw() const
 
 void SceneCover::close()
 {
+	if (state_ == State::Closed) return;
 	state_ = State::Closing;
+	//カーテン開閉音を再生
+	gsPlaySE(Se_Curtain);
 }
 
 void SceneCover::open()
 {
+	if (state_ == State::Opened) return;
 	state_ = State::Opening;
+	//カーテン開閉音を再生
+	gsPlaySE(Se_Curtain);
 }
 
 bool SceneCover::is_running() const
