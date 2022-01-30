@@ -6,6 +6,7 @@
 #include "TutorialScene/TutorialScene.h"
 #include "Screen.h"
 #include "Assets.h"
+#include "Sound.h"
 
 class MyGame : public gslib::Game
 {

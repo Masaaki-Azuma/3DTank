@@ -33,9 +33,6 @@ void CannonBall::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(mesh_);
 	glPopMatrix();
-
-	//ForDebug
-	//collider().draw();
 }
 
 void CannonBall::react(Actor& other)

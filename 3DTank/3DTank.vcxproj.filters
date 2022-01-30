@@ -221,6 +221,7 @@
     <ClInclude Include="src\Actor\CannonBall\CommonCannonBall.h">
       <Filter>Actor\Enemy\CannonBall</Filter>
     </ClInclude>
+    <ClInclude Include="src\Sound.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actor">

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <GSmusic.h>
 #include "Assets.h"
+#include "Sound.h"
 
 enum //Ÿ‚Ì‘JˆÚƒV[ƒ“
 {

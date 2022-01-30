@@ -1,5 +1,6 @@
 #include "SceneCover.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const int ImageHeight{ 1200 };    //シーンを隠す画像の高さ
 const float ScrollSpeed{ 30.0f }; //シーン遷移の速さ

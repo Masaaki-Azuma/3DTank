@@ -2,6 +2,7 @@
 #include <GSgame.h>
 #include "Screen.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float HoldTime{ 30.0f }; //Å’á•`‰æŠÔ
 const GSvector2 ImageSize{ 840,220 };

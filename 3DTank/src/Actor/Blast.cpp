@@ -1,6 +1,7 @@
 #include "Blast.h"
 #include <GSeffect.h>
 #include "Assets.h"
+#include "Sound.h"
 
 const float AnimationDuration{ 60.0f };
 Blast::Blast(const GSvector3& position)
