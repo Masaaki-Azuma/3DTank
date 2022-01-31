@@ -105,6 +105,7 @@
     <ClCompile Include="src\Actor\CannonBall\CommonCannonBall.cpp">
       <Filter>Actor\Enemy\CannonBall</Filter>
     </ClCompile>
+    <ClCompile Include="src\PlayScene\TankNumber.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PlayScene\CameraFixedPoint.h" />
@@ -222,6 +223,7 @@
       <Filter>Actor\Enemy\CannonBall</Filter>
     </ClInclude>
     <ClInclude Include="src\Sound.h" />
+    <ClInclude Include="src\PlayScene\TankNumber.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Actor">

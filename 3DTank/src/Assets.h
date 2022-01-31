@@ -19,6 +19,7 @@ enum
 	Texture_Pause_Board,
 	Texture_Pause_ReturnToGame,
 	Texture_Pause_ReturnToTitle,
+	Texture_Play_RemainingTank,
 	Texture_Cursor,
 	Texture_Background,
 	Texture_PressXToBack,

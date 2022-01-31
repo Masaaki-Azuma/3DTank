@@ -5,6 +5,7 @@
 #include "ClearImage.h"
 #include "Stage.h"
 #include "ActorGenerator.h"
+#include "TankNumber.h"
 
 void World::update(float delta_time)
 {
@@ -30,6 +31,9 @@ void World::draw() const
 	actor_manager_.draw();
 	//全GUIの描画
 	actor_manager_.draw_gui();
+	//残り敵数表示
+	static TankNumber number;
+	number.draw(actor_manager_.count_with_tag("EnemyTag"));
 	//エフェクトの描画
 	gsDrawEffect();
 }
