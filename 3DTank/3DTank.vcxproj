@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Actor\Light.cpp" />
     <ClCompile Include="src\PlayScene\TankNumber.cpp" />
     <ClCompile Include="src\PlayScene\PauseScene\PauseScene.cpp" />
     <ClCompile Include="src\Actor\Actor.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="src\PlayScene\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Actor\Light.h" />
     <ClInclude Include="src\PlayScene\TankNumber.h" />
     <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\PlayScene\PauseScene\PauseScene.h" />

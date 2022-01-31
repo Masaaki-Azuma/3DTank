@@ -3,6 +3,7 @@
 #include <GSeffect.h>
 #include <GSmusic.h>
 #include "CameraFixedPoint.h"
+#include "Actor/Light.h"
 #include "Stage.h"
 #include "Assets.h"
 #include "Sound.h"
@@ -34,7 +35,6 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_TargetSign, "Assets/Mesh/Target/target_sign.mshb");
 
 	gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
-	//gsLoadTexture(Texture_Background, "Assets/play_whiteBackground.png");
 	gsLoadTexture(Texture_Stage, "Assets/Texture/stage.png");
 	gsLoadTexture(Texture_Clear, "Assets/Texture/clear.png");
 	gsLoadTexture(Texture_Miss, "Assets/Texture/miss.png");
@@ -58,6 +58,8 @@ void PlayScene::start()
 
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
+	//ライトの作成
+	world_.add_light(new Light{ &world_ });
 	//ステージの作成
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 	//状態を初期化
