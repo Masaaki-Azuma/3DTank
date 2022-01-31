@@ -39,6 +39,7 @@ void PlayScene::start()
 	gsLoadTexture(Texture_Miss, "Assets/miss.png");
 	gsLoadTexture(Texture_Number, "Assets/number.png");
 	gsLoadTexture(Texture_SilhouetteBackground, "Assets/silhouetteBackground.png");
+	gsLoadTexture(Texture_Play_RemainingTank, "Assets/play_remainingTank.png");
 
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 
@@ -138,6 +139,7 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_Miss);
 	gsDeleteTexture(Texture_Number);
 	gsDeleteTexture(Texture_SilhouetteBackground);
+	gsDeleteTexture(Texture_Play_RemainingTank);
 
 	gsDeleteEffect(Effect_Smoke);
 
