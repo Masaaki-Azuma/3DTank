@@ -16,6 +16,8 @@ public:
 	void clear();
 	//カメラの追加
 	void add_camera(CameraFixedPoint* camera);
+	//ライトの追加
+	void add_light(Actor* light);
 	//ステージインスタンスの追加
 	void add_stage(Stage* stage);
 	//ステージを読み込み
@@ -42,6 +44,8 @@ private:
 	ActorManager actor_manager_;
 	//定点カメラ
 	CameraFixedPoint* camera_{ nullptr };
+	//ライト
+	Actor* light_{ nullptr };
 	//ステージ
 	Stage* stage_{ nullptr };
 };

@@ -1,6 +1,7 @@
 #include "World.h"
 #include <GSeffect.h>
 #include "CameraFixedPoint.h"
+#include "Actor/Light.h"
 #include "LevelImage.h"
 #include "ClearImage.h"
 #include "Stage.h"
@@ -23,6 +24,8 @@ void World::draw() const
 {
 	//カメラの描画
 	camera_->draw();
+	//ライトの描画
+	light_->draw();
 	//エフェクト用のカメラを設定
 	gsSetEffectCamera();
 	//ステージの描画
@@ -45,6 +48,9 @@ void World::clear()
 	//ステージの削除
 	delete stage_;
 	stage_ = nullptr;
+	//ライトの削除	
+	delete light_;
+	light_ = nullptr;
 	//カメラの削除
 	delete camera_;
 	camera_ = nullptr;
@@ -59,6 +65,15 @@ void World::add_camera(CameraFixedPoint* camera)
 	}
 	//追加
 	camera_ = camera;
+}
+
+void World::add_light(Actor* light)
+{
+	if (light_) {
+		delete light_;
+		light_ = nullptr;
+	}
+	light_ = light;
 }
 
 void World::add_stage(Stage* stage)
