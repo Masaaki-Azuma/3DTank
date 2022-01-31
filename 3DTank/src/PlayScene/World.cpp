@@ -94,6 +94,11 @@ Actor* World::find_actor_with_tag(const std::string& tag) const
 	return actor_manager_.find_with_tag(tag);
 }
 
+int World::count_actor_with_tag(const std::string& tag) const
+{
+	return actor_manager_.count_with_tag(tag);
+}
+
 void World::clear_actor()
 {
 	//全アクターの削除

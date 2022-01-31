@@ -27,6 +27,8 @@ public:
 	virtual Actor* find_actor(const std::string& name) const;
 	//アクターのタグ検索
 	virtual Actor* find_actor_with_tag(const std::string& tag) const;
+	//一致するタグを持つアクターをカウント
+	virtual int count_actor_with_tag(const std::string& tag) const override;
 	//全アクターを消去
 	virtual void clear_actor() override;
 

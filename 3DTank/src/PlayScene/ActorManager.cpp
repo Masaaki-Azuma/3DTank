@@ -84,6 +84,15 @@ Actor* ActorManager::find_with_tag(const std::string& tag) const
 	return nullptr;
 }
 
+int ActorManager::count_with_tag(const std::string& tag) const
+{
+	int counter = 0;
+	for (auto actor : actors_) {
+		if (actor->tag() == tag) counter++;
+	}
+	return counter;
+}
+
 void ActorManager::clear()
 {
 	//全アクターを削除

@@ -16,6 +16,8 @@ public:
 	virtual Actor* find_actor(const std::string& name) const = 0;
 	//アクターのタグ検索
 	virtual Actor* find_actor_with_tag(const std::string& name) const = 0;
+	//一致するタグを持つアクターをカウント
+	virtual int count_actor_with_tag(const std::string& name) const = 0;
 	//アクターの全削除
 	virtual void clear_actor() = 0;
 	//レベルクリア状態か？

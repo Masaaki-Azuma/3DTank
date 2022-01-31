@@ -28,6 +28,8 @@ public:
 	Actor* find(const std::string& name) const;
 	//タグで検索
 	Actor* find_with_tag(const std::string& tag) const;
+	//タグでカウント
+	int count_with_tag(const std::string& tag) const;
 	void clear();
 
 private:
