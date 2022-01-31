@@ -47,10 +47,6 @@ void Player::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(Mesh_Player);
 	glPopMatrix();
-
-	//ForDebug
-	//‹«ŠE‹…‚Ì•`‰æ
-	//collider().draw();
 }
 
 void Player::react(Actor& other)

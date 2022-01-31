@@ -45,11 +45,6 @@ void Enemy::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(mesh_);
 	glPopMatrix();
-
-	//ForDebug
-	//‹«ŠE‹…‚Ì•`‰æ
-	//collider().draw();
-	//BoundingSphere{ CannonRange, transform_.position()}.draw();
 }
 
 void Enemy::react(Actor& other)
