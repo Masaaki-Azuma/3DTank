@@ -1,6 +1,7 @@
 #include "Blast.h"
 #include <GSeffect.h>
 #include "Assets.h"
+#include "Sound.h"
 
 const float AnimationDuration{ 60.0f };
 Blast::Blast(const GSvector3& position)
@@ -8,6 +9,8 @@ Blast::Blast(const GSvector3& position)
 	name_ = "Blast";
 	tag_ = "EffectTag";
 	effect_handle_ =  gsPlayEffect(Effect_Smoke, &position);
+	//îöî≠âπÇçƒê∂
+	gsPlaySE(Se_Bomb);
 	//transform_.position(position);
 }
 

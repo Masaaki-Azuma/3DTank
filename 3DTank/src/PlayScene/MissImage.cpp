@@ -1,6 +1,7 @@
 #include "MissImage.h"
 #include "Screen.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float HoldTime{ 120.0f }; //ç≈í·ï`âÊéûä‘
 const GSvector2 ImageSize{ 540, 220 };
@@ -12,6 +13,7 @@ void MissImage::initialize()
 	is_end_ = false;
 	position_ = GSvector2{ Screen::Width / 2, -ImageSize.y };
 	velocity_ = GSvector2{ 0.0f, 0.0f };
+	gsPlaySE(Se_MissStage);
 }
 
 void MissImage::update(float delta_time)

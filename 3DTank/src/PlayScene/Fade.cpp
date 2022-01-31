@@ -1,6 +1,7 @@
 #include "Fade.h"
 #include "Screen.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float FadeSpeed{ 40.0f };
 

@@ -1,5 +1,6 @@
 #include "SceneCover.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const int ImageHeight{ 1200 };    //シーンを隠す画像の高さ
 const float ScrollSpeed{ 30.0f }; //シーン遷移の速さ
@@ -27,12 +28,18 @@ void SceneCover::draw() const
 
 void SceneCover::close()
 {
+	if (state_ == State::Closed) return;
 	state_ = State::Closing;
+	//カーテン開閉音を再生
+	gsPlaySE(Se_Curtain);
 }
 
 void SceneCover::open()
 {
+	if (state_ == State::Opened) return;
 	state_ = State::Opening;
+	//カーテン開閉音を再生
+	gsPlaySE(Se_Curtain);
 }
 
 bool SceneCover::is_running() const

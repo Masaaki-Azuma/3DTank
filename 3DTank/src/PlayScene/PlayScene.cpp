@@ -1,9 +1,11 @@
 #include "PlayScene.h"
 #include <gslib.h>
 #include <GSeffect.h>
+#include <GSmusic.h>
 #include "CameraFixedPoint.h"
 #include "Stage.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const int MaxLevel{ 10 };
 
@@ -40,6 +42,18 @@ void PlayScene::start()
 
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 
+	gsLoadSE(Se_StartStage, "Assets/Sound/SE/start.wav", 1, GWAVE_DEFAULT);
+	gsLoadSE(Se_ClearStage, "Assets/Sound/SE/stage_clear02.wav", 1, GWAVE_DEFAULT);
+	gsSetVolumeSE(Se_ClearStage, 0.9);
+	gsLoadSE(Se_MissStage, "Assets/Sound/SE/stage_miss.wav", 1, GWAVE_DEFAULT);
+	gsLoadSE(Se_HitEnemy, "Assets/Sound/SE/hit02.wav", 2, GWAVE_DEFAULT);
+	gsLoadSE(Se_PlayerMove, "Assets/Sound/SE/running_tank01.wav", 1, GWAVE_WAIT);
+	gsLoadSE(Se_EnemyMove, "Assets/Sound/SE/running_tank02.wav", 1, GWAVE_WAIT);
+	gsLoadSE(Se_Bomb, "Assets/Sound/SE/bomb.wav", 3, GWAVE_DEFAULT);
+	gsLoadSE(Se_TankShoot, "Assets/Sound/SE/shoot.wav", 2, GWAVE_DEFAULT);
+
+	gsLoadMusic(Music_Battle, "Assets/Sound/BGM/battle.mp3", GS_TRUE);
+
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
 	//ステージの作成
@@ -51,6 +65,8 @@ void PlayScene::start()
 	level_image_.initialize(level_);
 	//最初のステージを読み込み、以降ワールド内でステージの切り替えを行う
 	world_.load_stage(level_);
+	//BGMをバインド
+	gsBindMusic(Music_Battle);
 }
 
 void PlayScene::update(float delta_time)
@@ -99,6 +115,8 @@ void PlayScene::end()
 	pause_.end();
 	//ワールドの管理物を消去
 	world_.clear();
+	//BGMを停止
+	gsStopMusic();
 	//リソースの解放
 	gsDeleteMesh(Mesh_Player);
 	
@@ -122,6 +140,17 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_SilhouetteBackground);
 
 	gsDeleteEffect(Effect_Smoke);
+
+	gsDeleteSE(Se_StartStage);
+	gsDeleteSE(Se_ClearStage);
+	gsDeleteSE(Se_MissStage);
+	gsDeleteSE(Se_HitEnemy);
+	gsDeleteSE(Se_PlayerMove);
+	gsDeleteSE(Se_EnemyMove);
+	gsDeleteSE(Se_Bomb);
+	gsDeleteSE(Se_TankShoot);
+
+	gsDeleteMusic(Music_Battle);
 }
 
 bool PlayScene::is_end() const
@@ -149,6 +178,10 @@ void PlayScene::update_introduction(float delta_time)
 	level_image_.update(delta_time);
 	//レベル情報画面が終了したら、フェードイン
 	if (level_image_.is_end()) {
+		//BGM音量を最大に
+		gsSetMusicVolume(1.0f);
+		//BGMを再生
+		gsPlayMusic();
 		fade_.fade_in();
 	}
 }
@@ -176,10 +209,18 @@ void PlayScene::update_battle(float delta_time)
 	//戦闘画面が終了したら、遷移
 	if (world_.is_level_clear()) {
 		state_ = State::LevelClear;
+		//一旦全SEを停止
+		gsStopSound();
+		//BGMを小さく
+		gsSetMusicVolume(0.85f);
 		clear_image_.initialize();
 	}
 	else if (!world_.find_actor("Player")) {
 		state_ = State::LevelMiss;
+		//一旦全SEを停止
+		gsStopSound();
+		//BGMを停止
+		gsStopMusic();
 		miss_image_.initialize();
 	}
 }
@@ -214,6 +255,7 @@ void PlayScene::update_level_clear(float delta_time)
 			return;
 		}
 		fade_.fade_out();
+		gsStopMusic();
 	}
 }
 

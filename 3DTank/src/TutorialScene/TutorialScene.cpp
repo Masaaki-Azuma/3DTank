@@ -1,6 +1,8 @@
 #include "TutorialScene.h"
 #include <stdexcept>
+#include <GSmusic.h>
 #include "Assets.h"
+#include "Sound.h"
 
 const float ScrollSpeed{ 40.0f };
 const int MaxPage{ 2 };
@@ -20,10 +22,18 @@ void TutorialScene::start()
     gsLoadTexture(Texture_Tutorial_PressXToTitle, "Assets/tutorial_press_x_to_title.png");
     gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
 
+    gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
+
+    gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
+
     page_ = Control;
     position_board_ = GSvector2{ 0.0f, 0.0f };
     scroll_speed_ = 0.0f;
     is_end_ = false;
+    //BGMÇÃÉoÉCÉìÉh
+    gsBindMusic(Music_Title);
+    //BGMÇÃçƒê∂
+    gsPlayMusic();
 }
 
 void TutorialScene::update(float delta_time)
@@ -79,11 +89,17 @@ void TutorialScene::draw() const
 
 void TutorialScene::end()
 {
+    gsStopMusic();
+
     gsDeleteTexture(Texture_Background);
     gsDeleteTexture(Texture_Tutorial_Board0);
     gsDeleteTexture(Texture_Tutorial_Board1);
     gsDeleteTexture(Texture_Tutorial_PressXToTitle);
     gsDeleteTexture(Texture_Cursor);
+
+    gsDeleteSE(Se_CursorMove);
+
+    gsDeleteMusic(Music_Title);
 }
 
 bool TutorialScene::is_end() const
@@ -109,10 +125,12 @@ void TutorialScene::turn_page()
     if (gsGetKeyTrigger(GKEY_RIGHT)) {
         scroll_speed_ = -ScrollSpeed;
         page_ = std::min(page_ + 1, MaxPage - 1);
+        gsPlaySE(Se_CursorMove);
     }
     else if (gsGetKeyTrigger(GKEY_LEFT)) {
         scroll_speed_ = ScrollSpeed;
         page_ = std::max(page_ - 1, 0);
+        gsPlaySE(Se_CursorMove);
     }
     position_board_.x += scroll_speed_;
 }

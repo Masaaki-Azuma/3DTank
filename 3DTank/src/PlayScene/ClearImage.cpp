@@ -1,5 +1,6 @@
 #include "ClearImage.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float HoldTime{ 120.0f };
 const float ScaleMaxTime{ HoldTime * 2 / 3 };
@@ -12,6 +13,8 @@ void ClearImage::initialize()
 	timer_ = 0.0f;
 	is_end_ = false;
 	image_scale_ = GSvector2::zero();
+	//ƒNƒŠƒA‰¹º‚ğÄ¶
+	gsPlaySE(Se_ClearStage);
 }
 
 void ClearImage::update(float delta_time)

@@ -2,6 +2,7 @@
 #include <GSgame.h>
 #include "Screen.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float HoldTime{ 30.0f }; //Å’á•`‰æŠÔ
 const GSvector2 ImageSize{ 840,220 };
@@ -17,6 +18,7 @@ void LevelImage::initialize(int level)
 	timer_ = 0.0f;
 	is_end_ = false;
 	level_ = level;
+	gsPlaySE(Se_StartStage);
 }
 
 void LevelImage::update(float delta_time)

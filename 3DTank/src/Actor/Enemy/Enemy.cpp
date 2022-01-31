@@ -6,6 +6,7 @@
 #include "../CannonBall/CommonCannonBall.h"
 #include "../Blast.h"
 #include "Assets.h"
+#include "Sound.h"
 
 const float Gravity{ -0.02f };                     //重力加速度
 //const float EnemyHeight{ 2.0f };                   //境界球中心の高さ
@@ -27,6 +28,8 @@ void Enemy::update(float delta_time)
 {
 	//移動
 	move(delta_time);
+	//移動SEを再生
+	play_moveSE();
 	//自由落下
 	free_fall(delta_time);
 	//地形と衝突判定
@@ -54,6 +57,7 @@ void Enemy::react(Actor& other)
 	//自機弾に当たったら死亡
 	if (other.tag() == "PlayerCannonBallTag") {
 		generate_smoke();
+		gsPlaySE(Se_HitEnemy);
 		die();
 	}
 	else if(other.tag() == "PlayerTag" || other.tag() == "EnemyTag"){
@@ -102,6 +106,17 @@ void Enemy::generate_smoke()
 
 void Enemy::react_wall()
 {
+	//何もしない
+	//動作をする場合はoverrideする
+}
+
+void Enemy::play_moveSE()
+{
+	GSvector3 velocity = this->velocity();
+	velocity.y = 0.0f;
+	if (velocity != GSvector3::zero()) {
+		gsPlaySE(Se_EnemyMove);
+	}
 }
 
 /*以下は書き換えない*/

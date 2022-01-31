@@ -4,6 +4,7 @@
 #include "PlayScene/Stage.h"
 #include "../Blast.h"
 #include "Assets.h"
+#include "Sound.h"
 
 //const float Gravity{ -0.02f };
 //const float CannonVerticalSpeed{ 0.8f };  //íeÇÃâîíºèâë¨ìx
@@ -15,6 +16,7 @@ CannonBall::CannonBall(IWorld* world, const GSvector3& position, const GSvector3
 	world_ = world;
 	transform_.position(position);
 	collider_ = BoundingSphere{ 1.0f };
+	gsPlaySE(Se_TankShoot);
 }
 
 void CannonBall::update(float delta_time)
@@ -33,9 +35,6 @@ void CannonBall::draw() const
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(mesh_);
 	glPopMatrix();
-
-	//ForDebug
-	//collider().draw();
 }
 
 void CannonBall::react(Actor& other)

@@ -63,4 +63,5 @@ enum
 {
 	Effect_Smoke,
 };
+
 #endif//!ASSETS_H_

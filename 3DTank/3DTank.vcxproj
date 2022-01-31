@@ -198,6 +198,7 @@
     <ClCompile Include="src\PlayScene\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\PlayScene\PauseScene\PauseScene.h" />
     <ClInclude Include="src\Actor\Actor.h" />
     <ClInclude Include="src\PlayScene\ActorGenerator.h" />

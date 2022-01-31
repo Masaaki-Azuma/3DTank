@@ -1,6 +1,8 @@
 #include "TitleScene.h"
 #include <stdexcept>
+#include <GSmusic.h>
 #include "Assets.h"
+#include "Sound.h"
 
 enum //次の遷移シーン
 {
@@ -12,19 +14,23 @@ const int MaxSelection{ 2 }; //選択肢の個数
 
 void TitleScene::start()
 {
-	//ForDebug
-	//終了フラグの初期化
-	is_end_ = false;
-	//!ForDebug
-	//選択肢番号を初期化
-	selection_id_ = 0;
-
 	//リソースの読み込み
 	gsLoadTexture(Texture_Title_Logo, "Assets/title_logo.png");
 	gsLoadTexture(Texture_Background, "Assets/background.png");
 	gsLoadTexture(Texture_Title_Menu, "Assets/title_menuText.png");
 	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
 	gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
+
+	gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
+	gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
+	//終了フラグの初期化
+	is_end_ = false;
+	//選択肢番号を初期化
+	selection_id_ = 0;
+	//BGMのバインド
+	gsBindMusic(Music_Title);
+	//BGMの再生
+	gsPlayMusic();
 }
 
 void TitleScene::update(float delta_time)
@@ -51,12 +57,17 @@ void TitleScene::draw() const
 
 void TitleScene::end()
 {
+	//BGMの停止
+	gsStopMusic();
 	//リソースの解放
 	gsDeleteTexture(Texture_Title_Logo);
 	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Title_Menu);
 	gsDeleteTexture(Texture_PressZ);
 	gsDeleteTexture(Texture_Cursor);
+
+	gsDeleteSE(Se_CursorMove);
+	gsDeleteMusic(Music_Title);
 }
 
 bool TitleScene::is_end() const
@@ -80,9 +91,11 @@ void TitleScene::select_menu()
 	//上下キーでカーソル移動
 	if (gsGetKeyTrigger(GKEY_DOWN)) {
 		selection_id_ += 1;
+		gsPlaySE(Se_CursorMove);
 	}
 	else if (gsGetKeyTrigger(GKEY_UP)) {
 		selection_id_ += MaxSelection - 1;
+		gsPlaySE(Se_CursorMove);
 	}
 	//選択肢番号を選択肢数に応じてループ調整
 	selection_id_ %= MaxSelection;
