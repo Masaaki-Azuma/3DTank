@@ -17,10 +17,10 @@ const int MaxSelection{ 2 };
 void PauseScene::start()
 {
     //リソースをロード
-    gsLoadTexture(Texture_Pause_Board, "Assets/pause_board.png");
-    gsLoadTexture(Texture_Pause_ReturnToGame, "Assets/pause_returnGame.png");
-    gsLoadTexture(Texture_Pause_ReturnToTitle, "Assets/pause_returnTitle.png");
-    gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
+    gsLoadTexture(Texture_Pause_Board, "Assets/Texture/pause_board.png");
+    gsLoadTexture(Texture_Pause_ReturnToGame, "Assets/Texture/pause_returnGame.png");
+    gsLoadTexture(Texture_Pause_ReturnToTitle, "Assets/Texture/pause_returnTitle.png");
+    gsLoadTexture(Texture_Cursor, "Assets/Texture/title_cursor.png");
     selection_id_ = 0;
     is_end_ = false;
     gsSetMusicVolume(0.85f);

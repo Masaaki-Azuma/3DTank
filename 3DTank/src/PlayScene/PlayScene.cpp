@@ -29,17 +29,18 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_BounceEnemy, "Assets/Mesh/Tank/yellow_tank.mshb");
 	gsLoadMesh(Mesh_PredictionEnemy, "Assets/Mesh/Tank/purple_tank.mshb");
 
-	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/player_cannon_ball.mshb");
-	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/enemy_cannon_ball.mshb");
-	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
+	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/Mesh/CannonBall/player_cannon_ball.mshb");
+	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/Mesh/CannonBall/enemy_cannon_ball.mshb");
+	gsLoadMesh(Mesh_TargetSign, "Assets/Mesh/Target/target_sign.mshb");
 
-	gsLoadTexture(Texture_Background, "Assets/background.png");
-	gsLoadTexture(Texture_Stage, "Assets/stage.png");
-	gsLoadTexture(Texture_Clear, "Assets/clear.png");
-	gsLoadTexture(Texture_Miss, "Assets/miss.png");
-	gsLoadTexture(Texture_Number, "Assets/number.png");
-	gsLoadTexture(Texture_SilhouetteBackground, "Assets/silhouetteBackground.png");
-	gsLoadTexture(Texture_Play_RemainingTank, "Assets/play_remainingTank.png");
+	gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
+	//gsLoadTexture(Texture_Background, "Assets/play_whiteBackground.png");
+	gsLoadTexture(Texture_Stage, "Assets/Texture/stage.png");
+	gsLoadTexture(Texture_Clear, "Assets/Texture/clear.png");
+	gsLoadTexture(Texture_Miss, "Assets/Texture/miss.png");
+	gsLoadTexture(Texture_Number, "Assets/Texture/number.png");
+	gsLoadTexture(Texture_SilhouetteBackground, "Assets/Texture/silhouetteBackground.png");
+	gsLoadTexture(Texture_Play_RemainingTank, "Assets/Texture/play_remainingTank.png");
 
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 

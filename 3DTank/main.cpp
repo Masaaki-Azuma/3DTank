@@ -12,7 +12,7 @@ class MyGame : public gslib::Game
 {
 public:
 	MyGame():
-		gslib::Game{Screen::Width, Screen::Height, false}
+		gslib::Game{Screen::Width, Screen::Height, true}
 	{
 
 	}
@@ -21,7 +21,7 @@ public:
 		//エフェクトの初期化
 		gsInitEffect();
 		//シーンをまたいで用いるリソースを読み込み
-		gsLoadTexture(Texture_RedCurtain, "Assets/red_curtain.png");
+		gsLoadTexture(Texture_RedCurtain, "Assets/Texture/red_curtain.png");
 
 		gsLoadSE(Se_Curtain, "Assets/Sound/SE/curtain.wav", 1, GWAVE_DEFAULT);
 
