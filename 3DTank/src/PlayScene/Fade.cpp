@@ -58,6 +58,8 @@ void Fade::update_fade_out(float delta_time)
 {
 	rect_.left -= FadeSpeed * delta_time;
 	if (rect_.left < 0.0f) {
+		rect_.right = Screen::Width;
+		rect_.left = 0.0f;
 		state_ = State::Hiding;
 	}
 }
@@ -66,7 +68,8 @@ void Fade::update_fade_in(float delta_time)
 {
 	rect_.right -= FadeSpeed * delta_time;
 	if (rect_.right < 0.0f) {
-		
+		rect_.right = 0.0f;
+		rect_.left = 0.0f;
 		state_ = State::Opening;
 	}
 }
