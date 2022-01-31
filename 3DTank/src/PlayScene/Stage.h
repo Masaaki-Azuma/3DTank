@@ -36,6 +36,8 @@ private:
 	GSuint mesh_;
 	//地形コライダー
 	GSuint collider_;
+	//
+	int prev_stage_num_;
 };
 #endif//!STAGE_H_
 

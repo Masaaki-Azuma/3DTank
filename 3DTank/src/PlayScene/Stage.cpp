@@ -6,7 +6,7 @@
 
 //どのIDを用いて描画するのかを覚えておく
 Stage::Stage(GSuint mesh, GSuint collider):
-	mesh_{ mesh }, collider_{ collider }
+	mesh_{ mesh }, collider_{ collider }, prev_stage_num_{-1}
 {
 }
 
@@ -18,6 +18,9 @@ Stage::~Stage()
 
 void Stage::load(int stage)
 {
+	//同じステージだったらロードせず終了
+	if (prev_stage_num_ == stage) return;
+
 	//既存のステージを削除する
 	clear();
 	//ステージメッシュをロード
@@ -30,6 +33,8 @@ void Stage::load(int stage)
 	file_name += std::to_string(stage);
 	file_name += ".oct";
 	gsLoadOctree(collider_, file_name.c_str());
+	//ロードしたステージ数をキープ
+	prev_stage_num_ = stage;
 }
 
 void Stage::clear()
