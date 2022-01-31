@@ -13,6 +13,7 @@ void ClearImage::initialize()
 	timer_ = 0.0f;
 	is_end_ = false;
 	image_scale_ = GSvector2::zero();
+	//ƒNƒŠƒA‰¹º‚ğÄ¶
 	gsPlaySE(Se_ClearStage);
 }
 

@@ -1,6 +1,7 @@
 #include "PauseScene.h"
 #include <gslib.h>
 #include <stdexcept>
+#include <GSmusic.h>
 #include "Screen.h"
 #include "Assets.h"
 
@@ -22,6 +23,7 @@ void PauseScene::start()
     gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
     selection_id_ = 0;
     is_end_ = false;
+    gsSetMusicVolume(0.85f);
 }
 
 void PauseScene::update(float delta_time)
@@ -71,6 +73,7 @@ void PauseScene::draw() const
 
 void PauseScene::end()
 {
+    gsSetMusicVolume(1.0f);
     //ƒŠƒ\[ƒX‚ğ‰ğ•ú
     gsDeleteTexture(Texture_Pause_Board);
     gsDeleteTexture(Texture_Pause_ReturnToGame);
