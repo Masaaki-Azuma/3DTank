@@ -21,8 +21,8 @@ void TitleScene::start()
 	gsLoadTexture(Texture_Cursor, "Assets/Texture/title_cursor.png");
 
 	gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
-	//gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
-	gsLoadMusic(Music_Title, "Assets/Sound/BGM/title_Movie.mp3", GS_TRUE);
+	gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
+	//gsLoadMusic(Music_Title, "Assets/Sound/BGM/title_Movie.mp3", GS_TRUE);
 	//終了フラグの初期化
 	is_end_ = false;
 	//選択肢番号を初期化
