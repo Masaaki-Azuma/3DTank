@@ -12,7 +12,7 @@ class MyGame : public gslib::Game
 {
 public:
 	MyGame():
-		gslib::Game{Screen::Width, Screen::Height, true}
+		gslib::Game{Screen::Width, Screen::Height, false}
 	{
 
 	}

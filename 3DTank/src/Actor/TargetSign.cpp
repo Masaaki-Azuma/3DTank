@@ -40,18 +40,27 @@ void TargetSign::move(float delta_time)
 	owner_position.y = Height;
 	//ˆÚ“®•ûŒü‚ğZo
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
-	if (gsGetKeyState(GKEY_UP)) {
-		direction.z -= 1.0f;
+	if (gsXBoxGetPadCount()) {
+		GSvector2 axis;
+		gsXBoxPadGetRightAxis(0, &axis);
+		direction.x = axis.x;
+		direction.z = -axis.y;
 	}
-	if (gsGetKeyState(GKEY_DOWN)) {
-		direction.z += 1.0f;
+	else {
+		if (gsGetKeyState(GKEY_UP)) {
+			direction.z -= 1.0f;
+		}
+		if (gsGetKeyState(GKEY_DOWN)) {
+			direction.z += 1.0f;
+		}
+		if (gsGetKeyState(GKEY_RIGHT)) {
+			direction.x += 1.0f;
+		}
+		if (gsGetKeyState(GKEY_LEFT)) {
+			direction.x -= 1.0f;
+		}
 	}
-	if (gsGetKeyState(GKEY_RIGHT)) {
-		direction.x += 1.0f;
-	}
-	if (gsGetKeyState(GKEY_LEFT)) {
-		direction.x -= 1.0f;
-	}
+	
 	//ˆÚ“®—Ê‚ğZo
 	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
 	//ã‰º•ûŒü‚É‚Í“®‚©‚³‚È‚¢

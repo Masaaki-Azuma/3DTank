@@ -68,19 +68,30 @@ void Player::move(float delta_time)
 {
 	//ˆÚ“®•ûŒü
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
-	//WASD‘€ì‚ÅˆÚ“®
-	if (gsGetKeyState(GKEY_D)) {
-		direction.x += 1.0f;
+	
+	//ƒRƒ“ƒgƒ[ƒ‰[
+	if (gsXBoxGetPadCount()) {
+		GSvector2 axis;
+		gsXBoxPadGetLeftAxis(0, &axis);
+		direction.x = axis.x;
+		direction.z = -axis.y;
 	}
-	if (gsGetKeyState(GKEY_A)) {
-		direction.x -= 1.0f;
+	else {
+		//WASD‘€ì‚ÅˆÚ“®
+		if (gsGetKeyState(GKEY_D)) {
+			direction.x += 1.0f;
+		}
+		if (gsGetKeyState(GKEY_A)) {
+			direction.x -= 1.0f;
+		}
+		if (gsGetKeyState(GKEY_W)) {
+			direction.z -= 1.0f;
+		}
+		if (gsGetKeyState(GKEY_S)) {
+			direction.z += 1.0f;
+		}
 	}
-	if (gsGetKeyState(GKEY_W)) {
-		direction.z -= 1.0f;
-	}
-	if (gsGetKeyState(GKEY_S)) {
-		direction.z += 1.0f;
-	}
+
 	//ˆÚ“®—Ê‚ÌŽZo
 	GSvector3 velocity = direction.normalized() * MoveSpeed;
 	//x,zŽ²•ûŒü‚ÌˆÚ“®—Ê‚ð•Û‘¶
@@ -105,7 +116,7 @@ void Player::free_fall(float delta_time)
 //’…’eˆÊ’u‚ð–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
 void Player::shoot()
 {
-	if (gsGetKeyTrigger(GKEY_SPACE)) {
+	if (gsGetKeyTrigger(GKEY_SPACE) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_RIGHT_SHOULDER)) {
 		//‰æ–Êã‚É“¯Žž‚É‘¶Ý‚Å‚«‚éPlayerCannonBall‚Í2‚Â‚Ü‚Å
 		if (world_->count_actor_with_tag("PlayerCannonBallTag") >= 2) return;
 		Actor* target = world_->find_actor("TargetSign");
