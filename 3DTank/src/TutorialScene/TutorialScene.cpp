@@ -115,19 +115,19 @@ const std::string TutorialScene::next() const
 void TutorialScene::exit()
 {
     //èIóπèàóù
-    if (gsGetKeyTrigger(GKEY_X)) {
+    if (gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X)) {
         is_end_ = true;
     }
 }
 
 void TutorialScene::turn_page()
 {
-    if (gsGetKeyTrigger(GKEY_RIGHT)) {
+    if (gsGetKeyTrigger(GKEY_RIGHT) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_RIGHT)) {
         scroll_speed_ = -ScrollSpeed;
         page_ = std::min(page_ + 1, MaxPage - 1);
         gsPlaySE(Se_CursorMove);
     }
-    else if (gsGetKeyTrigger(GKEY_LEFT)) {
+    else if (gsGetKeyTrigger(GKEY_LEFT) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_LEFT)) {
         scroll_speed_ = ScrollSpeed;
         page_ = std::max(page_ - 1, 0);
         gsPlaySE(Se_CursorMove);
