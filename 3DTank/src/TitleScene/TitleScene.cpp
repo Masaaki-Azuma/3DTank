@@ -88,11 +88,11 @@ const std::string TitleScene::next() const
 void TitleScene::select_menu()
 {
 	//上下キーでカーソル移動
-	if (gsGetKeyTrigger(GKEY_DOWN)) {
+	if (gsGetKeyTrigger(GKEY_DOWN) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_DOWN)) {
 		selection_id_ += 1;
 		gsPlaySE(Se_CursorMove);
 	}
-	else if (gsGetKeyTrigger(GKEY_UP)) {
+	else if (gsGetKeyTrigger(GKEY_UP) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_UP)) {
 		selection_id_ += MaxSelection - 1;
 		gsPlaySE(Se_CursorMove);
 	}
@@ -103,7 +103,7 @@ void TitleScene::select_menu()
 void TitleScene::confirm_menu()
 {
 	//zキーでシーン遷移
-	if (gsGetKeyTrigger(GKEY_Z)) {
+	if (gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A)) {
 		is_end_ = true;
 	}
 }
