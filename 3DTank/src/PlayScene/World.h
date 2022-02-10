@@ -16,6 +16,8 @@ public:
 	void clear();
 	//カメラの追加
 	void add_camera(CameraFixedPoint* camera);
+	//ライトの追加
+	void add_light(Actor* light);
 	//ステージインスタンスの追加
 	void add_stage(Stage* stage);
 	//ステージを読み込み
@@ -27,6 +29,8 @@ public:
 	virtual Actor* find_actor(const std::string& name) const;
 	//アクターのタグ検索
 	virtual Actor* find_actor_with_tag(const std::string& tag) const;
+	//一致するタグを持つアクターをカウント
+	virtual int count_actor_with_tag(const std::string& tag) const override;
 	//全アクターを消去
 	virtual void clear_actor() override;
 
@@ -40,6 +44,8 @@ private:
 	ActorManager actor_manager_;
 	//定点カメラ
 	CameraFixedPoint* camera_{ nullptr };
+	//ライト
+	Actor* light_{ nullptr };
 	//ステージ
 	Stage* stage_{ nullptr };
 };

@@ -15,14 +15,14 @@ const int MaxSelection{ 2 }; //選択肢の個数
 void TitleScene::start()
 {
 	//リソースの読み込み
-	gsLoadTexture(Texture_Title_Logo, "Assets/title_logo.png");
-	gsLoadTexture(Texture_Background, "Assets/background.png");
-	gsLoadTexture(Texture_Title_Menu, "Assets/title_menuText.png");
-	gsLoadTexture(Texture_PressZ, "Assets/press_z.png");
-	gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
+	gsLoadTexture(Texture_Title_Logo, "Assets/Texture/title_logo.png");
+	gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
+	gsLoadTexture(Texture_Title_Menu, "Assets/Texture/title_menuText.png");
+	gsLoadTexture(Texture_Cursor, "Assets/Texture/title_cursor.png");
 
 	gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
 	gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
+	//gsLoadMusic(Music_Title, "Assets/Sound/BGM/title_Movie.mp3", GS_TRUE);
 	//終了フラグの初期化
 	is_end_ = false;
 	//選択肢番号を初期化
@@ -63,7 +63,6 @@ void TitleScene::end()
 	gsDeleteTexture(Texture_Title_Logo);
 	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Title_Menu);
-	gsDeleteTexture(Texture_PressZ);
 	gsDeleteTexture(Texture_Cursor);
 
 	gsDeleteSE(Se_CursorMove);

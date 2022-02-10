@@ -106,6 +106,8 @@ void Player::free_fall(float delta_time)
 void Player::shoot()
 {
 	if (gsGetKeyTrigger(GKEY_SPACE)) {
+		//‰æ–Êã‚É“¯Žž‚É‘¶Ý‚Å‚«‚éPlayerCannonBall‚Í2‚Â‚Ü‚Å
+		if (world_->count_actor_with_tag("PlayerCannonBallTag") >= 2) return;
 		Actor* target = world_->find_actor("TargetSign");
 		if (!target) return;
 		//’e’…’eˆÊ’u

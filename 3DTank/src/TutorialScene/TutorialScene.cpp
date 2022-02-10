@@ -16,11 +16,11 @@ enum Page //ページを表す状態変数
 
 void TutorialScene::start()
 {
-    gsLoadTexture(Texture_Background, "Assets/background.png");
-    gsLoadTexture(Texture_Tutorial_Board0, "Assets/tutorial_boardControl.png");
-    gsLoadTexture(Texture_Tutorial_Board1, "Assets/tutorial_boardHint.png");
-    gsLoadTexture(Texture_Tutorial_PressXToTitle, "Assets/tutorial_press_x_to_title.png");
-    gsLoadTexture(Texture_Cursor, "Assets/title_cursor.png");
+    gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
+    gsLoadTexture(Texture_Tutorial_Board0, "Assets/Texture/tutorial_boardControl.png");
+    gsLoadTexture(Texture_Tutorial_Board1, "Assets/Texture/tutorial_boardHint.png");
+    gsLoadTexture(Texture_Tutorial_PressXToTitle, "Assets/Texture/tutorial_press_x_to_title.png");
+    gsLoadTexture(Texture_Cursor, "Assets/Texture/title_cursor.png");
 
     gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
 

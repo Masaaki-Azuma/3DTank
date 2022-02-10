@@ -3,6 +3,7 @@
 #include <GSeffect.h>
 #include <GSmusic.h>
 #include "CameraFixedPoint.h"
+#include "Actor/Light.h"
 #include "Stage.h"
 #include "Assets.h"
 #include "Sound.h"
@@ -29,16 +30,17 @@ void PlayScene::start()
 	gsLoadMesh(Mesh_BounceEnemy, "Assets/Mesh/Tank/yellow_tank.mshb");
 	gsLoadMesh(Mesh_PredictionEnemy, "Assets/Mesh/Tank/purple_tank.mshb");
 
-	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/player_cannon_ball.mshb");
-	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/enemy_cannon_ball.mshb");
-	gsLoadMesh(Mesh_TargetSign, "Assets/target_sign.mshb");
+	gsLoadMesh(Mesh_PlayerCannonBall, "Assets/Mesh/CannonBall/player_cannon_ball.mshb");
+	gsLoadMesh(Mesh_EnemyCannonBall, "Assets/Mesh/CannonBall/enemy_cannon_ball.mshb");
+	gsLoadMesh(Mesh_TargetSign, "Assets/Mesh/Target/target_sign.mshb");
 
-	gsLoadTexture(Texture_Background, "Assets/background.png");
-	gsLoadTexture(Texture_Stage, "Assets/stage.png");
-	gsLoadTexture(Texture_Clear, "Assets/clear.png");
-	gsLoadTexture(Texture_Miss, "Assets/miss.png");
-	gsLoadTexture(Texture_Number, "Assets/number.png");
-	gsLoadTexture(Texture_SilhouetteBackground, "Assets/silhouetteBackground.png");
+	gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
+	gsLoadTexture(Texture_Stage, "Assets/Texture/stage.png");
+	gsLoadTexture(Texture_Clear, "Assets/Texture/clear.png");
+	gsLoadTexture(Texture_Miss, "Assets/Texture/miss.png");
+	gsLoadTexture(Texture_Number, "Assets/Texture/number.png");
+	gsLoadTexture(Texture_SilhouetteBackground, "Assets/Texture/silhouetteBackground.png");
+	gsLoadTexture(Texture_Play_RemainingTank, "Assets/Texture/play_remainingTank.png");
 
 	gsLoadEffect(Effect_Smoke, "Assets/Effect/Smoke.efk");
 
@@ -56,6 +58,8 @@ void PlayScene::start()
 
 	//カメラの作成
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
+	//ライトの作成
+	world_.add_light(new Light{ &world_ });
 	//ステージの作成
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
 	//状態を初期化
@@ -138,6 +142,7 @@ void PlayScene::end()
 	gsDeleteTexture(Texture_Miss);
 	gsDeleteTexture(Texture_Number);
 	gsDeleteTexture(Texture_SilhouetteBackground);
+	gsDeleteTexture(Texture_Play_RemainingTank);
 
 	gsDeleteEffect(Effect_Smoke);
 
