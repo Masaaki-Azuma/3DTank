@@ -29,23 +29,23 @@ void PauseScene::start()
 void PauseScene::update(float delta_time)
 {
     //ポーズ画面を抜ける
-    if (gsGetKeyTrigger(GKEY_X)) {
+    if (gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X)) {
         selection_id_ = 0;
         is_end_ = true;
         end();
     }
 
     //メニューを決定
-    if (gsGetKeyTrigger(GKEY_Z)) {
+    if (gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A)) {
         is_end_ = true;
         end();
     }
 
     //メニューを選択
-    if (gsGetKeyTrigger(GKEY_DOWN)) {
+    if (gsGetKeyTrigger(GKEY_DOWN) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_DOWN)) {
         selection_id_ += 1;
     }
-    else if (gsGetKeyTrigger(GKEY_UP)) {
+    else if (gsGetKeyTrigger(GKEY_UP) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_UP)) {
         selection_id_ += MaxSelection - 1;
     }
     //選択肢番号を選択肢数に応じてループ調整
