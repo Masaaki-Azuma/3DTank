@@ -25,7 +25,8 @@ void LevelImage::update(float delta_time)
 {
 	timer_ = std::min(timer_ + delta_time, HoldTime);
 	//決定キーでクリア演出を終了し次へ
-	if (gsGetKeyTrigger(GKEY_Z) && timer_ >= HoldTime) {
+	if ((gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A))
+		&& timer_ >= HoldTime) {
 		is_end_ = true;
 	}
 }

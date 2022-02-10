@@ -23,7 +23,8 @@ void ClearImage::update(float delta_time)
 	image_scale_ = std::min(image_scale_ + ScaleVelocity * delta_time, GSvector2::one());
 	image_scale_ = ((timer_ - ScaleMaxTime) * (timer_ - ScaleMaxTime) / -SqScaleMaxTime + 1.0f) * GSvector2::one();
 	//決定キーでクリア演出を終了し次へ
-	if (gsGetKeyTrigger(GKEY_Z) && timer_ >= HoldTime) {
+	if ((gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A))
+		&& timer_ >= HoldTime) {
 		is_end_ = true;;
 	}
 }

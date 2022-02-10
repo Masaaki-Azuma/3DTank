@@ -203,7 +203,8 @@ void PlayScene::update_battle(float delta_time)
 		return;
 	}
 	//ポーズキーでポーズ
-	if (gsGetKeyTrigger(GKEY_X) && pause_.is_end()) {
+	if ((gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X))
+		 && pause_.is_end()) {
 		pause_.start();
 		return;
 	}
