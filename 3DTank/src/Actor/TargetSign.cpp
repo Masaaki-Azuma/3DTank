@@ -3,9 +3,9 @@
 #include "PlayScene/Stage.h"
 #include "Assets.h"
 
-const float MoveSpeed{ 0.5f };     //ˆÚ“®‘¬‚³
-const float Height{ 0.9f };        //ˆê’è‚‚³A‚±‚ê‚æ‚è‰º‚°‚é‚Æ’nŒ`‚É–„‚Ü‚é
-const float RangeRadius{ 16.0f };  //ƒvƒŒƒCƒ„[‚©‚ç—£‚ê‚ç‚ê‚éÅ‘å‹——£
+const float MoveSpeed{ 0.5f };     //ç§»å‹•é€Ÿã•
+const float Height{ 0.9f };        //ä¸€å®šé«˜ã•ã€ã“ã‚Œã‚ˆã‚Šä¸‹ã’ã‚‹ã¨åœ°å½¢ã«åŸ‹ã¾ã‚‹
+const float RangeRadius{ 16.0f };  //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰é›¢ã‚Œã‚‰ã‚Œã‚‹æœ€å¤§è·é›¢
 const GSrect Size{ -2,-2, 2, 2 };
 const GSrect StageSize{ -33,-20.5f, 33, 20.5 };
 
@@ -16,7 +16,7 @@ TargetSign::TargetSign(IWorld* world, const GSvector3& position, const Actor& ow
 	world_ = world;
 	name_ = "TargetSign";
 	tag_ = "TargetSignTag";
-	//yÀ•Wˆê’è
+	//yåº§æ¨™ä¸€å®š
 	transform_.position(GSvector3{ position.x, Height, position.z });
 }
 
@@ -27,7 +27,7 @@ void TargetSign::update(float delta_time)
 
 void TargetSign::draw() const
 {
-	//ƒƒbƒVƒ…‚Ì•`‰æ
+	//ãƒ¡ãƒƒã‚·ãƒ¥ã®æç”»
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(Mesh_TargetSign);
@@ -38,7 +38,7 @@ void TargetSign::move(float delta_time)
 {
 	GSvector3 owner_position = owner_.transform().position();
 	owner_position.y = Height;
-	//ˆÚ“®•ûŒü‚ğZo
+	//ç§»å‹•æ–¹å‘ã‚’ç®—å‡º
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
 	if (gsXBoxGetPadCount()) {
 		GSvector2 axis;
@@ -61,32 +61,32 @@ void TargetSign::move(float delta_time)
 		}
 	}
 	
-	//ˆÚ“®—Ê‚ğZo
+	//ç§»å‹•é‡ã‚’ç®—å‡º
 	GSvector3 velocity = direction.normalized() * MoveSpeed * delta_time;
-	//ã‰º•ûŒü‚É‚Í“®‚©‚³‚È‚¢
+	//ä¸Šä¸‹æ–¹å‘ã«ã¯å‹•ã‹ã•ãªã„
 	velocity.y = 0.0f;
-	//ˆÚ“®—Ê•ª‘Š‘ÎÀ•W‚ğ•Ï‰»
+	//ç§»å‹•é‡åˆ†ç›¸å¯¾åº§æ¨™ã‚’å¤‰åŒ–
 	offset_ += velocity;
-	//ƒvƒŒƒCƒ„[‚©‚ç‚Ì‘Š‘Î‹——£‚ğ§ŒÀ
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰ã®ç›¸å¯¾è·é›¢ã‚’åˆ¶é™
 	offset_ = GSvector3::clampMagnitude(offset_, RangeRadius);
-	//•Ç‚É‚æ‚é‰Ÿ‚µo‚µ‘O‚Ìƒ[ƒ‹ƒhÀ•W‚ğZo
+	//å£ã«ã‚ˆã‚‹æŠ¼ã—å‡ºã—å‰ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’ç®—å‡º
 	GSvector3 position = owner_position + offset_;
-	//•Ç‚Ì“à‘¤‚É§ŒÀ
+	//å£ã®å†…å´ã«åˆ¶é™
 	collide_wall(position);
-	//•Ç‚É‚æ‚é‰Ÿ‚µo‚µŒã‚Ìƒ[ƒ‹ƒhÀ•W‚ğZo
+	//å£ã«ã‚ˆã‚‹æŠ¼ã—å‡ºã—å¾Œã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’ç®—å‡º
 	position = owner_position + offset_;
-	//ƒvƒŒƒCƒ„[‚©‚ç‘Š‘ÎˆÚ“®‚µ‚½À•W‚ÖˆÚ“®
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰ç›¸å¯¾ç§»å‹•ã—ãŸåº§æ¨™ã¸ç§»å‹•
 	transform_.position(position);
 }
 
 void TargetSign::collide_wall(const GSvector3& position)
 {
-	//ƒXƒe[ƒWŠO˜g‚ÆÆ€‚Ì‘å‚«‚³‚©‚ç‹‚Ü‚éAˆÊ’u‚ÌŒÀŠE’l
+	//ã‚¹ãƒ†ãƒ¼ã‚¸å¤–æ ã¨ç…§æº–ã®å¤§ãã•ã‹ã‚‰æ±‚ã¾ã‚‹ã€ä½ç½®ã®é™ç•Œå€¤
 	static const float left_limit{ StageSize.left - Size.left };
 	static const float right_limit{ StageSize.right - Size.right };
 	static const float top_limit{ StageSize.top - Size.top };
 	static const float bottom_limit{ StageSize.bottom - Size.bottom };
-	//•Ç‚É–„‚Ü‚Á‚½’·‚³‚Ô‚ñAƒIƒtƒZƒbƒg‚ğ‰Ÿ‚µ–ß‚·
+	//å£ã«åŸ‹ã¾ã£ãŸé•·ã•ã¶ã‚“ã€ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’æŠ¼ã—æˆ»ã™
 	if (position.x < left_limit) {
 		offset_.x += left_limit - position.x;
 	}
@@ -102,4 +102,4 @@ void TargetSign::collide_wall(const GSvector3& position)
 	}
 }
 
-//HACK:collide_field‚ÍActor‚Å‚Ü‚Æ‚ß‚é‚×‚«‚Å‚ÍH(virtual‚ÅƒI[ƒo[ƒ‰ƒCƒh‚Å‚«‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­)
+//HACK:collide_fieldã¯Actorã§ã¾ã¨ã‚ã‚‹ã¹ãã§ã¯ï¼Ÿ(virtualã§ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã§ãã‚‹ã‚ˆã†ã«ã—ã¦ãŠã)

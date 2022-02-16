@@ -19,7 +19,7 @@ PlayScene::PlayScene():
 
 void PlayScene::start()
 {
-	////ƒŠƒ\[ƒX‚Ì“Ç‚İ‚İ(ƒXƒe[ƒWŠÔ‚Å‹¤’Ê‚µ‚Äg‚¤•¨‚Ì‚İ)
+	////ãƒªã‚½ãƒ¼ã‚¹ã®èª­ã¿è¾¼ã¿(ã‚¹ãƒ†ãƒ¼ã‚¸é–“ã§å…±é€šã—ã¦ä½¿ã†ç‰©ã®ã¿)
 	gsLoadMesh(Mesh_Player, "Assets/Mesh/Tank/blue_tank.mshb");
 
 	gsLoadMesh(Mesh_ImmovableEnemy, "Assets/Mesh/Tank/lightGreen_tank.mshb");
@@ -56,26 +56,26 @@ void PlayScene::start()
 
 	gsLoadMusic(Music_Battle, "Assets/Sound/BGM/battle.mp3", GS_TRUE);
 
-	//ƒJƒƒ‰‚Ìì¬
+	//ã‚«ãƒ¡ãƒ©ã®ä½œæˆ
 	world_.add_camera(new CameraFixedPoint{ GSvector3{0.0f, 50.0f, 50.0f}, GSvector3{0.0f, 0.0f, 0.0f} });
-	//ƒ‰ƒCƒg‚Ìì¬
+	//ãƒ©ã‚¤ãƒˆã®ä½œæˆ
 	world_.add_light(new Light{ &world_ });
-	//ƒXƒe[ƒW‚Ìì¬
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã®ä½œæˆ
 	world_.add_stage(new Stage{ Octree_Mesh, Octree_Collide });
-	//ó‘Ô‚ğ‰Šú‰»
+	//çŠ¶æ…‹ã‚’åˆæœŸåŒ–
 	state_ = State::Introduction;
 	level_ = 0;
 	is_end_ = false;
 	level_image_.initialize(level_);
-	//Å‰‚ÌƒXƒe[ƒW‚ğ“Ç‚İ‚İAˆÈ~ƒ[ƒ‹ƒh“à‚ÅƒXƒe[ƒW‚ÌØ‚è‘Ö‚¦‚ğs‚¤
+	//æœ€åˆã®ã‚¹ãƒ†ãƒ¼ã‚¸ã‚’èª­ã¿è¾¼ã¿ã€ä»¥é™ãƒ¯ãƒ¼ãƒ«ãƒ‰å†…ã§ã‚¹ãƒ†ãƒ¼ã‚¸ã®åˆ‡ã‚Šæ›¿ãˆã‚’è¡Œã†
 	world_.load_stage(level_);
-	//BGM‚ğƒoƒCƒ“ƒh
+	//BGMã‚’ãƒã‚¤ãƒ³ãƒ‰
 	gsBindMusic(Music_Battle);
 }
 
 void PlayScene::update(float delta_time)
 {
-	//ƒV[ƒ“‚Ìó‘Ô‚É‚æ‚Á‚Ä•ªŠò
+	//ã‚·ãƒ¼ãƒ³ã®çŠ¶æ…‹ã«ã‚ˆã£ã¦åˆ†å²
 	switch (state_) {
 	case State::Introduction: update_introduction(delta_time); break;
 	case State::Battle:       update_battle(delta_time);       break;
@@ -86,16 +86,16 @@ void PlayScene::update(float delta_time)
 
 void PlayScene::draw() const
 {
-	//ƒV[ƒ““àƒIƒuƒWƒFƒNƒg‚Ì•`‰æ
+	//ã‚·ãƒ¼ãƒ³å†…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æç”»
 	world_.draw();
 
 	if (!pause_.is_end()) {
 		pause_.draw();
 	}
-	//ƒoƒgƒ‹ó‘Ô‚È‚çˆ—‚ğ‘Å‚¿Ø‚è
+	//ãƒãƒˆãƒ«çŠ¶æ…‹ãªã‚‰å‡¦ç†ã‚’æ‰“ã¡åˆ‡ã‚Š
 	if (state_ == State::Battle) return;
 
-	//ƒV[ƒ“‚Ìó‘Ô‚É‰‚¶‚ÄA’Ç‰Á•`‰æ
+	//ã‚·ãƒ¼ãƒ³ã®çŠ¶æ…‹ã«å¿œã˜ã¦ã€è¿½åŠ æç”»
 	switch (state_) {
 	case State::Introduction:
 		fade_.draw();
@@ -113,15 +113,15 @@ void PlayScene::draw() const
 
 void PlayScene::end()
 {
-	//Ä¶’†‚ÌƒGƒtƒFƒNƒg‚ğíœ
+	//å†ç”Ÿä¸­ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤
 	gsStopAllEffects();
-	//ƒ|[ƒYƒV[ƒ“‚ÌƒŠƒ\[ƒX‚ğ‰ğ•ú
+	//ãƒãƒ¼ã‚ºã‚·ãƒ¼ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾
 	pause_.end();
-	//ƒ[ƒ‹ƒh‚ÌŠÇ—•¨‚ğÁ‹
+	//ãƒ¯ãƒ¼ãƒ«ãƒ‰ã®ç®¡ç†ç‰©ã‚’æ¶ˆå»
 	world_.clear();
-	//BGM‚ğ’â~
+	//BGMã‚’åœæ­¢
 	gsStopMusic();
-	//ƒŠƒ\[ƒX‚Ì‰ğ•ú
+	//ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾
 	gsDeleteMesh(Mesh_Player);
 	
 	gsDeleteMesh(Mesh_ImmovableEnemy);
@@ -170,22 +170,22 @@ const std::string PlayScene::next() const
 
 void PlayScene::update_introduction(float delta_time)
 {
-	//ƒtƒF[ƒhƒCƒ“’†‚©H
+	//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ä¸­ã‹ï¼Ÿ
 	if (fade_.is_running()) {
 		fade_.update(delta_time);
-		//ƒtƒF[ƒhƒCƒ“‚µI‚í‚Á‚½‚©H
+		//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã—çµ‚ã‚ã£ãŸã‹ï¼Ÿ
 		if (fade_.is_opening()) {
 			state_ = State::Battle;
 		}
 		return;
 	}
-	//ƒŒƒxƒ‹î•ñ‰æ–Ê‚ğXV
+	//ãƒ¬ãƒ™ãƒ«æƒ…å ±ç”»é¢ã‚’æ›´æ–°
 	level_image_.update(delta_time);
-	//ƒŒƒxƒ‹î•ñ‰æ–Ê‚ªI—¹‚µ‚½‚çAƒtƒF[ƒhƒCƒ“
+	//ãƒ¬ãƒ™ãƒ«æƒ…å ±ç”»é¢ãŒçµ‚äº†ã—ãŸã‚‰ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
 	if (level_image_.is_end()) {
-		//BGM‰¹—Ê‚ğÅ‘å‚É
+		//BGMéŸ³é‡ã‚’æœ€å¤§ã«
 		gsSetMusicVolume(1.0f);
-		//BGM‚ğÄ¶
+		//BGMã‚’å†ç”Ÿ
 		gsPlayMusic();
 		fade_.fade_in();
 	}
@@ -193,8 +193,8 @@ void PlayScene::update_introduction(float delta_time)
 
 void PlayScene::update_battle(float delta_time)
 {
-	/*ƒ|[ƒYˆ—*/
-	//ƒ|[ƒY’†‚Íƒ|[ƒY‰æ–Ê‚Ì‚İ‚ğXV
+	/*ãƒãƒ¼ã‚ºå‡¦ç†*/
+	//ãƒãƒ¼ã‚ºä¸­ã¯ãƒãƒ¼ã‚ºç”»é¢ã®ã¿ã‚’æ›´æ–°
 	if (!pause_.is_end()) {
 		pause_.update(delta_time);
 		if (pause_.is_end() && pause_.next() == "TitleScene") {
@@ -202,30 +202,30 @@ void PlayScene::update_battle(float delta_time)
 		}
 		return;
 	}
-	//ƒ|[ƒYƒL[‚Åƒ|[ƒY
+	//ãƒãƒ¼ã‚ºã‚­ãƒ¼ã§ãƒãƒ¼ã‚º
 	if ((gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X))
 		 && pause_.is_end()) {
 		pause_.start();
 		return;
 	}
 
-	/*ƒƒCƒ“ƒQ[ƒ€ˆ—*/
-	//ƒV[ƒ““àƒIƒuƒWƒFƒNƒg‚ÌXV
+	/*ãƒ¡ã‚¤ãƒ³ã‚²ãƒ¼ãƒ å‡¦ç†*/
+	//ã‚·ãƒ¼ãƒ³å†…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ›´æ–°
 	world_.update(delta_time);
-	//í“¬‰æ–Ê‚ªI—¹‚µ‚½‚çA‘JˆÚ
+	//æˆ¦é—˜ç”»é¢ãŒçµ‚äº†ã—ãŸã‚‰ã€é·ç§»
 	if (world_.is_level_clear()) {
 		state_ = State::LevelClear;
-		//ˆê’U‘SSE‚ğ’â~
+		//ä¸€æ—¦å…¨SEã‚’åœæ­¢
 		gsStopSound();
-		//BGM‚ğ¬‚³‚­
+		//BGMã‚’å°ã•ã
 		gsSetMusicVolume(0.85f);
 		clear_image_.initialize();
 	}
 	else if (!world_.find_actor("Player")) {
 		state_ = State::LevelMiss;
-		//ˆê’U‘SSE‚ğ’â~
+		//ä¸€æ—¦å…¨SEã‚’åœæ­¢
 		gsStopSound();
-		//BGM‚ğ’â~
+		//BGMã‚’åœæ­¢
 		gsStopMusic();
 		miss_image_.initialize();
 	}
@@ -233,28 +233,28 @@ void PlayScene::update_battle(float delta_time)
 
 void PlayScene::update_level_clear(float delta_time)
 {
-	/*ƒtƒF[ƒhˆ—*/
-	//ƒtƒF[ƒhƒAƒEƒg’†‚©H
+	/*ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†*/
+	//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­ã‹ï¼Ÿ
 	if (fade_.is_running()) {
 		fade_.update(delta_time);
-		//ƒtƒF[ƒhƒAƒEƒg‚µI‚í‚Á‚½‚©H
+		//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã—çµ‚ã‚ã£ãŸã‹ï¼Ÿ
 		if (fade_.is_hiding()) {
 			state_ = State::Introduction;
-			//ƒŒƒxƒ‹‚ğ1i‚ß‚é
+			//ãƒ¬ãƒ™ãƒ«ã‚’1é€²ã‚ã‚‹
 			++level_;
 			level_image_.initialize(level_);
-			//Ÿ‚ÌƒŒƒxƒ‹‚ğƒ[ƒh
+			//æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰
 			world_.load_stage(level_);
 		}
 		return;
 	}
 
-	/*ƒNƒŠƒA‰æ–Êˆ—*/
-	//ƒV[ƒ““àƒIƒuƒWƒFƒNƒg‚Í‘±‚¯‚ÄXV
+	/*ã‚¯ãƒªã‚¢ç”»é¢å‡¦ç†*/
+	//ã‚·ãƒ¼ãƒ³å†…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ç¶šã‘ã¦æ›´æ–°
 	world_.update(delta_time);
-	//ƒŒƒxƒ‹ƒNƒŠƒA‰æ–Ê‚ğXV
+	//ãƒ¬ãƒ™ãƒ«ã‚¯ãƒªã‚¢ç”»é¢ã‚’æ›´æ–°
 	clear_image_.update(delta_time);
-	//ƒNƒŠƒA‰æ–Ê‚ªI—¹‚µ‚½‚çAƒtƒF[ƒhƒAƒEƒg
+	//ã‚¯ãƒªã‚¢ç”»é¢ãŒçµ‚äº†ã—ãŸã‚‰ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
 	if (clear_image_.is_end()) {
 		if (level_ + 1 >= MaxLevel) {
 			is_end_ = true;
@@ -271,9 +271,9 @@ void PlayScene::update_level_miss(float delta_time)
 	miss_image_.update(delta_time);
 	if (miss_image_.is_end()) {
 		state_ = State::Introduction;
-		//Œ»İƒŒƒxƒ‹‚ğƒŠƒXƒ^[ƒg
+		//ç¾åœ¨ãƒ¬ãƒ™ãƒ«ã‚’ãƒªã‚¹ã‚¿ãƒ¼ãƒˆ
 		level_image_.initialize(level_);
-		//Ÿ‚ÌƒŒƒxƒ‹‚ğƒ[ƒh
+		//æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰
 		world_.load_stage(level_);
 	}
 }

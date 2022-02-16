@@ -4,17 +4,17 @@
 #include "Assets.h"
 #include "Sound.h"
 
-enum //Ÿ‚Ì‘JˆÚƒV[ƒ“
+enum //æ¬¡ã®é·ç§»ã‚·ãƒ¼ãƒ³
 {
 	GameStart = 0,
 	Tutorial = 1,
 };
 
-const int MaxSelection{ 2 }; //‘I‘ğˆ‚ÌŒÂ”
+const int MaxSelection{ 2 }; //é¸æŠè‚¢ã®å€‹æ•°
 
 void TitleScene::start()
 {
-	//ƒŠƒ\[ƒX‚Ì“Ç‚İ‚İ
+	//ãƒªã‚½ãƒ¼ã‚¹ã®èª­ã¿è¾¼ã¿
 	gsLoadTexture(Texture_Title_Logo, "Assets/Texture/title_logo.png");
 	gsLoadTexture(Texture_Background, "Assets/Texture/background.png");
 	gsLoadTexture(Texture_Title_Menu, "Assets/Texture/title_menuText.png");
@@ -23,13 +23,13 @@ void TitleScene::start()
 	gsLoadSE(Se_CursorMove, "Assets/Sound/SE/cursor_move.wav", 1, GWAVE_DEFAULT);
 	gsLoadMusic(Music_Title, "Assets/Sound/BGM/title.mp3", GS_TRUE);
 	//gsLoadMusic(Music_Title, "Assets/Sound/BGM/title_Movie.mp3", GS_TRUE);
-	//I—¹ƒtƒ‰ƒO‚Ì‰Šú‰»
+	//çµ‚äº†ãƒ•ãƒ©ã‚°ã®åˆæœŸåŒ–
 	is_end_ = false;
-	//‘I‘ğˆ”Ô†‚ğ‰Šú‰»
+	//é¸æŠè‚¢ç•ªå·ã‚’åˆæœŸåŒ–
 	selection_id_ = 0;
-	//BGM‚ÌƒoƒCƒ“ƒh
+	//BGMã®ãƒã‚¤ãƒ³ãƒ‰
 	gsBindMusic(Music_Title);
-	//BGM‚ÌÄ¶
+	//BGMã®å†ç”Ÿ
 	gsPlayMusic();
 }
 
@@ -41,25 +41,25 @@ void TitleScene::update(float delta_time)
 
 void TitleScene::draw() const
 {
-	//”wŒi‚ğ•`‰æ
+	//èƒŒæ™¯ã‚’æç”»
 	draw_2Dsprite(Texture_Background);
-	//ƒ^ƒCƒgƒ‹ƒƒS‚ğ•\¦
+	//ã‚¿ã‚¤ãƒˆãƒ«ãƒ­ã‚´ã‚’è¡¨ç¤º
 	draw_2Dsprite(Texture_Title_Logo, GSvector2{ 150, 130 });
 
-	//‘I‘ğˆ‚ğ•`‰æ
+	//é¸æŠè‚¢ã‚’æç”»
 	static const int selection_top{ 540 };
 	static const int selection_gap{ 200 };
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top                     }, GSrect{ 0, 0, 720, 120 });
 	draw_2Dsprite(Texture_Title_Menu, GSvector2{ 540, selection_top + selection_gap     }, GSrect{ 0, 120, 720, 240 });
-	//ƒJ[ƒ\ƒ‹‚ğ•`‰æ
+	//ã‚«ãƒ¼ã‚½ãƒ«ã‚’æç”»
 	draw_2Dsprite(Texture_Cursor, GSvector2{ 400, selection_top + (GSfloat)selection_gap * selection_id_ });
 }
 
 void TitleScene::end()
 {
-	//BGM‚Ì’â~
+	//BGMã®åœæ­¢
 	gsStopMusic();
-	//ƒŠƒ\[ƒX‚Ì‰ğ•ú
+	//ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾
 	gsDeleteTexture(Texture_Title_Logo);
 	gsDeleteTexture(Texture_Background);
 	gsDeleteTexture(Texture_Title_Menu);
@@ -80,14 +80,14 @@ const std::string TitleScene::next() const
 	case GameStart: return "PlayScene";     break;
 	case Tutorial:  return "TutorialScene"; break;
 	default:
-		throw std::runtime_error("ƒ^ƒCƒgƒ‹ƒV[ƒ“‚©‚ç‚Ì•s³‚È‘JˆÚ‚Å‚·");
+		throw std::runtime_error("ã‚¿ã‚¤ãƒˆãƒ«ã‚·ãƒ¼ãƒ³ã‹ã‚‰ã®ä¸æ­£ãªé·ç§»ã§ã™");
 		break;
 	}
 }
 
 void TitleScene::select_menu()
 {
-	//ã‰ºƒL[‚ÅƒJ[ƒ\ƒ‹ˆÚ“®
+	//ä¸Šä¸‹ã‚­ãƒ¼ã§ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
 	if (gsGetKeyTrigger(GKEY_DOWN) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_DOWN)) {
 		selection_id_ += 1;
 		gsPlaySE(Se_CursorMove);
@@ -96,13 +96,13 @@ void TitleScene::select_menu()
 		selection_id_ += MaxSelection - 1;
 		gsPlaySE(Se_CursorMove);
 	}
-	//‘I‘ğˆ”Ô†‚ğ‘I‘ğˆ”‚É‰‚¶‚Äƒ‹[ƒv’²®
+	//é¸æŠè‚¢ç•ªå·ã‚’é¸æŠè‚¢æ•°ã«å¿œã˜ã¦ãƒ«ãƒ¼ãƒ—èª¿æ•´
 	selection_id_ %= MaxSelection;
 }
 
 void TitleScene::confirm_menu()
 {
-	//zƒL[‚ÅƒV[ƒ“‘JˆÚ
+	//zã‚­ãƒ¼ã§ã‚·ãƒ¼ãƒ³é·ç§»
 	if (gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A)) {
 		is_end_ = true;
 	}
@@ -110,7 +110,7 @@ void TitleScene::confirm_menu()
 
 void TitleScene::draw_2Dsprite(GSuint texture_id, const GSvector2& position, const GSrect source_rect) const
 {
-	//‰æ‘œ‚Ìˆê•”‚ğØ‚èo‚µ‚Ä‚¢‚é‚©H
+	//ç”»åƒã®ä¸€éƒ¨ã‚’åˆ‡ã‚Šå‡ºã—ã¦ã„ã‚‹ã‹ï¼Ÿ
 	bool is_clipped = !(
 		source_rect.left   == 0 &&
 		source_rect.top    == 0 &&

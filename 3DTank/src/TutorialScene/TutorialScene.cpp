@@ -8,7 +8,7 @@ const float ScrollSpeed{ 40.0f };
 const int MaxPage{ 2 };
 const int ScreenWidth{ 1920 };
 
-enum Page //ƒy[ƒW‚ğ•\‚·ó‘Ô•Ï”
+enum Page //ãƒšãƒ¼ã‚¸ã‚’è¡¨ã™çŠ¶æ…‹å¤‰æ•°
 {
     Control,
     Hint,
@@ -30,47 +30,47 @@ void TutorialScene::start()
     position_board_ = GSvector2{ 0.0f, 0.0f };
     scroll_speed_ = 0.0f;
     is_end_ = false;
-    //BGM‚ÌƒoƒCƒ“ƒh
+    //BGMã®ãƒã‚¤ãƒ³ãƒ‰
     gsBindMusic(Music_Title);
-    //BGM‚ÌÄ¶
+    //BGMã®å†ç”Ÿ
     gsPlayMusic();
 }
 
 void TutorialScene::update(float delta_time)
 {
-    //ƒy[ƒW‚ğ•Ï‚¦‚é‘€ì
+    //ãƒšãƒ¼ã‚¸ã‚’å¤‰ãˆã‚‹æ“ä½œ
     turn_page();
-    //ƒy[ƒW‚ğƒXƒNƒ[ƒ‹‚·‚é
+    //ãƒšãƒ¼ã‚¸ã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã™ã‚‹
     scroll_page(delta_time);
 
-    //ƒy[ƒWˆÚ“®’†‚È‚ç‚±‚±‚ÅXVI—¹
+    //ãƒšãƒ¼ã‚¸ç§»å‹•ä¸­ãªã‚‰ã“ã“ã§æ›´æ–°çµ‚äº†
     if (scroll_speed_ != 0.0f) return;
-    //ƒV[ƒ“‚ğ”²‚¯‚é‘€ì
+    //ã‚·ãƒ¼ãƒ³ã‚’æŠœã‘ã‚‹æ“ä½œ
     exit();
 }
 
 void TutorialScene::draw() const
 {
-    //”wŒi‚ğ•`‰æ
+    //èƒŒæ™¯ã‚’æç”»
     static const GSvector2 position_background{ 0, 0 };
     gsDrawSprite2D(Texture_Background, &position_background, NULL, NULL, NULL, NULL, NULL);
 
-    //à–¾1‚ğ•`‰æ
+    //èª¬æ˜1ã‚’æç”»
     GSvector2 position_board1 = position_board_;
     gsDrawSprite2D(Texture_Tutorial_Board0, &position_board1, NULL, NULL, NULL, NULL, NULL);
-    //à–¾2‚ğ•`‰æ
+    //èª¬æ˜2ã‚’æç”»
     GSvector2 position_board2 = position_board_ + GSvector2{ 1920, 0 };
     gsDrawSprite2D(Texture_Tutorial_Board1, &position_board2, NULL, NULL, NULL, NULL, NULL);
 
-    //ƒy[ƒWˆÚ“®’†‚È‚ç‚±‚±‚Å•`‰æI—¹
+    //ãƒšãƒ¼ã‚¸ç§»å‹•ä¸­ãªã‚‰ã“ã“ã§æç”»çµ‚äº†
     if (scroll_speed_ != 0.0f) return;
 
-    //uƒ^ƒCƒgƒ‹‚Öv•¶š—ñ‚ğ•`‰æ
+    //ã€Œã‚¿ã‚¤ãƒˆãƒ«ã¸ã€æ–‡å­—åˆ—ã‚’æç”»
     static const GSvector2 position_pressX{ 50, 970 };
     gsDrawSprite2D(Texture_Tutorial_PressXToTitle, &position_pressX, NULL, NULL, NULL, NULL, NULL);
 
-    //HACK:ƒCƒ“ƒfƒ“ƒg‚Í‚±‚ê‚Å‚¢‚¢‚Ì‚©H
-    //ƒJ[ƒ\ƒ‹‚ğ•`‰æ
+    //HACK:ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã¯ã“ã‚Œã§ã„ã„ã®ã‹ï¼Ÿ
+    //ã‚«ãƒ¼ã‚½ãƒ«ã‚’æç”»
     static const GSvector2 scaling{ 0.8f, 0.8f };
     switch (page_) {
     case Control: {
@@ -114,7 +114,7 @@ const std::string TutorialScene::next() const
 
 void TutorialScene::exit()
 {
-    //I—¹ˆ—
+    //çµ‚äº†å‡¦ç†
     if (gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X)) {
         is_end_ = true;
     }
@@ -141,7 +141,7 @@ void TutorialScene::scroll_page(float delta_time)
     case Control: scroll_control(delta_time); break;
     case Hint:    scroll_hint(delta_time);    break;
     default:
-        throw std::runtime_error("ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒV[ƒ““à‚Ì•s³‚È‘JˆÚ‚Å‚·");
+        throw std::runtime_error("ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã‚·ãƒ¼ãƒ³å†…ã®ä¸æ­£ãªé·ç§»ã§ã™");
         break;
     }
 }

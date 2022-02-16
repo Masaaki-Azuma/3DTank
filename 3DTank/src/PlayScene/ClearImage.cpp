@@ -13,7 +13,7 @@ void ClearImage::initialize()
 	timer_ = 0.0f;
 	is_end_ = false;
 	image_scale_ = GSvector2::zero();
-	//ƒNƒŠƒA‰¹º‚ðÄ¶
+	//ã‚¯ãƒªã‚¢éŸ³å£°ã‚’å†ç”Ÿ
 	gsPlaySE(Se_ClearStage);
 }
 
@@ -22,7 +22,7 @@ void ClearImage::update(float delta_time)
 	timer_ = std::min(timer_ + delta_time, HoldTime);
 	image_scale_ = std::min(image_scale_ + ScaleVelocity * delta_time, GSvector2::one());
 	image_scale_ = ((timer_ - ScaleMaxTime) * (timer_ - ScaleMaxTime) / -SqScaleMaxTime + 1.0f) * GSvector2::one();
-	//Œˆ’èƒL[‚ÅƒNƒŠƒA‰‰o‚ðI—¹‚µŽŸ‚Ö
+	//æ±ºå®šã‚­ãƒ¼ã§ã‚¯ãƒªã‚¢æ¼”å‡ºã‚’çµ‚äº†ã—æ¬¡ã¸
 	if ((gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A))
 		&& timer_ >= HoldTime) {
 		is_end_ = true;;
@@ -31,7 +31,7 @@ void ClearImage::update(float delta_time)
 
 void ClearImage::draw() const
 {
-	//•`‰æ
+	//æç”»
 	const static GSvector2 position_clear{ 420 + ImageSize.x / 2, 210 + ImageSize.y / 2 };
 	const static GSvector2 center{ ImageSize / 2 };
 	gsDrawSprite2D(Texture_Clear, &position_clear, NULL, &center, NULL, &image_scale_, NULL);

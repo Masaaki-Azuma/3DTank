@@ -4,7 +4,7 @@
 #include "Assets.h"
 #include "Sound.h"
 
-const float HoldTime{ 30.0f }; //Å’á•`‰æŽžŠÔ
+const float HoldTime{ 30.0f }; //æœ€ä½Žæç”»æ™‚é–“
 const GSvector2 ImageSize{ 840,220 };
 
 
@@ -24,7 +24,7 @@ void LevelImage::initialize(int level)
 void LevelImage::update(float delta_time)
 {
 	timer_ = std::min(timer_ + delta_time, HoldTime);
-	//Œˆ’èƒL[‚ÅƒNƒŠƒA‰‰o‚ðI—¹‚µŽŸ‚Ö
+	//æ±ºå®šã‚­ãƒ¼ã§ã‚¯ãƒªã‚¢æ¼”å‡ºã‚’çµ‚äº†ã—æ¬¡ã¸
 	if ((gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A))
 		&& timer_ >= HoldTime) {
 		is_end_ = true;
@@ -33,12 +33,12 @@ void LevelImage::update(float delta_time)
 
 void LevelImage::draw() const
 {
-	//•`‰æ
+	//æç”»
 	const static GSvector2 position_stage{ Screen::Width / 2, 340 };
 	const static GSvector2 center{ ImageSize / 2 };
 	gsDrawSprite2D(Texture_Stage, &position_stage, NULL, &center, NULL, NULL, NULL);
-	//Œ»Ý‚ÌƒŒƒxƒ‹‚ð•\Ž¦
-	number_.draw(GSvector2{ 1100, 290 }, level_ + 1); //•\Ž¦ƒŒƒxƒ‹‚Í“à•”ƒŒƒxƒ‹‚æ‚è1‘å‚«‚¢
+	//ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ã‚’è¡¨ç¤º
+	number_.draw(GSvector2{ 1100, 290 }, level_ + 1); //è¡¨ç¤ºãƒ¬ãƒ™ãƒ«ã¯å†…éƒ¨ãƒ¬ãƒ™ãƒ«ã‚ˆã‚Š1å¤§ãã„
 }
 
 bool LevelImage::is_end() const
