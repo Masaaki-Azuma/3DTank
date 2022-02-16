@@ -12,8 +12,8 @@ const float Gravity{ -0.02f };
 const float PlayerHeight{ 2.0f };
 const float FootOffset{ 0.1f };
 const GSvector3 CannonOffset{ 0.0f, 2.5f, 0.0f };
-const float CannonVerticalSpeed{ 0.8f };  //’e‚Ì‰”’¼‰‘¬“x
-const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //’e‚Ì…•½‘¬“x‚ğŒˆ’è‚·‚éŒW”A= -2*CannonVerticalSpeed/CannonBall::Gravity
+const float CannonVerticalSpeed{ 0.8f };  //å¼¾ã®é‰›ç›´åˆé€Ÿåº¦
+const float CannonVelocityFactor{ -2 * CannonVerticalSpeed / Gravity };  //å¼¾ã®æ°´å¹³é€Ÿåº¦ã‚’æ±ºå®šã™ã‚‹ä¿‚æ•°ã€= -2*CannonVerticalSpeed/CannonBall::Gravity
 
 
 Player::Player(IWorld* world, const GSvector3& position)
@@ -28,21 +28,21 @@ Player::Player(IWorld* world, const GSvector3& position)
 
 void Player::update(float delta_time)
 {
-	//ƒNƒŠƒAó‘Ô‚È‚çˆÚ“®‚ğ‘€ì‚ğ‹Ö~
+	//ã‚¯ãƒªã‚¢çŠ¶æ…‹ãªã‚‰ç§»å‹•ã‚’æ“ä½œã‚’ç¦æ­¢
 	if (world_->is_level_clear()) return;
-	//ˆÚ“®
+	//ç§»å‹•
 	move(delta_time);
-	//d—Í‚É‚æ‚é©—R—‰º
+	//é‡åŠ›ã«ã‚ˆã‚‹è‡ªç”±è½ä¸‹
 	free_fall(delta_time);
-	//’nŒ`‚ÆÕ“Ë”»’è
+	//åœ°å½¢ã¨è¡çªåˆ¤å®š
 	collide_field();
-	//–CŠÛ‚Ì”­Ë
+	//ç ²ä¸¸ã®ç™ºå°„
 	shoot();
 }
 
 void Player::draw() const
 {
-	//ƒƒbƒVƒ…‚Ì•`‰æ
+	//ãƒ¡ãƒƒã‚·ãƒ¥ã®æç”»
 	glPushMatrix();
 	glMultMatrixf(transform_.localToWorldMatrix());
 	gsDrawMesh(Mesh_Player);
@@ -51,25 +51,25 @@ void Player::draw() const
 
 void Player::react(Actor& other)
 {
-	//ƒNƒŠƒAó‘Ô‚È‚ç€–S‚µ‚È‚¢
+	//ã‚¯ãƒªã‚¢çŠ¶æ…‹ãªã‚‰æ­»äº¡ã—ãªã„
 	if (world_->is_level_clear()) return;
 
-	//“G’e‚É“–‚½‚Á‚½‚ç€–S
+	//æ•µå¼¾ã«å½“ãŸã£ãŸã‚‰æ­»äº¡
 	if (other.tag() == "EnemyCannonBallTag") {
 		die();
 	}
 	if (other.tag() == "EnemyTag") {
-		//‰Ÿ‚µo‚µ”»’è
+		//æŠ¼ã—å‡ºã—åˆ¤å®š
 		collide_actor(other);
 	}
 }
 
 void Player::move(float delta_time)
 {
-	//ˆÚ“®•ûŒü
+	//ç§»å‹•æ–¹å‘
 	GSvector3 direction{ 0.0f, 0.0f, 0.0f };
 	
-	//ƒRƒ“ƒgƒ[ƒ‰[
+	//ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
 	if (gsXBoxGetPadCount()) {
 		GSvector2 axis;
 		gsXBoxPadGetLeftAxis(0, &axis);
@@ -77,7 +77,7 @@ void Player::move(float delta_time)
 		direction.z = -axis.y;
 	}
 	else {
-		//WASD‘€ì‚ÅˆÚ“®
+		//WASDæ“ä½œã§ç§»å‹•
 		if (gsGetKeyState(GKEY_D)) {
 			direction.x += 1.0f;
 		}
@@ -92,14 +92,14 @@ void Player::move(float delta_time)
 		}
 	}
 
-	//ˆÚ“®—Ê‚ÌZo
+	//ç§»å‹•é‡ã®ç®—å‡º
 	GSvector3 velocity = direction.normalized() * MoveSpeed;
-	//x,z²•ûŒü‚ÌˆÚ“®—Ê‚ğ•Û‘¶
+	//x,zè»¸æ–¹å‘ã®ç§»å‹•é‡ã‚’ä¿å­˜
 	velocity_.x = velocity.x;
 	velocity_.z = velocity.z;
-	//…•½•ûŒü‚ÌˆÚ“®—Ê‚ğ”½‰f
+	//æ°´å¹³æ–¹å‘ã®ç§»å‹•é‡ã‚’åæ˜ 
 	transform_.translate(velocity * delta_time, GStransform::Space::World);
-	//ˆÊ’u‚ª•Ï‰»‚µ‚Ä‚¢‚½‚çˆÚ“®SE‚ğÄ¶
+	//ä½ç½®ãŒå¤‰åŒ–ã—ã¦ã„ãŸã‚‰ç§»å‹•SEã‚’å†ç”Ÿ
 	if (velocity != GSvector3::zero()) {
 		gsPlaySE(Se_PlayerMove);
 	}
@@ -107,25 +107,25 @@ void Player::move(float delta_time)
 
 void Player::free_fall(float delta_time)
 {
-	//d—Í‚ğì—p
+	//é‡åŠ›ã‚’ä½œç”¨
 	velocity_.y += Gravity * delta_time;
-	//ã‰º•ûŒü‚ÌˆÚ“®—Ê‚ğ”½‰f
+	//ä¸Šä¸‹æ–¹å‘ã®ç§»å‹•é‡ã‚’åæ˜ 
 	transform_.translate(GSvector3{ 0.0f, velocity_.y * delta_time, 0.0f }, GStransform::Space::World);
 }
 
-//’…’eˆÊ’u‚ğ–CŠÛƒNƒ‰ƒX‚É“n‚µ‚Ä¶¬
+//ç€å¼¾ä½ç½®ã‚’ç ²ä¸¸ã‚¯ãƒ©ã‚¹ã«æ¸¡ã—ã¦ç”Ÿæˆ
 void Player::shoot()
 {
 	if (gsGetKeyTrigger(GKEY_SPACE) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_RIGHT_SHOULDER)) {
-		//‰æ–Êã‚É“¯‚É‘¶İ‚Å‚«‚éPlayerCannonBall‚Í2‚Â‚Ü‚Å
+		//ç”»é¢ä¸Šã«åŒæ™‚ã«å­˜åœ¨ã§ãã‚‹PlayerCannonBallã¯2ã¤ã¾ã§
 		if (world_->count_actor_with_tag("PlayerCannonBallTag") >= 2) return;
 		Actor* target = world_->find_actor("TargetSign");
 		if (!target) return;
-		//’e’…’eˆÊ’u
+		//å¼¾ç€å¼¾ä½ç½®
 		GSvector3 destination = target->transform().position();
-		//’e¶¬ˆÊ’u
+		//å¼¾ç”Ÿæˆä½ç½®
 		GSvector3 position = transform_.position() + CannonOffset;
-		//’e‚ğ¶¬
+		//å¼¾ã‚’ç”Ÿæˆ
 		world_->add_actor(new PlayerCannonBall{
 			world_, position, destination});
 	}
@@ -133,21 +133,21 @@ void Player::shoot()
 
 void Player::collide_field()
 {
-	//’nŒ`‚Æ‚ÌˆÊ’u•â³
+	//åœ°å½¢ã¨ã®ä½ç½®è£œæ­£
 
-	//’n–Ê‚Æ‚ÌÕ“Ë”»’è
+	//åœ°é¢ã¨ã®è¡çªåˆ¤å®š
 	Line line{ collider().center(),  transform_.position() + GSvector3{ 0.0f, -FootOffset, 0.0f } };
 	GSvector3 intersect;
-	//Õ“Ë‚µ‚½‚ç‚’¼•ûŒü‚É‰Ÿ‚µ–ß‚µ
+	//è¡çªã—ãŸã‚‰å‚ç›´æ–¹å‘ã«æŠ¼ã—æˆ»ã—
 	if (world_->stage().collide(line, &intersect)) {
 		GSvector3 position = line.start();
 		position.y = intersect.y - FootOffset;
 		transform_.position(position);
 		velocity_.y = 0.0f;
 	}
-	//•Ç‚Æ‚ÌÕ“Ë”»’è
+	//å£ã¨ã®è¡çªåˆ¤å®š
 	GSvector3 center;
-	//Õ“Ë‚µ‚½‚ç…•½•ûŒü‚É‰Ÿ‚µ–ß‚µ
+	//è¡çªã—ãŸã‚‰æ°´å¹³æ–¹å‘ã«æŠ¼ã—æˆ»ã—
 	if (world_->stage().collide(collider(), &center)) {
 		center.y = transform_.position().y;
 		transform_.position(center);
@@ -156,17 +156,17 @@ void Player::collide_field()
 
 void Player::collide_actor(Actor& other)
 {
-	//‘Šè‚©‚ç©•ª‚ÖŒü‚©‚¤ƒxƒNƒgƒ‹
+	//ç›¸æ‰‹ã‹ã‚‰è‡ªåˆ†ã¸å‘ã‹ã†ãƒ™ã‚¯ãƒˆãƒ«
 	GSvector3 direction = transform_.position() - other.transform().position();
 	direction.y = 0.0f;
-	//æ‚é‚×‚«‹——£
+	//å–ã‚‹ã¹ãè·é›¢
 	float length = collider().radius() + other.collider().radius();
-	//d‚È‚è’·‚³
+	//é‡ãªã‚Šé•·ã•
 	float overlap = length - direction.length();
-	//‰Ÿ‚µo‚µŒã‚ÌˆÊ’u
+	//æŠ¼ã—å‡ºã—å¾Œã®ä½ç½®
 	GSvector3 velocity = direction.normalized() * overlap;
-	//ŒvZ’l•ªˆÚ“®
+	//è¨ˆç®—å€¤åˆ†ç§»å‹•
 	transform_.translate(velocity, GStransform::Space::World);
-	//’nŒ`‚©‚ç‚Í‚İo‚È‚¢‚æ‚¤‚ÉÄ”»’è
+	//åœ°å½¢ã‹ã‚‰ã¯ã¿å‡ºãªã„ã‚ˆã†ã«å†åˆ¤å®š
 	collide_field();
 }

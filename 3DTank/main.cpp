@@ -18,9 +18,9 @@ public:
 	}
 	void start() override
 	{
-		//ƒGƒtƒFƒNƒg‚Ì‰Šú‰»
+		//ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®åˆæœŸåŒ–
 		gsInitEffect();
-		//ƒV[ƒ“‚ğ‚Ü‚½‚¢‚Å—p‚¢‚éƒŠƒ\[ƒX‚ğ“Ç‚İ‚İ
+		//ã‚·ãƒ¼ãƒ³ã‚’ã¾ãŸã„ã§ç”¨ã„ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’èª­ã¿è¾¼ã¿
 		gsLoadTexture(Texture_RedCurtain, "Assets/Texture/red_curtain.png");
 
 		gsLoadSE(Se_Curtain, "Assets/Sound/SE/curtain.wav", 1, GWAVE_DEFAULT);
@@ -40,12 +40,12 @@ public:
 	}
 	void end() override
 	{
-		//‘SƒV[ƒ“‚ğíœ
+		//å…¨ã‚·ãƒ¼ãƒ³ã‚’å‰Šé™¤
 		scene_manager_.clear();
-		//ƒŠƒ\[ƒX‚Ì‰ğ•ú
+		//ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾
 		gsDeleteTexture(Texture_RedCurtain);
 		gsDeleteSE(Se_Curtain);
-		//ƒGƒtƒFƒNƒg‚ÌI—¹
+		//ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®çµ‚äº†
 		gsFinishEffect();
 	}
 

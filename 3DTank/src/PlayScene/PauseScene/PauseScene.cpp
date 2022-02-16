@@ -16,7 +16,7 @@ const int MaxSelection{ 2 };
 
 void PauseScene::start()
 {
-    //ƒŠƒ\[ƒX‚ğƒ[ƒh
+    //ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰
     gsLoadTexture(Texture_Pause_Board, "Assets/Texture/pause_board.png");
     gsLoadTexture(Texture_Pause_ReturnToGame, "Assets/Texture/pause_returnGame.png");
     gsLoadTexture(Texture_Pause_ReturnToTitle, "Assets/Texture/pause_returnTitle.png");
@@ -28,45 +28,45 @@ void PauseScene::start()
 
 void PauseScene::update(float delta_time)
 {
-    //ƒ|[ƒY‰æ–Ê‚ğ”²‚¯‚é
+    //ãƒãƒ¼ã‚ºç”»é¢ã‚’æŠœã‘ã‚‹
     if (gsGetKeyTrigger(GKEY_X) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_X)) {
         selection_id_ = 0;
         is_end_ = true;
         end();
     }
 
-    //ƒƒjƒ…[‚ğŒˆ’è
+    //ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’æ±ºå®š
     if (gsGetKeyTrigger(GKEY_Z) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_A)) {
         is_end_ = true;
         end();
     }
 
-    //ƒƒjƒ…[‚ğ‘I‘ğ
+    //ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’é¸æŠ
     if (gsGetKeyTrigger(GKEY_DOWN) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_DOWN)) {
         selection_id_ += 1;
     }
     else if (gsGetKeyTrigger(GKEY_UP) || gsXBoxPadButtonTrigger(0, GS_XBOX_PAD_UP)) {
         selection_id_ += MaxSelection - 1;
     }
-    //‘I‘ğˆ”Ô†‚ğ‘I‘ğˆ”‚É‰‚¶‚Äƒ‹[ƒv’²®
+    //é¸æŠè‚¢ç•ªå·ã‚’é¸æŠè‚¢æ•°ã«å¿œã˜ã¦ãƒ«ãƒ¼ãƒ—èª¿æ•´
     selection_id_ %= MaxSelection;
 }
 
 void PauseScene::draw() const
 {
-    //”Â‚ğ•`‰æ
+    //æ¿ã‚’æç”»
     static const GSvector2 position_board{ Screen::Width / 2, Screen::Height / 2 };
     static const GSvector2 center_board{ SizeBoard / 2 };
     gsDrawSprite2D(Texture_Pause_Board, &position_board, NULL, &center_board, NULL, NULL, NULL);
 
-    //ƒJ[ƒ\ƒ‹‚ğ•`‰æ
+    //ã‚«ãƒ¼ã‚½ãƒ«ã‚’æç”»
     GSvector2 position_cursor{ 600, (float)340 + selection_id_ * 250 };
     gsDrawSprite2D(Texture_Cursor, &position_cursor, NULL, NULL, NULL, NULL, NULL);
 
-    //uƒQ[ƒ€‚Ö–ß‚év‚ğ•`‰æ
+    //ã€Œã‚²ãƒ¼ãƒ ã¸æˆ»ã‚‹ã€ã‚’æç”»
     static const GSvector2 position_return_to_game{ 750, 350 };
     gsDrawSprite2D(Texture_Pause_ReturnToGame, &position_return_to_game, NULL, NULL, NULL, NULL, NULL);
-    //uƒ^ƒCƒgƒ‹‚Öv‚ğ•`‰æ
+    //ã€Œã‚¿ã‚¤ãƒˆãƒ«ã¸ã€ã‚’æç”»
     static const GSvector2 position_return_to_title{ 750, 600 };
     gsDrawSprite2D(Texture_Pause_ReturnToTitle, &position_return_to_title, NULL, NULL, NULL, NULL, NULL);
 }
@@ -74,7 +74,7 @@ void PauseScene::draw() const
 void PauseScene::end()
 {
     gsSetMusicVolume(1.0f);
-    //ƒŠƒ\[ƒX‚ğ‰ğ•ú
+    //ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾
     gsDeleteTexture(Texture_Pause_Board);
     gsDeleteTexture(Texture_Pause_ReturnToGame);
     gsDeleteTexture(Texture_Pause_ReturnToTitle);
@@ -92,7 +92,7 @@ const std::string PauseScene::next() const
     case ReturnPlayScene: return "PlayScene";
     case TitleScene:      return "TitleScene";
     default:
-        throw std::runtime_error("ƒ|[ƒYƒV[ƒ“‚©‚ç‚Ì•s³‚È‘JˆÚ‚Å‚·");
+        throw std::runtime_error("ãƒãƒ¼ã‚ºã‚·ãƒ¼ãƒ³ã‹ã‚‰ã®ä¸æ­£ãªé·ç§»ã§ã™");
         break;
     }
 }
